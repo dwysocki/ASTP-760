@@ -1,0 +1,23 @@
+title: "Introduction to Relativity and Gravitation"
+author: "Daniel Wysocki"
+description: "My personal webpage for the Fall 2015 section of Introduction to Relativity and Gravitation (ASTP-760) at RIT."
+url: "http://dwysocki.github.io/ASTP-760"
+baseurl: "/ASTP-760"
+
+style:
+#    body: "whitesmoke"
+    padding: 33%
+    anchor: "#46f"
+    serif-heading: true
+    nav: "#181818"
+#    headline: "#06f"
+    description: "white"
+    article:
+        odd: "#ffffff"
+        even: "#222222"
+
+links:
+  - github: "https://github.com/dwysocki/"
+
+excerpt_separator: "\n\n\n"
+defaults: [{scope: {path: ""}, values: {layout: "default"}}, {scope: {path: "", type: "posts"}, values: {comments: true}}]

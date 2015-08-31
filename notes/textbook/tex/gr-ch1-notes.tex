@@ -1,0 +1,159 @@
+\documentclass[gr-notes.tex]{subfiles}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+
+\chapter{Special relativity}
+
+\section{Fundamental principles of special relativity (SR) theory}
+
+Special relativity can be summarized by two fundamental postulates:
+
+
+\begin{enumerate}
+\item The principle of relativity (Galileo), which states that no experiment
+  may measure the absolute velocity of an observer.
+\item The universality of the speed of light (Einstein), which states that
+  the speed of light is constant when measured from any inertial reference
+  frame.
+\end{enumerate}
+
+
+\section{Definition of an inertial observer in SR}
+
+When we say ``observer'', what we really mean is a coordinate system. Thus an inertial observer is a coordinate system that meets the following 3 criteria:
+
+\begin{enumerate}
+\item The distance between two spatial points $P_1$ and $P_2$ is independent of
+  time.
+\item Time is synchronized and moves at the same rate at all spatial points.
+\item At any constant time, space is Euclidean.
+\end{enumerate}
+
+It follows from these criteria that the observer must be \textbf{unaccelerated}.
+
+\section{New units}
+
+The speed of light, $c$, is approximately $\SI{3.00e8}{\meter\second^{-1}}$ in SI units. However, these units predate relativity, and are very inconvenient. Life becomes easier if we define our units around $c$, such that $c \equiv 1$.
+
+This can be done by repurposing the meter as a measure of time as well. We thereby define the meter as ``the time it takes light to travel 1 meter''. Thus the speed of light becomes
+
+\begin{displaymath}
+  c = \frac{\SI{1}{\meter}}{\SI{1}{\meter}}.
+\end{displaymath}
+
+Indeed, it turns out in SR that time is most conveniently measured in distance ($c = \SI{3.00e10}{\centi\meter}$), and in GR mass is as well ($G/c^{-2} = \SI{7.425e-29}{\centi\meter\per\gram}$).
+
+
+\section{Spacetime diagrams}
+
+\section{Construction of the coordinates used by another observer}
+
+\section{Invariance of the interval}
+
+For two nearby events, we can define the \textbf{invariant interval}, defining a 4D Minskowski spacetime:
+
+\begin{displaymath}
+  \dd{s}^2 = -(c \dd{t})^2 + \dd{x}^2 + \dd{y}^2 + \dd{z}^2,
+\end{displaymath}
+
+or when we set $c \equiv 1$:
+
+\begin{displaymath}
+  \dd{s}^2 = -\dd{t}^2 + \dd{x}^2 + \dd{y}^2 + \dd{z}^2.
+\end{displaymath}
+
+This notation can be simplified be defining
+
+\begin{displaymath}
+  \eta_{\mu\nu} =
+  \mqty(-1 & 0 & 0 & 0 \\
+         0 & 1 & 0 & 0 \\
+         0 & 0 & 1 & 0 \\
+         0 & 0 & 0 & 1);
+  \quad
+  \dd{s}^2 = \sum_{\mu=0}^3 \sum_{\nu=0}^3 \eta_{\mu\nu} \dd{x}^\mu \dd{x}^\nu
+\end{displaymath}
+
+
+
+\section{Invariant hyperbolae}
+
+\section{Particularly important results}
+
+\section{The Lorentz transformation}
+
+\section{The velocity-composition law}
+
+\section{Paradoxes and physical intuition}
+
+\section{Further reading}
+
+\section{Appendix: The twin `paradox' dissected}
+
+\section{Exercises}
+
+\textbf{1}
+Convert the following to units in which $c = 1$, expressing everything in terms of $\si{\meter}$ and $\si{\kilogram}$.
+
+(Note that
+$c = 1 \implies
+ 1 \approx \SI{3e8}{\meter\per\second}
+   \approx (\num{3e8})^{-1}\si{\per\meter\second}$
+
+(a) $\SI{10}{\joule}$
+\begin{align*}
+  \SI{10}{\joule} &=
+  \SI{10}{\newton.\meter} =
+  \SI{10}{\kilogram.\meter^2.\second^{-2}} \approx
+  \SI{10}{\kilogram.\meter^2.\second^{-2}} \cdot
+  ((\num{3e8})^{-1}\si{\meter^{-1}.\second})^2
+  \\ &\approx
+  \SI{10}{\kilogram} (\num{3e8})^{-2} =
+  \SI{10}{\kilogram} \qty(\frac{1}{9} \times 10^{-16}) \approx
+  \SI{1.11e-16}{\kilogram}
+\end{align*}
+
+(b) $\SI{100}{\watt}$
+\begin{align*}
+  \SI{100}{\watt} &=
+  \SI{100}{\kilogram.\meter^2.\second^{-3}} \approx
+  \SI{100}{\kilogram.\meter^2.\second^{-3}} \cdot
+  ((\num{3e8})^{-1} \si{\meter^{-1}.\second})^3
+  \\ &\approx
+  \SI{100}{\kilogram\per\meter} (3^{-3} \times 10^{-24}) =
+  \frac{100}{27} \times 10^{-24} \si{\kilogram\per\meter} \approx
+  \SI{3.7e-24}{\kilogram\per\meter}
+\end{align*}
+
+
+\textbf{2}
+Convert the following from natural units ($c = 1$) to SI units:
+
+(a) A velocity $v = 10^{-2}$.
+\begin{displaymath}
+  v = 10^{-2} =
+  10^{-2} c =
+  10^{-2} \SI{3e8}{\meter\per\second} =
+  \SI{3e6}{\meter\per\second}
+\end{displaymath}
+
+(b) Pressure $P = 10^{19} \si{\kilogram.\meter^{-3}}$.
+\begin{align*}
+  P &=
+  10^{19} \si{\kilogram.\meter^{-3}} \approx
+  10^{19} \si{\kilogram.\meter^{-3}} (\SI{3e8}{\meter\per\second})^2
+  \\ &\approx
+  10^{19} \si{kg.\meter^{-3}} (\SI{9e16}{\meter^2.\second^{-2}}) =
+  \SI{9e35}{\newton.\meter^2}
+\end{align*}
+
+
+\textbf{3}
+Draw the $t$ and $x$ axes of the spacetime coordinates of an observer $\mathcal{O}$ and then draw:
+
+(a) The world line of $\mathcal{O}$'s clock at $x = \SI{1}{\meter}$.
+
+
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass{book}
+
+\title{Introduction to General Relativity (ASTP-760) Notes}
+\author{Daniel Wysocki}
+\date{Fall 2015}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage{amsmath,amssymb,commath,mathabx,mathtools}
+\usepackage{physics,siunitx}
+
+\usepackage{pgfplots,tikz}
+
+\usepackage{subfiles}
+
+% the tocloft package lets you redefine the Table of Contents (ToC)
+\usepackage{tocloft}
+
+\renewcommand\cftchappresnum{Chapter } % prefix "Chapter " to chapter number in ToC
+\cftsetindents{chapter}{0em}{8em}      % set amount of indenting
+\cftsetindents{section}{2em}{6em}
+% Macros to redefine numbering of appendix sections (and to
+%   reset numbering when not in per-chapter area appendix)
+\newcommand\normalsecnums{%
+    \renewcommand\thesection{\thechapter.\arabic{section}}}
+\let\origchapter\chapter
+\renewcommand{\chapter}[1]{\normalsecnums
+    \origchapter{#1}}
+\newcommand\appsecnums{%   % execute this command before entering appendix area
+    \setcounter{section}{0}
+    \renewcommand\thesection{\appendixname~\Alph{section}}}
+
+% remove automatic paragraph indentation, while preserving the \indent
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+% reduce spacing around equations
+\usepackage[nodisplayskipstretch]{setspace}
+\setstretch{1.5}
+
+\DeclareSIUnit{\parsec}{pc}
+\DeclareSIUnit{\lightyear}{ly}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\subfile{./tex/gr-ch1-notes}
+\subfile{./tex/gr-ch2-notes}
+
+\end{document}
