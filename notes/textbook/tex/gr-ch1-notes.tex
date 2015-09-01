@@ -212,10 +212,89 @@ Convert the following from natural units ($c = 1$) to SI units:
 
 
 \textbf{3}
-Draw the $t$ and $x$ axes of the spacetime coordinates of an observer $\mathcal{O}$ and then draw:
+Draw the $t$ and $x$ axes of the spacetime coordinates of an observer $\obs$ and then draw:
 
-(a) The world line of $\mathcal{O}$'s clock at $x = \SI{1}{\meter}$.
+(a) The world line of $\obs$'s clock at $x = \SI{1}{\meter}$.
 
+
+
+\textbf{4}
+Write out all the terms of the following sums, substituting the coordinate names $(t, x, y, z)$ for $(x^0, x^1, x^2, x^3)$:
+
+(a)
+$\sum_{\alpha=0}^3 V_\alpha \dd{x^\alpha} =
+ V_0 \dd{t} + V_1 \dd{x} + V_2 \dd{y} + V_3 \dd{z}$.
+
+(b)
+$\sum_{i=1}^3 (\dd{x^i})^2 =
+ \dd{x}^2 + \dd{y}^2 + \dd{z}^2 = \dd{r}^2$.
+
+
+\textbf{5}
+
+\textbf{TODO}
+
+
+
+\textbf{6}
+Show that Equation (\ref{schutz:1.2}) contains only $M_{\alpha\beta} + M_{\beta\alpha}$ when $\alpha \neq \beta$, not $M_{\alpha\beta}$ and $M_{\beta\alpha}$ independently. Argue that this enables us to set $M_{\alpha\beta} = M_{\beta\alpha}$ without loss of generality.
+
+When we expand the summation in (\ref{schutz:1.2}), there is no point where
+%
+\begin{displaymath}
+  \dd{\bar{s}}^2 =
+  \ldots +
+  M_{\alpha\alpha} (\dd{x^\alpha})^2 +
+  M_{\alpha\alpha} (\dd{x^\alpha})^2 +
+  \ldots
+\end{displaymath}
+occurs, because a double summation only contains $M_{\alpha\alpha}$ once. If it did, we could absorb the two $M_{\alpha\beta}$ terms into a single one. Therefore we can assert the first point.
+
+Now we consider the second point. If we expand the summation, assuming now that an $M_{\alpha\beta}$ and $M_{\beta\alpha}$ term only occur when $\alpha \neq \beta$, then we see
+%
+\begin{align*}
+  \dd{\bar{s}}^2 &=
+  \ldots +
+  M_{\alpha\beta} (\dd{x^\alpha}) (\dd{x^\beta}) +
+  M_{\beta\alpha} (\dd{x^\beta}) (\dd{x^\alpha}) +
+  \ldots
+  \\ &=
+  \ldots +
+  (M_{\alpha\beta} + M_{\beta\alpha}) \qty[ (\dd{x^\alpha}) (\dd{x^\beta}) ] +
+  \ldots
+  \\ &=
+  \ldots +
+  \mathbf{X} \qty[ (\dd{x^\alpha}) (\dd{x^\beta}) ] +
+  \ldots.
+\end{align*}
+%
+Now, what really matters in this summation is the value of $\mathbf{X} = M_{\alpha\beta} + M_{\beta\alpha}$, not the individual values of $M_{\alpha\beta}$ and $M_{\beta\alpha}$. Therefore we can \emph{choose}, without loss of generality, $M_{\alpha\beta} = M_{\beta\alpha} = \mathbf{X}/2$, thereby asserting the second point.
+
+
+\textbf{7}
+In the discussion leading up to Equation (\ref{schutz:1.2}), assume that the coordinates of $\bar{\obs}$ are given as the following linear combinations of those $\obs$:
+%
+\begin{align*}
+  \bar{t} &= \alpha t + \beta x,
+  \\
+  \bar{x} &= \mu t + \nu x,
+  \\
+  \bar{y} &= a y,
+  \\
+  \bar{z} &= b z,
+\end{align*}
+%
+where $\alpha$, $\beta$, $\mu$, $\nu$, $a$, and $b$ may be functions of the velocity $\vec{v}$ of $\bar{\obs}$ relative to $\obs$, but they do not depend on the coordinates. Find the values of $M_{\alpha\beta}$ of Equation (\ref{schutz:1.2}).
+
+The simplest $M_{\alpha\beta}$ to find are those relating to $\bar{y}$ ($M_{22}$) and $\bar{z}$ ($M_{33}$). For $\bar{y}$ we have:
+%
+\begin{displaymath}
+  \dd{\bar{y}}^2 = (a \dd{y})^2 = M_{22} (\dd{x^2})^2
+  \implies
+  M_{22} = a^2,
+\end{displaymath}
+%
+and similarly for $z$ we have $M_{33} = b^2$.
 
 
 \textbf{8}
@@ -325,6 +404,69 @@ now if we expand $(\dd{r})^2$, we see that there can only be non-zero $M_{ij}$ w
 \end{align*}
 %
 which is simply Equation (\ref{schutz:1.4b}).
+
+
+
+\textbf{9}
+Explain why the line $\mathcal{P}\mathcal{L}$ in Figure 1.7 is drawn in the manner described in the text.
+
+The key here is that both $\mathcal{P}$ and $\mathcal{L}$ must emit or absorb a beam of light, which intersect the same reflection points at $\mathcal{A}$ and $\mathcal{B}$. This means that they occur at $t = \bar{t} = 0$. This also means that from $\bar{\obs}$, it appears that the light reflected from
+
+
+
+\textbf{10}
+For the pairs of events whose coordinates $(t,x,y,z)$ in some frame are given below, classify their separations as timelike, spacelike, or null.
+
+(a) $(0,0,0,0)$ and $(-1,1,0,0)$:
+\begin{displaymath}
+  \dd{s}^2 =
+  -(0 + 1)^2 + (0 - 1)^2 + (0 - 0)^2 + (0 - 0)^2 =
+  -1 + 1 + 0 + 0 =
+  0 \implies
+  \mathrm{null}
+\end{displaymath}
+
+(b) $(1,1,-1,0)$ and $(-1,1,0,2)$:
+\begin{displaymath}
+  \dd{s}^2 =
+  -(1 + 1)^2 + (1 - 1)^2 + (-1 - 0)^2 + (0 - 2)^2 =
+  -4 + 0 + 1 + 4 =
+  1 \implies
+  \mathrm{spacelike}
+\end{displaymath}
+
+(c) $(6,0,1,0)$ and $(5,0,1,0)$:
+\begin{displaymath}
+  \dd{s}^2 =
+  -(6 - 5)^2 + (0 - 0)^2 + (1 - 1)^2 + (0 - 0)^2 =
+  -1 + 0 + 0 + 0 =
+  -1 \implies
+  \mathrm{timelike}
+\end{displaymath}
+
+(d) $(-1,1,-1,1)$ and $(4,1,-1,6)$:
+\begin{displaymath}
+  \dd{s}^2 =
+  -(-1 - 4)^2 + (1 - 1)^2 + (-1 + 1)^2 + (1 - 6)^2 =
+  -25 + 0 + 0 + 25 =
+  0 \implies
+  \mathrm{null}
+\end{displaymath}
+
+
+\textbf{11}
+Show that the hyperbolae $-t^2 + x^2 = a^2$ and $-t^2 + x^2 = -b^2$ are asymptotic to the lines $t = \pm x$, regardless of $a$ and $b$.
+
+We will generalize $a$ and $-b$ with a new constant, $\alpha \in \mathbb{R}$, and so we have: $-t^2 + x^2 = \alpha^2$. Now if we solve for $t$, we get $t = \pm \sqrt{x^2 - c^2}$.
+
+Now take the limit of $t$ as $x \to \infty$ (or $-\infty$, they are equivalent since $x$ is real and squared), which gives us:
+\begin{align*}
+  \lim_{x\to\infty} t &=
+  \lim_{x\to\infty} \pm \sqrt{x^2 - \alpha^2} =
+  \pm \sqrt{x^2} = \pm x.
+\end{align*}
+
+Note that we dropped the $\alpha^2$ term in the limit, as it was being subtracted from a number approaching infinity, and was therefore negligible.
 
 
 \end{document}
