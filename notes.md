@@ -2,7 +2,7 @@
 title: Notes
 ---
 
-{% assign chapters = "1,2" | split: "," %}
+{% assign chapters = "1,2,3" | split: "," %}
 {% assign types = "PDF,TeX" | split: "," %}
 
 # Chapters from Textbook
