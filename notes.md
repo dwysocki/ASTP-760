@@ -7,7 +7,7 @@ title: Notes
 
 # Chapters from Textbook
 
-The textbook used in this course is "Dynamics and Evolution of Galactic Nuclei" by David Merritt. The following sections contain my personal notes on each chapter of the book.
+The textbook used in this course is "A First Course in General Relativity" by Bernard Schutz. The following sections contain my personal notes on each chapter of the book, along with my solutions to many of the problems. I make no guarantees to the correctness of the solutions.
 
 ## Complete Notes
 
