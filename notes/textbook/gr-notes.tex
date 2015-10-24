@@ -26,6 +26,10 @@
 % the tocloft package lets you redefine the Table of Contents (ToC)
 \usepackage{tocloft}
 
+% allow conservative page breaks in multi-line equations
+\allowdisplaybreaks[1]
+
+
 \renewcommand\cftchappresnum{Chapter } % prefix "Chapter " to chapter number in ToC
 \cftsetindents{chapter}{0em}{8em}      % set amount of indenting
 \cftsetindents{section}{2em}{6em}
