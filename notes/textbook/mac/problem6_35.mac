@@ -1,0 +1,58 @@
+main() := (
+
+load(ctensor),
+
+/*
+ * declare functional dependencies
+ */
+depends([Phi, Lambda], r),
+
+/*
+ * define the coordinate system
+ */
+ct_coords: [t, r, theta, phi],
+
+/*
+ * construct the lower metric tensor
+ *
+ *   start with an empty tensor and
+ *   fill in the diagonal components individually
+ */
+lg: zeromatrix(4,4),
+
+lg[1,1]: -exp(2*Phi),
+lg[2,2]:  exp(2*Lambda),
+lg[3,3]:  r^2,
+lg[4,4]:  r^2 * sin(theta)^2,
+
+/*
+ * compute the inverse metric, store in ug
+ */
+cmetric(),
+
+
+/**********
+ * Output *
+ **********/
+
+/*
+ * display the lower and upper indexed metrics
+ */
+print(lg),
+print(ug),
+
+/*
+ * display the Christofel symbols (1st kind)
+ */
+christof(mcs),
+
+/*
+ * display the components of the Riemann tensor
+ */
+riemann(mcs)
+
+
+)$
+
+
+main()$

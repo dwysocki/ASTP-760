@@ -29,9 +29,9 @@ Assume Equation 5.1 does not hold. Devise a perpetual motion device.
 
 If we assume that the photon does not return to an energy $m$ once it reaches the top, but instead has an energy $m' > m$, then we could create the perpetual motion device shown in Figure \ref{fig:ch5-problem-1b}. A black box consumes the photon with energy $m'$, and splits it into a new object of mass $m$, and a photon of energy $m' - m$. The object repeats the action of the original falling mass, creating an infinite loop.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
-  \includegraphics[width=0.75\textwidth]{img/ch5_problem_1b}
+  \includegraphics[width=0.5\textwidth]{img/ch5_problem_1b}
   \caption{Problem 1: Perpetual motion device.}
   \label{fig:ch5-problem-1b}
 \end{figure}
@@ -958,6 +958,431 @@ Now we add the two expressions, in order to show that it is a tensor equation
 \end{align*}
 %
 So it does in fact transform like a tensor equation, meaning $\tensor{V}{^\nu_{;\lambda}}$ is a tensor!
+
+
+\textbf{18}
+
+Verify Equation 5.78:
+%
+\begin{displaymath}
+  \left.
+  \begin{array}{r}
+    \vec{e}_{\hat\alpha} \cdot \vec{e}_{\hat\beta} \equiv
+    g_{\hat\alpha \hat\beta} =
+    \delta_{\hat\alpha \hat\beta}
+    \\
+    \tilde\omega^{\hat\alpha} \cdot \tilde\omega^{\hat\beta} \equiv
+    g^{\hat\alpha \hat\beta} =
+    \delta^{\hat\alpha \hat\beta}
+  \end{array}
+  \right\}
+\end{displaymath}
+
+For the basis \emph{vectors}, we have
+%
+\begin{align*}
+  g_{\hat{r} \hat{r}} &=
+  \vec{e}_{\hat{r}} \cdot \vec{e}_{\hat{r}} =
+  \vec{e}_r \cdot \vec{e}_r =
+  g_{rr} =
+  1
+  \\
+  g_{\hat\theta \hat\theta} &=
+  \vec{e}_{\hat\theta} \cdot \vec{e}_{\hat\theta} =
+  \qty(\frac{1}{r} \vec{e}_\theta) \cdot \qty(\frac{1}{r} \vec{e}_\theta) =
+  \frac{1}{r^2} (\vec{e}_\theta \cdot \vec{e}_\theta) =
+  \frac{1}{r} g_{r\theta} =
+  1
+  \\
+  g_{\hat{r} \hat\theta} &=
+  \vec{e}_{\hat{r}} \cdot \vec{e}_{\hat\theta} =
+  \vec{e}_r \cdot \qty(\frac{1}{r} \vec{e}_\theta) =
+  \frac{1}{r} (\vec{e}_r \cdot \vec{e}_\theta) =
+  \frac{1}{r} g_{r\theta} =
+  0
+  \\
+  g_{\hat\theta \hat{r}} &=
+  g_{\hat{r} \hat\theta} =
+  0
+\end{align*}
+%
+So it is indeed true that $g_{\hat\alpha \hat\beta} = \delta_{\hat\alpha \hat\beta}$.
+
+Now for the basis \emph{one-forms}, we have
+%
+\begin{align*}
+  g^{\hat{r} \hat{r}} &=
+  \tilde\omega^{\hat{r}} \cdot \tilde\omega^{\hat{r}} =
+  \tilde\dd{r} \cdot \tilde\dd{r} =
+  g^{rr} =
+  1
+  \\
+  g^{\hat\theta \hat\theta} &=
+  \tilde\omega^{\hat\theta} \cdot \tilde\omega^{\hat\theta} =
+  (r \tilde\dd\theta) \cdot (r \tilde\dd\theta) =
+  r^2 (\tilde\dd\theta \cdot \tilde\dd\theta) =
+  r^2 g^{\theta\theta} =
+  r^2 (1/r^2) =
+  1
+  \\
+  g^{\hat{r} \hat\theta} &=
+  \tilde\omega^{\hat{r}} \cdot \tilde\omega^{\hat\theta} =
+  \tilde\dd{r} \cdot (r \tilde\dd\theta) =
+  r (\tilde\dd{r} \cdot \tilde\dd\theta) =
+  r g^{r\theta} =
+  0
+  \\
+  g^{\hat\theta \hat{r}} &=
+  g^{\hat{r} \hat\theta} =
+  0
+\end{align*}
+%
+So it is indeed true that $g^{\hat\alpha \hat\beta} = \delta^{\hat\alpha \hat\beta}$.
+
+
+
+\textbf{19}
+Repeat the calculations going from Equations 5.81 to 5.84, with $\tilde\dd{r}$ and $\tilde\dd\theta$ as your bases. Show that they form a coordinate basis.
+
+\begin{align*}
+  \tilde\dd{r} &=
+  \cos\theta \dd{x} + \sin\theta \dd{y} =
+  \pdv{\xi}{x} \tilde\dd{x} + \pdv{\xi}{y} \tilde\dd{y}
+  \\
+  \pdv{\xi}{x} &=
+  \cos\theta; \quad
+  \pdv{\xi}{y} =
+  \sin\theta
+  \\
+  \pdv{y} \pdv{\xi}{x} &=
+  \pdv{x} \pdv{\xi}{y} \implies
+  \pdv{y} (x/r) = \pdv{x} (y/r),
+\end{align*}
+%
+which is true, so we have shown that at least $\tilde\dd{r}$ may be part of a coordinate basis.
+%
+\begin{align*}
+  \tilde\dd\theta &=
+  -\frac{1}{r} \sin\theta \tilde\dd{x} +
+   \frac{1}{r} \cos\theta \tilde\dd{y} =
+  \pdv{\eta}{x} \tilde\dd{x} +
+  \pdv{\eta}{y} \tilde\dd{y}
+  \\
+  \pdv{\eta}{x} &=
+  -\frac{1}{r} \sin\theta; \quad
+  \pdv{\eta}{y} =
+   \frac{1}{r} \cos\theta
+  \\
+  \pdv{y} \pdv{\eta}{x} &=
+  \pdv{x} \pdv{\eta}{y} \implies
+  \pdv{y} \qty[ -\frac{1}{r} \sin\theta ] =
+  \pdv{x} \qty[  \frac{1}{r} \cos\theta ],
+\end{align*}
+%
+which is also true, and thus we have shown that $\tilde\dd{r}$ and $\tilde\dd\theta$ form a coordinate basis.
+
+
+\textbf{20}
+For a non-coordinate basis $\{ \vec{e}_\mu \}$, let $\tensor{c}{^\alpha_{\mu\nu}} = \grad_{\vec{e}_\mu} \vec{e}_\nu - \grad_{\vec{e}_\nu} \vec{e}_\mu$. Use this in place of Equation 5.74 to derive a more general expression for Equation 5.75.
+
+$\boldsymbol{c}$ is antisymmetric w.r.t. its bottom indices.
+%
+\begin{align*}
+  \tensor{c}{^\alpha_{\mu\nu}} \vec{e}_\alpha +
+  \tensor{c}{^\alpha_{\nu\mu}} \vec{e}_\alpha &=
+  (\grad_{\vec{e}_\mu} \vec{e}_\nu - \grad_{\vec{e}_\nu} \vec{e}_\mu) +
+  (\grad_{\vec{e}_\nu} \vec{e}_\mu - \grad_{\vec{e}_\mu} \vec{e}_\nu) =
+  0
+  \\ \implies
+   \tensor{c}{^\alpha_{\mu\nu}} \vec{e}_\alpha &=
+  -\tensor{c}{^\alpha_{\nu\mu}} \vec{e}_\alpha
+  \\ \implies
+   \tensor{c}{^\alpha_{\mu\nu}} &=
+  -\tensor{c}{^\alpha_{\nu\mu}}
+\end{align*}
+%
+Expanding the covariant derivatives in the original expression, we get
+\begin{align*}
+  \tensor{c}{^\alpha_{\mu\nu}} \vec{e}_\alpha &=
+  \vec{e}_{\nu;\mu} - \vec{e}_{\mu;\nu}
+  \\ &=
+  (\vec{e}_{\nu,\mu} - \vec{e}_\alpha \tensor{\Gamma}{^\alpha_{\nu\mu}}) -
+  (\vec{e}_{\mu,\nu} - \vec{e}_\alpha \tensor{\Gamma}{^\alpha_{\mu\nu}})
+  \\ &=
+  \vec{e}_\alpha
+  (\tensor{\Gamma}{^\alpha_{\mu\nu}} - \tensor{\Gamma}{^\alpha_{\nu\mu}})
+  \\
+  \tensor{c}{^\alpha_{\mu\nu}} &=
+  \tensor{\Gamma}{^\alpha_{\mu\nu}} - \tensor{\Gamma}{^\alpha_{\nu\mu}}
+\end{align*}
+%
+Now we recall the result from Exercise 16, but without assuming symmetry of the Christoffel symbols
+%
+\begin{align*}
+  g_{\alpha\beta,\mu} + g_{\alpha\mu,\beta} - g_{\beta\mu,\alpha} &=
+  \tensor{\Gamma}{^\nu_{\alpha\mu}} g_{\nu\beta} +
+  \tensor{\Gamma}{^\nu_{\beta\mu}} g_{\alpha\nu} +
+  \tensor{\Gamma}{^\nu_{\alpha\beta}} g_{\nu\mu} +
+  \tensor{\Gamma}{^\nu_{\mu\beta}} g_{\alpha\nu} -
+  \tensor{\Gamma}{^\nu_{\beta\alpha}} g_{\nu\mu} -
+  \tensor{\Gamma}{^\nu_{\mu\alpha}} g_{\beta\nu}
+  \\ &=
+  {\color{red} \tensor{\Gamma}{^\nu_{\alpha\mu}} g_{\beta\nu}} +
+  {\color{green} \tensor{\Gamma}{^\nu_{\beta\mu}} g_{\alpha\nu}} +
+  {\color{blue} \tensor{\Gamma}{^\nu_{\alpha\beta}} g_{\nu\mu}} +
+  {\color{green} \tensor{\Gamma}{^\nu_{\mu\beta}} g_{\alpha\nu}} -
+  {\color{blue} \tensor{\Gamma}{^\nu_{\beta\alpha}} g_{\nu\mu}} -
+  {\color{red} \tensor{\Gamma}{^\nu_{\mu\alpha}} g_{\beta\nu}}
+  \\ &=
+  g_{\beta\nu}
+  (\tensor{\Gamma}{^\nu_{\alpha\mu}} - \tensor{\Gamma}{^\nu_{\mu\alpha}}) +
+  g_{\alpha\nu}
+  (\tensor{\Gamma}{^\nu_{\beta\mu}} + \tensor{\Gamma}{^\nu_{\mu\beta}}) +
+  g_{\nu\mu}
+  (\tensor{\Gamma}{^\nu_{\alpha\beta}} - \tensor{\Gamma}{^\nu_{\beta\alpha}})
+  \\ &=
+  g_{\beta\nu} \tensor{c}{^\nu_{\alpha\mu}} +
+  g_{\alpha\nu}
+  (\tensor{\Gamma}{^\nu_{\beta\mu}} +
+   \tensor{\Gamma}{^\nu_{\mu\beta}} +
+   \tensor{\Gamma}{^\nu_{\beta\mu}} -
+   \tensor{\Gamma}{^\nu_{\beta\mu}}) +
+  g_{\nu\mu} \tensor{c}{^\nu_{\alpha\beta}}
+  \\ &=
+  g_{\beta\nu} \tensor{c}{^\nu_{\alpha\mu}} +
+  g_{\nu\mu} \tensor{c}{^\nu_{\alpha\beta}} +
+  g_{\alpha\nu}
+  (2 \tensor{\Gamma}{^\nu_{\beta\mu}} + \tensor{c}{^\nu_{\mu\beta}})
+  \\
+  g^{\nu\mu} 2 g_{\alpha\nu} \tensor{\Gamma}{^\nu_{\beta\mu}} &=
+  g^{\nu\mu} (
+    g_{\alpha\beta,\mu} +
+    g_{\alpha\mu,\beta} -
+    g_{\beta\mu,\alpha} -
+    c_{\beta\alpha\mu}  -
+    c_{\mu\alpha\beta}  -
+    c_{\alpha\mu\beta}
+  )
+  \\
+  \tensor{\Gamma}{^\nu_{\beta\alpha}} &=
+  \frac{1}{2}
+  g^{\nu\mu} (
+    g_{\alpha\beta,\mu} +
+    g_{\alpha\mu,\beta} -
+    g_{\beta\mu,\alpha} -
+    c_{\beta\alpha\mu}  -
+    c_{\mu\alpha\beta}  -
+    c_{\alpha\mu\beta}
+  )
+\end{align*}
+
+
+
+
+\textbf{21}
+A uniformly accelerated observer has world line
+%
+\begin{displaymath}
+  t(\lambda) = a \sinh\lambda,
+  \quad
+  x(\lambda) = a \cosh\lambda
+\end{displaymath}
+
+(a) Show that the spacelike line tangent to his world line (which is parameterized by $\lambda$) is orthogonal to the line parameterized by $a$.
+
+The line tangent to his world line is
+%
+\begin{displaymath}
+  \vec{V} \to
+  \dv{\lambda} (t, x) =
+  (a \cosh\lambda, a \sinh\lambda).
+\end{displaymath}
+%
+The line parameterized by $a$ is
+%
+\begin{displaymath}
+  \vec{W} \to
+  \dv{a} (t, x) =
+  (\sinh\lambda, \cosh\lambda)
+\end{displaymath}
+%
+If they are orthogonal, then their dot product must be zero
+%
+\begin{displaymath}
+  \vec{V} \cdot \vec{W} =
+  -(a \cosh\lambda \sinh\lambda) + (a \sinh\lambda \cosh\lambda) =
+  0,
+\end{displaymath}
+%
+which it is.
+
+(b) To prove that this defines a valid coordinate transform from $(\lambda,a)$ to $(t,x)$, we show that the determinant of the transformation matrix is non-zero.
+%
+\begin{align*}
+  \det\mqty( \pdv*{t}{\lambda} & \pdv*{t}{a} \\
+             \pdv*{x}{\lambda} & \pdv*{x}{a} ) &=
+  \pdv{t}{\lambda} \pdv{x}{a} - \pdv{t}{a} \pdv{x}{\lambda}
+  \\ &=
+  a \cosh^2\lambda - a \sinh^2\lambda = a
+  \\ &\neq 0,
+\end{align*}
+%
+and so it is indeed a valid coordinate transform.
+
+To plot the curves parameterized by $a$, we take
+%
+\begin{align*}
+  -t^2 + x^2 &=
+  a^2 (\cosh^2\lambda - \sinh^2\lambda)
+  \\ &=
+  a^2,
+\end{align*}
+%
+which gives us a family of space-like hyperbola, depending on the chosen value of $a$.
+
+To plot the curves parameterized by $\lambda$, we take
+%
+\begin{align*}
+  x &= a \cosh\lambda \implies a = x / \cosh\lambda
+  \\
+  t &= a \sinh\lambda = x \sinh\lambda / \cosh\lambda = x \tanh\lambda,
+\end{align*}
+%
+which gives us a family of space-like lines, depending on the chosen value of $\lambda$.
+
+A plot of these curves is given in Figure \ref{fig:ch5-problem-21}, from which it is clear that only half of the $t$--$x$ plane is covered.
+
+When $\abs{t} = \abs{x}$, then $a = 0$, since $-t^2 + x^2 = a^2$. We already found that the determinant of the coordinate transformation is $a$, so this would make the determinant $0$, making it singular.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{img/ch5_problem_21}
+  \caption{Lines of constant $\lambda$ and $a$ in Problem 21.}
+  \label{fig:ch5-problem-21}
+\end{figure}
+
+
+(c) Find the metric tensor and Christoffel symbols in $(\lambda,a)$ coordinates.
+
+First we find the basis vectors:
+%
+\begin{align*}
+  \vec{e}_\lambda &=
+  a (\cosh\lambda \vec{e}_t + \sinh\lambda \vec{e}_x),
+  \\
+  \vec{e}_a &=
+  \sinh\lambda \vec{e}_t + \cosh\lambda \vec{e}_x.
+\end{align*}
+
+Now we find the components of the metric tensor $\vb{g}$ as
+%
+\begin{align*}
+  g_{\lambda\lambda} &=
+  a^2
+  ( \cosh\lambda \vec{e}_t +
+    \sinh\lambda \vec{e}_x )^2
+  \\ &=
+  a^2
+  ( \cosh^2\lambda \eta_{tt} +
+    \sinh^2\lambda \eta_{xx} +
+    2 \sinh\lambda \cosh\lambda \eta_{tx} )
+  \\ &=
+  a^2 (\sinh^2\lambda - \cosh^2\lambda)
+  \\ &=
+  -a^2
+  \\
+  g_{aa} &=
+  (\sinh\lambda \vec{e}_t + \cosh\lambda \vec{e}_x)^2
+  \\ &=
+  \sinh^2\lambda \eta_{tt} +
+  \cosh^2\lambda \eta_{xx} +
+  2 \sinh\lambda \cosh\lambda \eta_{tx}
+  \\ &=
+  1
+  \\
+  g_{\lambda a} = g_{a \lambda} &=
+  a (\cosh\lambda \vec{e}_t + \sinh\lambda \vec{e}_x)
+    (\sinh\lambda \vec{e}_t + \cosh\lambda \vec{e}_x)
+  \\ &=
+  a
+  ( \cosh\lambda \sinh\lambda (\eta_{tt} + \eta_{xx}) +
+    2 \sinh\lambda \cosh\lambda \eta_{tx} )
+  \\ &=
+  0
+  \\
+  \vb{g} &\underset{(\lambda,a)}{\to}
+  \mqty( -a^2 & 0 \\ 0 & 1 )
+\end{align*}
+%
+Now for the Christoffel symbols, since we know this is a coordinate basis, we can use
+%
+\begin{displaymath}
+  \tensor{\Gamma}{^\gamma_{\beta \mu}} =
+  \frac{1}{2} g^{\alpha \gamma}
+  (g_{\alpha \beta , \mu} + g_{\alpha \mu , \beta} - g_{\beta \mu , \alpha})
+\end{displaymath}
+%
+\begin{align*}
+  \tensor{\Gamma}{^\lambda_{\lambda \lambda}} &=
+  \frac{1}{2} g^{\alpha \lambda}
+  (g_{\alpha \lambda , \lambda} + g_{\alpha \lambda , \lambda} - g_{\lambda \lambda , \alpha}) =
+  \frac{1}{2} g^{a\lambda} (-g_{\lambda\lambda,a})
+  \\ &=
+  0
+  \\
+  \tensor{\Gamma}{^a_{a a}} &=
+  \frac{1}{2} g^{\alpha a}
+  (g_{\alpha a , a} + g_{\alpha a , a} - g_{a a , \alpha})
+  \\ &=
+  0
+  \\
+  \tensor{\Gamma}{^\lambda_{\lambda a}} &=
+  \frac{1}{2} g^{\alpha \lambda}
+  (g_{\alpha \lambda , a} + g_{\alpha a , \lambda} - g_{\lambda a , \alpha}) =
+  \frac{1}{2} g^{\lambda\lambda} g_{\lambda\lambda,a} =
+  \frac{1}{2} (-a^{-2}) (-2a)
+  \\ &=
+  1/a
+  \\
+  \tensor{\Gamma}{^a_{\lambda a}} &=
+  \frac{1}{2} g^{\alpha a}
+  (g_{\alpha \lambda , a} + g_{\alpha a , \lambda} - g_{\lambda a , \alpha}) =
+  \frac{1}{2} g^{\lambda a} g_{\lambda\lambda,a}
+  \\ &=
+  0
+  \\
+  \tensor{\Gamma}{^\lambda_{a a}} &=
+  \frac{1}{2} g^{\alpha \lambda}
+  (g_{\alpha a , a} + g_{\alpha a , a} - g_{a a , \alpha})
+  \\ &=
+  0
+  \\
+  \tensor{\Gamma}{^a_{\lambda \lambda}} &=
+  \frac{1}{2} g^{\alpha a}
+  (g_{\alpha \lambda , \lambda} + g_{\alpha \lambda , \lambda} - g_{\lambda \lambda , \alpha}) =
+  \frac{1}{2} g^{aa} (-g_{\lambda\lambda,a}) =
+  \frac{1}{2} \cdot 2 \cdot a
+  \\ &=
+  a
+\end{align*}
+
+
+
+
+\textbf{22}
+%
+\begin{align*}
+  U^\alpha \grad_\alpha V^\beta = W^\beta &\implies
+  U^\alpha \tensor{V}{^\gamma_{;\alpha}} = W^\gamma
+  \\ &\implies
+  g_{\alpha\beta} U^\alpha \tensor{V}{^\gamma_{;\alpha}} =
+  g_{\gamma\beta} W^\gamma
+  \\ &\implies
+  U^\alpha V_{\beta;\alpha} = W_\beta
+  \\ &\implies
+  U^\alpha \grad_\alpha V_\beta = W_\beta
+\end{align*}
+
 
 
 \end{document}

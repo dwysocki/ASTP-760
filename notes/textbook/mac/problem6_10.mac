@@ -1,0 +1,25 @@
+main() := (
+
+/* -------------------- *
+ * Set up metric tensor *
+ * -------------------- */
+load(ctensor),
+ct_coordsys(spherical),
+
+
+/* ------ *
+ * Output *
+ * ------ */
+
+print("g = ", lg),
+print(""),
+
+print("geodesic = ", cgeodesic(true))
+
+
+/* print("The Christoffel symbols are:"), */
+
+
+)$
+
+main()$

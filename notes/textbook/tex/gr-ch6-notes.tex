@@ -1,0 +1,1380 @@
+\documentclass[gr-notes.tex]{subfiles}
+
+\begin{document}
+
+\setcounter{chapter}{5}
+
+\chapter{Curved Manifolds}
+
+\setcounter{section}{8}
+
+\section{Exercises}
+
+
+\textbf{1}
+Determine if the following sets are manifolds, and why. List any exceptional points.
+
+(a) Phase space in Hamiltonian mechanics is generally smooth, though it may contain singular points, depending on the system described. So it is a manifold, excluding the singularities.
+
+(b) The interior of a circle in 2D Euclidean space is smooth everywhere, and is therefore a manifold.
+
+(c) The set of permutations of $n$ objects is not a manifold, as it is discontinuous.
+
+(d) The set of solutions to $xy (x^2 + y^2 - 1)$ is a manifold. The solutions form a unit circle, ($x^2 + y^2 = 1$), as well as lines which span the $x$- and $y$-axes ($x=0$, $y=0$). The singular values occur at the points of intersection: $(0, 0)$, $(0, \pm1)$, and $(\pm1, 0)$.
+
+
+\textbf{2}
+On which of the manifolds in Exercise 1 is it customary to use a metric? What are those metrics? Why would metrics not be defined for some?
+
+(a) Phase space is comprised of two variables, $p$ and $q$, each of which represent different physical quantities, with incompatible units. For instance, if $p$ is momentum and $q$ is position, then $p^2 + q^2$ is non-physical.
+
+(b) The metric for the interior of a circle in 2D Euclidean space would be the Euclidean norm in 2 dimensions. While this could be given by $(\Delta s)^2 = (\Delta x)^2 + (\Delta y)^2$, it would be more natural to express in units of $r$ and $\theta$.
+%
+\begin{align*}
+  (\Delta s)^2 &=
+  (\Delta x)^2 + (\Delta y)^2
+  \\ &=
+  (x - x_0)^2 + (y - y_0)^2
+  \\ &=
+  r^2 \qty[ (\cos\theta - \cos\theta_0)^2 + (\sin\theta - \sin\theta_0)^2 ]
+  \\ &=
+  r^2 \qty[
+    \cos^2\theta + \cos^2\theta_0 - 2 \cos\theta \cos\theta_0 +
+    \sin^2\theta + \sin^2\theta_0 - 2 \sin\theta \sin\theta_0
+  ]
+  \\ &=
+  r^2 \qty[ 1 + 1 - 2 \cos(\theta - \theta_0) ] =
+  2 r^2 \qty[ 1 - \cos(\Delta\theta) ]
+  \\ &=
+  4 r^2 \sin^2(\Delta\theta / 2)
+\end{align*}
+
+(c) This was not a manifold.
+
+(d) Since this is again 2D Euclidean space, we could use the Euclidean norm in 2 dimensions. This time it would be more natural to express distances in $(x,y)$ coordinates, unless we restricted ourselves to the unit circle portion of this manifold.
+
+
+
+\textbf{4}
+Prove the following:
+
+(a) The number of independent terms in $\pdv*{x^\alpha}{x^{\gamma'}}{x^{\mu'}}|_\mathcal{P}$ is $40$.
+
+The total number of components is $4^3$, however, we do not want to consider duplicate terms. To find the number of duplicate terms in total, we find the number of duplicate terms for a fixed value of $\alpha$, and then multiply that by $4$. The number of terms for a fixed $\alpha$ is $4^2$, and of those, $4$ are completely independent (the diagonals), and the remainder exist in pairs. Since we only want one from each pair, we divide the total count by two, which means that the total number of duplicate components is $4 \qty[ (4^2 - 4) / 2 ]$, and so the total number of non-duplicate components is $4^3 - 4 \qty[ (4^2 - 4) / 2 ] = 40$.
+
+In the next part, I cheat and use a formula. I will apply it to this part first, to show that it works. If you have a symmetric rank $k$ tensor with $n$ dimensions, then it has
+%
+\begin{displaymath}
+  \qty(\!\!\binom{n}{k}\!\!) = \binom{n+k-1}{k}
+\end{displaymath}
+%
+independent components. In the case of this problem, by fixing $\alpha$, we get $4$ rank $2$ tensors of $4$ dimensions, and so the total number of independent components is
+%
+\begin{displaymath}
+  4 \binom{4+2-1}{2} = 40.
+\end{displaymath}
+
+
+(b) The number for $\pdv*{x^\alpha}{x^{\lambda'}}{x^{\mu'}}{x^{\nu'}}|_\mathcal{P}$ is $80$.
+
+Here, if we fix $\alpha$, we have $4$ symmetric rank $3$ tensors of $4$ dimensions, and so there are
+%
+\begin{displaymath}
+  4 \binom{4+3-1}{3} = 80
+\end{displaymath}
+%
+independent components.
+
+
+(c) The number for $g_{\alpha\beta,\gamma'\mu'}|_\mathcal{P}$ is $100$.
+
+If we interchange $\alpha\beta$, but fix $\gamma'\mu'$, then we have a symmetric rank $2$ tensor of $4$ dimensions, which has
+%
+\begin{displaymath}
+  \binom{4+2-1}{2} = 10
+\end{displaymath}
+%
+independent components. Likewise, if we interchange $\gamma'\mu'$ but fix $\alpha\beta$, we get $10$ independent components. Multiply the two and we have $100$ independent components.
+
+
+\textbf{7}
+
+(a) Define $\det(A)$ in terms of cofactors of elements.
+
+\begin{displaymath}
+  \det(A) =
+  \sum_{j=1}^n (-1)^{i+j} a_{i,j} M_{i,j} =
+  \sum_{i=1}^n (-1)^{i+j} a_{i,j} M_{i,j}
+\end{displaymath}
+
+(b) Compute $\dv{x} \det(A)$, where $A$ is a $2\times2$ matrix. Show that this satisfies Equation 6.39.
+
+First we note that, for $A_{1\times1}$, $\det(A) = a_{1,1}$. Thus, for $A_{2\times2}$, $M_{i,j} = a_{i',j'}$, where $i \neq i'$ and $j \neq j'$. Therefore we can rewrite the determinant of $A_{2\times2}$ as
+%
+\begin{align*}
+  \det(A) &=
+  \sum_{i=1}^2 (-1)^{i+j} a_{i,j} a_{i',j'}
+  \\ &=
+  (-1)^{j+1} a_{1,j} a_{2,j'} + (-1)^{j+2} a_{2,j} a_{1,j'}.
+\end{align*}
+%
+If we assume $j = 1$ (it doesn't really matter if we choose $1$ or $2$), then this simplifies to
+%
+\begin{align*}
+  \det(A) &=
+  (-1)^2 a_{1,1} a_{2,2} + (-1)^3 a_{2,1} a_{1,2}
+  \\ &=
+  a_{1,1} a_{2,2} - a_{2,1} a_{1,2}.
+\end{align*}
+%
+We can then see that the derivative is
+%
+\begin{align*}
+  \pdv{x^\mu} \det(A) &=
+  \pdv{x^\mu} (a_{11} a_{22} - a_{21} a_{12})
+  \\ &=
+  a_{11} a_{22,\mu} + a_{22} a_{11,\mu} - a_{21} a_{12,\mu} - a_{12} a_{21,\mu}
+\end{align*}
+
+Now to relate this to Equation 6.39, we let $A$ be the metric $g$. Then the derivative of its determinant is
+%
+\begin{align*}
+  g_{,\mu} &=
+  g_{11} g_{22,\mu} + g_{22} g_{11,\mu} -
+  g_{21} g_{12,\mu} - g_{12} g_{21,\mu}
+  \\ &=
+  g_{11} g_{22,\mu} + g_{22} g_{11,\mu} - 2 g_{12} g_{12,\mu}.
+\end{align*}
+%
+Now if we expand Equation 6.39, we see we have
+%
+\begin{align*}
+  g &=
+  g_{11} g_{22} - g_{12} g_{21} =
+  g_{11} g_{22} - (g_{12})^2
+  \\
+  g^{\alpha\beta} g_{\alpha\beta,\mu} &=
+  g^{11} g_{11,\mu} + g^{22} g_{22,\mu} + 2 g^{12} g_{12,\mu}
+  \\
+  g g^{\alpha\beta} g_{\alpha\beta,\mu} &=
+  (g_{11} g_{22} - (g_{12})^2)
+  (g^{11} g_{11,\mu} + g^{22} g_{22,\mu} + 2 g^{12} g_{12,\mu})
+  \\ &=
+  g_{22} g_{11,\mu} - g^{11} (g_{12})^2 g_{11,\mu} +
+  g_{11} g_{22,\mu} - g^{22} (g_{12})^2 g_{22,\mu} +
+  2 g_{11} g_{22} g^{12} g_{12,\mu} -
+  2 g_{12} g_{12,\mu}
+  \\ &=
+  g_{11} g_{22,\mu} + g_{22} g_{11,\mu} - 2 g_{12} g_{12,\mu}
+  + 2 g_{11} g_{22} g^{12} g_{12,\mu}
+  - (g_{12})^2 (g^{11} g_{11,\mu} + g^{22} g_{22,\mu}).
+\end{align*}
+%
+If it is the case that $2 g_{11} g_{22} g^{12} g_{12,\mu} - (g_{12})^2 (g^{11} g_{11,\mu} + g^{22} g_{22,\mu}) = 0$, then this is consistent with our previous expression for $g_{,\mu}$, but I'm not sure how to show that.
+
+
+\textbf{10}
+A ``straight line'' on a sphere forms a great circle. The sum of the interior angles of a triangle whose sides are formed by arcs of great circles is greater than $180^\circ$. Show that the rotation of a vector, parallel transported around such a triangle (Figure 6.3 in Schutz), is exactly equal to the excess of that $180^\circ$ sum.
+
+
+
+\textbf{11}
+What guarantees we can find a vector field $\vec{V}$ satisfying:
+%
+\begin{displaymath}
+  \tensor{V}{^\alpha_{;\beta}} =
+  \tensor{V}{^\alpha_{,\beta}} +
+  \tensor{\Gamma}{^\alpha_{\mu\beta}}
+  V^\mu =
+  0
+\end{displaymath}
+%
+\begin{enumerate}[(a)]
+\item The integrability condition follows from the commuting of partial derivatives, $\comm{\partial_\nu}{\partial_\beta} V^\alpha = 0$. Show that this implies
+%
+\begin{displaymath}
+  (\tensor{\Gamma}{^\alpha_{\mu\beta,\nu}} -
+   \tensor{\Gamma}{^\alpha_{\mu\nu,\beta}}) V^\mu =
+  (\tensor{\Gamma}{^\alpha_{\mu\beta}} \tensor{\Gamma}{^\mu_{\sigma\nu}} -
+   \tensor{\Gamma}{^\alpha_{\mu\nu}} \tensor{\Gamma}{^\mu_{\sigma\beta}})
+  V^\sigma =
+  0
+\end{displaymath}
+
+Since we must satisfy $\tensor{V}{^\alpha_{,\beta}} + \tensor{\Gamma}{^\alpha_{\mu\beta}} V^\mu = 0$, then it must be the case that $\tensor{V}{^\alpha_{,\beta}} = -\tensor{\Gamma}{^\alpha_{\mu\beta}} V^\mu$. Differentiating both sides, we get
+%
+\begin{align*}
+  \tensor{V}{^\alpha_{,\beta\nu}} &=
+  -\tensor{\Gamma}{^\alpha_{\mu\beta,\nu}} V^\mu -
+   \tensor{\Gamma}{^\alpha_{\mu\beta}} \tensor{V}{^\mu_{,\nu}}
+  \\ &=
+  -\tensor{\Gamma}{^\alpha_{\mu\beta,\nu}} V^\mu +
+   \tensor{\Gamma}{^\alpha_{\mu\beta}}
+   \tensor{\Gamma}{^\mu_{\lambda\nu}} V^\lambda
+  \\
+  \tensor{V}{^\alpha_{,\nu\beta}} &=
+  -\tensor{\Gamma}{^\alpha_{\mu\nu,\beta}} V^\mu +
+   \tensor{\Gamma}{^\alpha_{\mu\nu}}
+   \tensor{\Gamma}{^\mu_{\sigma\beta}} V^\sigma
+  \\
+  \tensor{V}{^\alpha_{,\beta\nu}} &=
+  \tensor{V}{^\alpha_{,\nu\beta}}
+  \\ \implies
+  -\tensor{\Gamma}{^\alpha_{\mu\beta,\nu}} V^\mu +
+   \tensor{\Gamma}{^\alpha_{\mu\beta}}
+   \tensor{\Gamma}{^\mu_{\sigma\nu}} V^\sigma &=
+  -\tensor{\Gamma}{^\alpha_{\mu\nu,\beta}} V^\mu +
+   \tensor{\Gamma}{^\alpha_{\mu\nu}}
+   \tensor{\Gamma}{^\mu_{\sigma\beta}} V^\sigma
+  \\
+  (\tensor{\Gamma}{^\alpha_{\mu\beta,\nu}} -
+   \tensor{\Gamma}{^\alpha_{\mu\nu,\beta}})
+  V^\mu &=
+  (\tensor{\Gamma}{^\alpha_{\mu\beta}} \tensor{\Gamma}{^\mu_{\sigma\nu}} -
+   \tensor{\Gamma}{^\alpha_{\mu\nu}} \tensor{\Gamma}{^\mu_{\sigma\beta}})
+  V^\sigma
+\end{align*}
+
+\item By relabeling indices, we can work this into another form:
+%
+\begin{align*}
+  (\tensor{\Gamma}{^\alpha_{\mu\beta,\nu}} -
+   \tensor{\Gamma}{^\alpha_{\mu\nu,\beta}})
+  V^\mu &=
+  (\tensor{\Gamma}{^\alpha_{\sigma\beta}} \tensor{\Gamma}{^\sigma_{\mu\nu}} -
+   \tensor{\Gamma}{^\alpha_{\sigma\nu}} \tensor{\Gamma}{^\sigma_{\mu\beta}})
+  V^\mu
+  \\
+  (\tensor{\Gamma}{^\alpha_{\mu\beta,\nu}} -
+   \tensor{\Gamma}{^\alpha_{\mu\nu,\beta}} &+
+   \tensor{\Gamma}{^\alpha_{\sigma\nu}} \tensor{\Gamma}{^\sigma_{\mu\beta}} -
+   \tensor{\Gamma}{^\alpha_{\sigma\beta}} \tensor{\Gamma}{^\sigma_{\mu\nu}})
+  V^\mu =
+  0
+\end{align*}
+
+
+\end{enumerate}
+
+
+
+
+\textbf{13}
+\begin{enumerate}[(a)]
+\item Show that if $\vec{A}$ and $\vec{B}$ are parallel transported along a curve, their dot product is constant along that curve.
+
+The dot product being constant along the curve means that \emph{it} must be parallel transported along the curve, i.e. $\grad_{\vec{U}} (\vec{A} \cdot \vec{B}) = 0$. We will now show this.
+%
+\begin{align*}
+  \grad_{\vec{U}} (\vec{A} \cdot \vec{B}) &=
+  U^\lambda \grad_\lambda (g_{\alpha\beta} A^\alpha B^\beta)
+  \\ &=
+  U^\lambda (
+    A^\alpha B^\beta \cancel{\grad_\lambda g_{\alpha\beta}} +
+    g_{\alpha\beta} B^\beta \grad_\lambda A^\alpha +
+    g_{\alpha\beta} A^\alpha \grad_\lambda B^\beta
+  )
+  \\ &=
+  B^\beta U^\lambda \grad_\lambda A^\alpha +
+  A^\alpha U^\lambda \grad_\lambda B^\beta.
+\end{align*}
+
+Notice that the terms $U^\lambda \grad_\lambda A^\alpha$ and $U^\lambda \grad_\lambda B^\beta$ are just the parallel transport equations, and so they come out to be zero, meaning $\grad_{\vec{U}} (\vec{A} \cdot \vec{B}) = 0$, i.e. the dot product is constant along the curve.
+
+\item Show that if a geodesic is spacelike, timelike, or null \emph{somewhere}, then it remains that way \emph{everywhere}.
+
+Since the dot product of two parallel transported vectors is constant, if we parallel transport a curve's tangent vector along itself (the geodesic), its magnitude ($\vec{U} \cdot \vec{U}$) should remain constant. Since its magnitude doesn't change, it will remain spacelike, timelike, or null.
+
+\end{enumerate}
+
+\textbf{14}
+Show that if the curve in Equation 6.8 is a geodesic, the proper length is an affine parameter.
+
+Equation 6.8 states
+%
+\begin{displaymath}
+  \ell =
+  \int_{\lambda_0}^{\lambda_1} \sqrt{\abs{\vec{V} \cdot \vec{V}}} \dd\lambda.
+\end{displaymath}
+%
+If the curve is a geodesic, we have just shown that the dot product of any two vectors remains constant along the curve, and so we may pull it out of the integral.
+%
+\begin{displaymath}
+  \ell =
+  \sqrt{\abs{\vec{V} \cdot \vec{V}}}
+  \int_{\lambda_0}^{\lambda_1} \dd\lambda =
+  \sqrt{\abs{\vec{V} \cdot \vec{V}}} (\lambda_1 - \lambda_0),
+\end{displaymath}
+%
+and so the proper length $\ell$ is indeed an affine parameter, as it can be obtained by a linear transformation of the parameter of the curve, $\lambda$.
+
+
+\textbf{16}
+\begin{enumerate}[(a)]
+\item Derive Equations 6.59 and 6.60 from 6.68.
+
+Somehow Schutz uses a Taylor expansion to get 6.59 from 6.68. I honestly have no idea how he does this, and Taylor expanding vectors and Christoffel symbols is black magic to me, so here's my (obviously wrong) attempt.
+%
+\begin{align*}
+  \var{V^\alpha} &=
+  \int_{x^1=a} \tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu \dd{x^2} -
+  \int_{x^1=a+\var{a}} \tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu \dd{x^2}
+  \\ &+
+  \int_{x^2=b} \tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu \dd{x^1} -
+  \int_{x^2=b+\var{b}} \tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu \dd{x^1}
+  \\ &\approx
+  \int_b^{b+\var{b}} \eval[
+    \tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu +
+    \var{a} \pdv{x^1} \qty(\tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu)
+  |_a \dd{x^2}
+  \\ &-
+  \int_b^{b+\var{b}} \eval[
+    \tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu +
+    \var{a} \pdv{x^1} \qty(\tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu)
+  |_a \dd{x^2}
+  \\ &+
+  \int_a^{a+\var{a}} \eval[
+    \tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu +
+    \var{b} \pdv{x^2} \qty(\tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu)
+  |_b \dd{x^1}
+  \\ &-
+  \int_a^{a+\var{a}} \eval[
+    \tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu +
+    \var{b} \pdv{x^2} \qty(\tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu)
+  |_b \dd{x^1}
+  \\ &\approx
+  0
+  \\ &
+  \text{but then a miracle occurred!!}
+  \\ &\approx
+ -\int_b^{b+\var{b}}
+  \var{a} \pdv{x^1} \qty(\tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu) \dd{x^2}
+  \\ &+
+  \int_a^{a+\var{a}}
+  \var{b} \pdv{x^2} \qty(\tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu) \dd{x^1}
+\end{align*}
+
+The next step actually \emph{does} make sense to me. Since we are integrating over such tiny areas ($\var{a}$ and $\var{b}$),
+$\int_a^{a+\var{a}} f(x) \dd{x} \approx \var{a} f(a)$, so
+%
+\begin{align*}
+  \int_b^{b+\var{b}}
+  \var{a} \pdv{x^1} \qty(\tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu) \dd{x^2}
+  &\approx
+  \var{a} \var{b} \pdv{x^1} \qty(\tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu),
+  \\
+  \int_a^{a+\var{a}}
+  \var{b} \pdv{x^2} \qty(\tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu) \dd{x^1}
+  &\approx
+  \var{a} \var{b} \pdv{x^2} \qty(\tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu).
+\end{align*}
+%
+Subtracting the two gives us
+%
+\begin{displaymath}
+  \var{V^\alpha} \approx
+  \var{a} \var{b} \qty[
+   -\pdv{x^1} \qty(\tensor{\Gamma}{^\alpha_{\mu 2}} V^\mu) +
+    \pdv{x^2} \qty(\tensor{\Gamma}{^\alpha_{\mu 1}} V^\mu)
+  ].
+\end{displaymath}
+
+
+\item Derive Equation 6.61 from this.
+
+Using a generalized form of Equation 6.53:
+%
+\begin{displaymath}
+  \tensor{V}{^\alpha_{,\beta}} =
+  -\tensor{\Gamma}{^\alpha_{\mu\beta}} V^\mu,
+\end{displaymath}
+%
+we arrive at the expression
+%
+\begin{displaymath}
+  \qty(\tensor{\Gamma}{^\alpha_{\nu\lambda}} V^\nu)_{,\beta} =
+  \tensor{\Gamma}{^\alpha_{\nu\lambda,\beta}} V^\nu +
+  \tensor{\Gamma}{^\alpha_{\nu\lambda}} \tensor{V}{^\nu_{,\beta}} =
+  \tensor{\Gamma}{^\alpha_{\nu\lambda,\beta}} V^\nu -
+  \tensor{\Gamma}{^\alpha_{\nu\lambda}}
+  \tensor{\Gamma}{^\nu_{\mu\beta}}
+  V^\nu.
+\end{displaymath}
+%
+Now we substitute $\mu \to \nu$ in Equation 6.60, and use this expression to find
+%
+\begin{align*}
+  \var{V^\alpha} &\approx
+  \var{a} \var{b} \qty[
+   -\tensor{\Gamma}{^\alpha_{\nu2,1}} V^\nu +
+    \tensor{\Gamma}{^\alpha_{\nu2}}
+    \tensor{\Gamma}{^\nu_{\mu1}}
+    V^\nu +
+    \tensor{\Gamma}{^\alpha_{\nu1,2}} V^\nu -
+    \tensor{\Gamma}{^\alpha_{\nu1}}
+    \tensor{\Gamma}{^\nu_{\mu2}}
+    V^\nu
+  ]
+  \\ &\approx
+  \var{a} \var{b} \qty[
+    \tensor{\Gamma}{^\alpha_{\nu1,2}} -
+    \tensor{\Gamma}{^\alpha_{\nu2,1}} +
+    \tensor{\Gamma}{^\alpha_{\nu2}}
+    \tensor{\Gamma}{^\nu_{\mu1}} -
+    \tensor{\Gamma}{^\alpha_{\nu1}}
+    \tensor{\Gamma}{^\nu_{\mu2}}
+  ]
+  V^\nu.
+\end{align*}
+
+\end{enumerate}
+
+
+\textbf{18}
+\begin{enumerate}[(a)]
+\item Derive Equations 6.69 and 6.70 from 6.68.
+
+\begin{align*}
+  R_{\alpha\beta\mu\nu} &=
+  \frac{1}{2} (
+    {\color{red}    g_{\alpha\nu,\beta\mu}} -
+    {\color{green}  g_{\alpha\mu,\beta\nu}} +
+    {\color{blue}   g_{\beta\mu,\alpha\nu}} -
+    {\color{violet} g_{\beta\nu,\alpha\mu}}
+  )
+  \\
+  R_{\beta\alpha\mu\nu} &=
+  \frac{1}{2} (
+    {\color{violet} g_{\beta\nu,\alpha\mu}} -
+    {\color{blue}   g_{\beta\mu,\alpha\nu}} +
+    {\color{green}  g_{\alpha\mu,\beta\nu}} -
+    {\color{red}    g_{\alpha\nu,\beta\mu}}
+  )
+  \\ &=
+  \frac{1}{2} (
+   -{\color{red}    g_{\alpha\nu,\beta\mu}} +
+    {\color{green}  g_{\alpha\mu,\beta\nu}} -
+    {\color{blue}   g_{\beta\mu,\alpha\nu}} +
+    {\color{violet} g_{\beta\nu,\alpha\mu}}
+  )
+  \\ &=
+  -R_{\alpha\beta\mu\nu}
+  \\
+  R_{\alpha\beta\nu\mu} &=
+  \frac{1}{2} (
+    {\color{green}  g_{\alpha\mu,\beta\nu}} -
+    {\color{red}    g_{\alpha\nu,\beta\mu}} +
+    {\color{violet} g_{\beta\nu,\alpha\mu}} -
+    {\color{blue}   g_{\beta\mu,\alpha\nu}}
+  )
+  \\ &=
+  \frac{1}{2} (
+   -{\color{red}    g_{\alpha\nu,\beta\mu}} +
+    {\color{green}  g_{\alpha\mu,\beta\nu}} -
+    {\color{blue}   g_{\beta\mu,\alpha\nu}} +
+    {\color{violet} g_{\beta\nu,\alpha\mu}}
+  )
+  \\ &=
+  -R_{\alpha\beta\mu\nu}
+  \\
+  R_{\mu\nu\alpha\beta} &=
+  \frac{1}{2} (
+    {\color{blue}   g_{\mu\beta,\nu\alpha}} -
+    {\color{green}  g_{\mu\alpha,\nu\beta}} +
+    {\color{red}    g_{\nu\alpha,\mu\beta}} -
+    {\color{violet} g_{\nu\beta,\mu\alpha}}
+  )
+  \\ &=
+  \frac{1}{2} (
+    {\color{red}    g_{\alpha\nu,\beta\mu}} -
+    {\color{green}  g_{\alpha\mu,\beta\nu}} +
+    {\color{blue}   g_{\beta\mu,\alpha\nu}} -
+    {\color{violet} g_{\beta\nu,\alpha\mu}}
+  )
+  \\ &=
+  R_{\alpha\beta\mu\nu}
+\end{align*}
+%
+\begin{align*}
+  2 (R_{\alpha\beta\mu\nu} + R_{\alpha\nu\beta\mu} + R_{\alpha\mu\nu\beta}) &=
+  {\color{red}    g_{\alpha\nu,\beta\mu}} -
+  {\color{green}  g_{\alpha\mu,\beta\nu}} +
+  {\color{blue}   g_{\beta\mu,\alpha\nu}} -
+  {\color{violet} g_{\beta\nu,\alpha\mu}}
+  \\ &+
+  {\color{green}  g_{\alpha\mu,\nu\beta}} -
+  {\color{brown}  g_{\alpha\beta,\nu\mu}} +
+  {\color{violet} g_{\nu\beta,\alpha\mu}} -
+  {\color{teal}   g_{\nu\mu,\alpha\beta}}
+  \\ &+
+  {\color{brown}  g_{\alpha\beta,\mu\nu}} -
+  {\color{red}    g_{\alpha\nu,\mu\beta}} +
+  {\color{teal}   g_{\mu\nu,\alpha\beta}} -
+  {\color{blue}   g_{\mu\beta,\alpha\nu}}
+  \\ &=
+  0
+\end{align*}
+
+\item Show that Equation 6.69 reduces the number of independent components from $4\times4\times4\times4$ to $6 \times 7 / 2$.
+
+For a rank-2 symmetric tensor, you have $(n/2) (n+1)$ independent components. For an anti-symmetric tensor you have $(n/2) (n-1)$ independent components. So for each of our pairs of anti-symmetric indices, there are $(n/2) (n-1)$ independent components. We can then treat the two pairs as a single pair of symmetric indices, with that many possible values. The number of indices is therefore:
+%
+\begin{displaymath}
+  (1/2) [(n/2) (n-1)] [(n/2) (n-1) + 1] =
+  (1/2) [(4/2) (4-1)] [(4/2) (4-1) + 1] =
+  6 \times 7 / 2 = 21.
+\end{displaymath}
+
+\item Show that Equation 6.70 only imposes one additional relation, separate from Equation 6.69, reducing the total independent components to 20.
+
+The addition of Equation 6.70 adds the condition that $R_{\alpha[\beta\mu\nu]} = 0$, and so the number of independent components becomes
+%
+\begin{displaymath}
+  \qty(\!\!\binom{4}{3}\!\!) =
+  \binom{4+3-1}{3} =
+  \binom{6}{3} =
+  20.
+\end{displaymath}
+
+\end{enumerate}
+
+
+\textbf{19}
+Prove that the components of the Riemann tensor are all zero for polar coordinates in the Euclidean plane. Recall that:
+%
+\begin{align*}
+  \tensor{\Gamma}{^\theta_{(\theta r)}} &= 1/r; \quad
+  \tensor{\Gamma}{^r_{\theta\theta}} = -r
+  \\
+  \tensor{R}{^\alpha_{\beta\mu\nu}} &=
+  \tensor{\Gamma}{^\alpha_{\beta\nu,\mu}} -
+  \tensor{\Gamma}{^\alpha_{\beta\mu,\nu}} +
+  \tensor{\Gamma}{^\alpha_{\sigma\mu}} \tensor{\Gamma}{^\sigma_{\beta\nu}} -
+  \tensor{\Gamma}{^\alpha_{\sigma\nu}} \tensor{\Gamma}{^\sigma_{\beta\mu}}.
+\end{align*}
+
+According to the computer algebra system, \texttt{Maxima}, the components are all zero.
+
+\begin{verbatim}
+(%i1) load(ctensor)$
+
+(%i2) ct_coordsys(polar)$
+
+(%i3) cmetric()$
+
+(%i4) lg;
+                                   [ 1  0  ]
+(%o4)                              [       ]
+                                   [     2 ]
+                                   [ 0  r  ]
+(%i5) riemann(mcs);
+This spacetime is flat
+(%o5)                                done
+\end{verbatim}
+
+
+% \begin{table}[ht]
+%   \centering
+%   \begin{tabular}{llll|l}
+%     $\alpha$ & $\beta$ & $\mu$ & $\nu$ & $\tensor{R}{^\alpha_{\beta\mu\nu}}$ \\
+%     \hline
+%     $\theta$ & $\theta$ & $\theta$ & $\theta$ \\
+%     $\theta$ & $\theta$ & $\theta$ & $r$ \\
+%     $\theta$ & $\theta$ & $r$ & $\theta$ \\
+%     $\theta$ & $\theta$ & $r$ & $r$ \\
+%     $\theta$ & $r$ & $\theta$ & $\theta$ \\
+%     $\theta$ & $r$ & $\theta$ & $r$ \\
+%     $\theta$ & $r$ & $r$ & $\theta$ \\
+%     $\theta$ & $r$ & $r$ & $r$ \\
+%     $r$ & $\theta$ & $\theta$ & $\theta$ \\
+%     $r$ & $\theta$ & $\theta$ & $r$ \\
+%     $r$ & $\theta$ & $r$ & $\theta$ \\
+%     $r$ & $\theta$ & $r$ & $r$ \\
+%     $r$ & $r$ & $\theta$ & $\theta$ \\
+%     $r$ & $r$ & $\theta$ & $r$ \\
+%     $r$ & $r$ & $r$ & $\theta$ \\
+%     $r$ & $r$ & $r$ & $r$ \\
+%   \end{tabular}
+%   \caption{Problem 19: Components on the Riemann tensor.}
+%   \label{tab:ch6-problem19}
+% \end{table}
+
+
+
+\textbf{24}
+Using Equation 6.88, derive Equation 6.89.
+
+\begin{align*}
+  R_{\alpha\beta\mu\nu,\lambda} &=
+  \frac{1}{2} (
+    g_{\alpha\nu,\beta\mu\lambda} -
+    g_{\alpha\mu,\beta\nu\lambda} +
+    g_{\beta\mu,\alpha\nu\lambda} -
+    g_{\beta\nu,\alpha\mu\lambda}
+  )
+  \\
+  R_{\alpha\beta\lambda\mu,\nu} &=
+  \frac{1}{2} (
+    g_{\alpha\mu,\beta\lambda\nu} -
+    g_{\alpha\lambda,\beta\mu\nu} +
+    g_{\beta\lambda,\alpha\mu\nu} -
+    g_{\beta\mu,\alpha\lambda\nu}
+  )
+  \\
+  R_{\alpha\beta\nu\lambda,\mu} &=
+  \frac{1}{2} (
+    g_{\alpha\lambda,\beta\nu\mu} -
+    g_{\alpha\nu,\beta\lambda\mu} +
+    g_{\beta\nu,\alpha\lambda\mu} -
+    g_{\beta\lambda,\alpha\nu\mu}
+  )
+  \\
+  2 (
+    R_{\alpha\beta\mu\nu,\lambda} +
+    R_{\alpha\beta\lambda\mu,\nu} +
+    R_{\alpha\beta\nu\lambda,\mu}
+  ) &=
+  {\color{red} g_{\alpha\nu,\beta\mu\lambda}} -
+  {\color{orange} g_{\alpha\mu,\beta\nu\lambda}} +
+  {\color{brown} g_{\beta\mu,\alpha\nu\lambda}} -
+  {\color{green} g_{\beta\nu,\alpha\mu\lambda}}
+  \\* &+
+  {\color{orange} g_{\alpha\mu,\beta\lambda\nu}} -
+  {\color{blue} g_{\alpha\lambda,\beta\mu\nu}} +
+  {\color{violet} g_{\beta\lambda,\alpha\mu\nu}} -
+  {\color{brown} g_{\beta\mu,\alpha\lambda\nu}}
+  \\* &+
+  {\color{blue} g_{\alpha\lambda,\beta\nu\mu}} -
+  {\color{red} g_{\alpha\nu,\beta\lambda\mu}} +
+  {\color{green} g_{\beta\nu,\alpha\lambda\mu}} -
+  {\color{violet} g_{\beta\lambda,\alpha\nu\mu}}
+  \\* &=
+  0
+\end{align*}
+
+
+\textbf{25}
+
+\begin{enumerate}[(a)]
+\item Prove the Ricci tensor is the only independent contraction of the Riemann tensor. All others are $\pm \tensor{R}{^\alpha_{\beta\mu\nu}}$ or $0$.
+
+There are three possible ways to contract the Riemann tensor. If we contract on the second lower index, we have the definition of the Ricci tensor: $R_{\beta\nu} = \tensor{R}{^\alpha_{\beta\alpha\nu}}$.
+
+The value of contracting the last index is the easiest to find, and can be found by manipulating the above expression and invoking the anti-symmetry properties of the Riemann tensor:
+%
+\begin{displaymath}
+  R_{\beta\nu} =
+  \tensor{R}{^\alpha_{\beta\alpha\nu}} =
+ -\tensor{R}{^\alpha_{\beta\nu\alpha}}
+  \implies
+  \tensor{R}{^\alpha_{\beta\nu\alpha}} =
+ -R_{\beta\nu}.
+\end{displaymath}
+%
+The first lower index is a little more involved, but can be done with the aide of the metric:
+%
+\begin{align*}
+  g_{\alpha\lambda} \tensor{R}{^\alpha_{\alpha\mu\nu}} &=
+  \tensor{R}{_{\lambda\alpha\mu\nu}} =
+ -\tensor{R}{_{\alpha\lambda\mu\nu}}
+  \\ \implies
+  g^{\lambda\alpha} g_{\alpha\lambda} \tensor{R}{^\alpha_{\beta\mu\nu}} &=
+ -g^{\lambda\alpha} \tensor{R}{_{\alpha\lambda\mu\nu}}
+  \\ \implies
+  \tensor{g}{^\lambda_\lambda} \tensor{R}{^\alpha_{\beta\mu\nu}} &=
+ -\tensor{R}{^\lambda_{\lambda\mu\nu}}
+  \\ \implies
+  \tensor{R}{^\alpha_{\beta\mu\nu}} &=
+ -\tensor{R}{^\alpha_{\alpha\mu\nu}} =
+  0
+\end{align*}
+
+\item Show that the Ricci tensor is symmetric.
+
+\begin{align*}
+  R_{\beta\nu} &=
+  \tensor{R}{^\alpha_{\beta\alpha\nu}}
+  \\
+  g_{\alpha\lambda} R_{\beta\nu} &=
+  \tensor{R}{_{\lambda\beta\alpha\nu}} =
+  \tensor{R}{_{\alpha\nu\lambda\beta}}
+  \\
+  g^{\alpha\lambda} g_{\alpha\lambda} R_{\beta\nu} &=
+  g^{\alpha\lambda} \tensor{R}{_{\alpha\nu\lambda\beta}} =
+  \tensor{R}{^\lambda_{\nu\lambda\beta}} = R_{\nu\beta}
+  \\ \implies
+  R_{\beta\nu} &= R_{\nu\beta}
+\end{align*}
+
+
+\end{enumerate}
+
+
+
+\textbf{28}
+\begin{enumerate}[(a)]
+\item Derive Equation 6.19 using the coordinate transformation
+  $(x,y,z) \to (r,\theta,\phi)$
+
+We begin by finding the basis vectors in $(r,\theta,\phi)$, using
+%
+\begin{align*}
+  \vec{e}_r &=
+  \pdv{x}{r} \vec{e}_x +
+  \pdv{y}{r} \vec{e}_y +
+  \pdv{z}{r} \vec{e}_z,
+  \\
+  \vec{e}_\theta &=
+  \pdv{x}{\theta} \vec{e}_x +
+  \pdv{y}{\theta} \vec{e}_y +
+  \pdv{z}{\theta} \vec{e}_z,
+  \\
+  \vec{e}_\phi &=
+  \pdv{x}{\phi} \vec{e}_x +
+  \pdv{y}{\phi} \vec{e}_y +
+  \pdv{z}{\phi} \vec{e}_z.
+\end{align*}
+%
+The variables transform according to
+%
+\begin{align*}
+  x &= r \sin\theta \cos\phi,
+  \\
+  y &= r \sin\theta \sin\phi,
+  \\
+  z &= r \cos\theta.
+\end{align*}
+%
+Now we take the derivatives
+%
+\begin{align*}
+  \pdv{x}{r}      &=    \sin\theta \cos\phi, &
+  \pdv{x}{\theta} &=  r \cos\theta \cos\phi, &
+  \pdv{x}{\phi}   &= -r \sin\theta \sin\phi,
+  \\
+  \pdv{y}{r}      &=    \sin\theta \sin\phi, &
+  \pdv{y}{\theta} &=  r \cos\theta \sin\phi, &
+  \pdv{y}{\phi}   &= -r \sin\theta \cos\phi,
+  \\
+  \pdv{z}{r}      &=    \cos\theta, &
+  \pdv{z}{\theta} &= -r \sin\theta, &
+  \pdv{z}{\phi}   &=  0.
+\end{align*}
+%
+The basis vectors are therefore
+%
+\begin{align*}
+  \vec{e}_r &=
+    \sin\theta \cos\phi \vec{e}_x +
+    \sin\theta \sin\phi \vec{e}_y +
+    \cos\theta          \vec{e}_z
+  \\
+  \vec{e}_\theta &=
+  r \cos\theta \cos\phi \vec{e}_x +
+  r \cos\theta \sin\phi \vec{e}_y -
+  r \sin\theta          \vec{e}_z
+  \\
+  \vec{e}_\phi &=
+ -r \sin\theta \sin\phi \vec{e}_x +
+  r \sin\theta \cos\phi \vec{e}_y
+\end{align*}
+%
+Now we find the components of the metric tensor using the fact that
+$g_{\alpha\beta} = \vec{e}_\alpha \cdot \vec{e}_\beta$.
+%
+\begin{align*}
+  g_{rr} =
+  \vec{e}_r \cdot \vec{e}_r &=
+  (\sin\theta \cos\phi)^2 \delta_{xx} +
+  (\sin\theta \sin\phi)^2 \delta_{yy} +
+  (\cos^2\theta)^2 \delta_{zz} +
+  \ldots
+  \\ &=
+  \sin^2\theta \cos^2\phi +
+  \sin^2\theta \sin^2\phi +
+  \cos^2\theta =
+  \sin^2\theta + \cos^2\theta
+  \\ &=
+  1,
+  \\
+  g_{\theta\theta} =
+  \vec{e}_\theta \cdot \vec{e}_\theta &=
+  (r \cos\theta \cos\phi)^2 \delta_{xx} +
+  (r \cos\theta \sin\phi)^2 \delta_{yy} +
+  (-r \sin\theta)^2 \delta_{zz}
+  \\ &=
+  r^2 (\cos^2\theta \cos^2\phi + \cos^2\theta \sin^2\phi + \sin^2\theta)
+  \\ &=
+  r^2 (\cos^2\theta + \sin^2\theta)
+  \\ &=
+  r^2,
+  \\
+  g_{\phi\phi} =
+  \vec{e}_\phi \cdot \vec{e}_\phi &=
+  (-r \sin\theta \sin\phi)^2 \delta_{xx} +
+  ( r \sin\theta \cos\phi)^2 \delta_{yy}
+  \\ &=
+  r^2 (\sin^2\theta \sin^2\phi + \sin^2\theta \cos^2 \phi)
+  \\ &=
+  r^2 \sin^2\theta.
+\end{align*}
+%
+Now for the off-diagonal elements, we take advantage of the symmetry properties of the metric to reduce it from 6 terms to 3.
+%
+\begin{align*}
+  g_{r \theta} = g_{\theta r} =
+  \vec{e}_r \cdot \vec{e}_\theta &=
+  (\sin\theta \cos\phi) ( r \cos\theta \cos\phi) \delta_{xx} +
+  (\sin\theta \sin\phi) ( r \cos\theta \sin\phi) \delta_{yy} +
+  (\cos\theta)          (-r \sin\theta)          \delta_{zz}
+  \\ &=
+  r \qty(
+    \sin\theta \cos\theta \cos^2\phi +
+    \sin\theta \cos\theta \sin^2\phi -
+    \sin\theta \cos\theta
+  )
+  \\ &=
+  0,
+  \\
+  g_{r \phi} = g_{\phi r} =
+  \vec{e}_r \cdot \vec{e}_\phi &=
+  (\sin\theta \cos\phi) (-r \sin\theta \sin\phi) \delta_{xx} +
+  (\sin\theta \sin\phi) ( r \sin\theta \cos\phi) \delta_{yy} +
+  (\cos\theta) (0) \delta_{zz}
+  \\ &=
+  r (-\sin^2\theta \sin\phi \cos\phi + \sin^2\theta \sin\phi \cos\phi)
+  \\ &=
+  0,
+  \\
+  g_{\theta \phi} = g_{\phi \theta} =
+  \vec{e}_\theta \cdot \vec{e}_\phi &=
+  (r \cos\theta \cos\phi) (-r \sin\theta \sin\phi) \delta_{xx} +
+  (r \cos\theta \sin\phi) ( r \sin\theta \cos\phi) \delta_{yy}
+  \\ &=
+  r^2 (
+   -\cos\theta \cos\phi \sin\theta \sin\phi +
+    \cos\theta \cos\phi \sin\theta \sin\phi
+  )
+  \\ &=
+  0.
+\end{align*}
+%
+The metric tensor in spherical polar coordinates is therefore
+%
+\begin{displaymath}
+  (g_{ij}) = \mqty(\dmat[0]{1,r^2,r^2\sin^2\theta}).
+\end{displaymath}
+
+\item Use Equation 6.19 to find the metric on the surface of a sphere.
+
+On the surface of a sphere, $r$ is fixed, and therefore $\Delta r = 0$. As a result of this, we do not need to consider $g_{rr}$, and the only relevant components become $(\theta,\phi)$. So we can simplify the metric as:
+%
+\begin{displaymath}
+  (g_{ij}) = \mqty(\dmat[0]{r^2,r^2\sin^2\theta}).
+\end{displaymath}
+
+\item Find the components of $g^{\alpha\beta}$ on the surface of a sphere.
+
+Since $g_{\alpha\beta}$ is a diagonal matrix, the components of its inverse are simply equal to their multiplicative inverse. So the matrix is
+%
+\begin{displaymath}
+  (g_{ij}) = \mqty(\dmat[0]{1/r^2,1/r^2\sin^2\theta}).
+\end{displaymath}
+
+\end{enumerate}
+
+
+\textbf{29}
+Calculate the Riemann tensor of the unit sphere in spherical polar coordinates.
+
+The metric for a unit sphere in spherical polars is
+%
+\begin{displaymath}
+  (g_{ij}) = \mqty(\dmat[0]{1,\sin^2\theta}),
+\end{displaymath}
+%
+and so one component of the Riemann tensor is
+%
+\begin{align*}
+  R_{\theta\phi\theta\phi} &=
+  \frac{1}{2} \qty(
+    g_{\theta\phi,\phi\theta} -
+    g_{\theta\theta,\phi\phi} +
+    g_{\phi\theta,\theta\phi} -
+    g_{\phi\phi,\theta\theta}
+  ) =
+  \frac{1}{2} \qty(
+    g_{\theta\theta,\phi\phi} -
+    g_{\phi\phi,\theta\theta}
+  )
+  \\ &=
+  \frac{1}{2} \qty(
+    \pdv[2]{\phi}   1 -
+    \pdv[2]{\theta} \sin^2\theta
+  ) =
+  \frac{1}{2} \sin^2\theta.
+\end{align*}
+%
+Using the symmetry and anti-symmetry properties of the Riemann tensor, we find the remaining components:
+%
+\begin{align*}
+  R_{\phi\theta\phi\theta} &=
+  \sin^2\theta
+  \\
+  R_{\theta\phi\phi\theta} &=
+  R_{\phi\theta\theta\phi} =
+ -\sin^2\theta.
+\end{align*}
+%
+All remaining components are zero, as they have indices $\theta\theta\theta\phi$ or $\phi\phi\phi\theta$, and the only non-zero second derivative of the metric is $g_{\phi\phi,\theta\theta}$, which requires two of each index, not three.
+
+
+\textbf{30}
+Calculate the Riemann tensor on a cylinder.
+
+The metric in cylindrical polars, $(r,\theta,z)$, is given by
+%
+\begin{displaymath}
+  (g_{ij}) = \mqty(\dmat[0]{1,r^2,1}).
+\end{displaymath}
+%
+On the surface of a cylinder (excluding the top and bottom) the radius is unchanging, so $\Delta r = $, as was the case on the surface of a sphere. The metric can therefore be simplified in $(\theta,z)$ coordinates as:
+%
+\begin{displaymath}
+  (g_{ij}) = \mqty(\dmat[0]{r^2,1}).
+\end{displaymath}
+%
+From the metric alone, it is obvious that the components of the Riemann tensor must \emph{all} be zero. This is because the Riemann tensor depends on second derivatives of the components of the metric, and the only variable term is $g_{\theta\theta} = r^2$. Since we removed the dependence on the \emph{coordinate} $r$, \emph{none} of the terms in the Riemann tensor will involve differentiating with respect to $r$, and therefore they will \emph{all} be zero.
+
+
+\textbf{32}
+A $4$D manifold has coodinates $(u,v,w,p)$, and a metric
+%
+\begin{displaymath}
+  (g_{\alpha\beta}) =
+  \mqty( 0 & 1 & 0 & 0 \\
+         1 & 0 & 0 & 0 \\
+         0 & 0 & 1 & 0 \\
+         0 & 0 & 0 & 1 ).
+\end{displaymath}
+
+\begin{enumerate}[(a)]
+\item Show that the manifold is flat and has signature $+2$.
+
+Since every element in the metric is a constant, $g_{\alpha\beta,\mu\nu} \equiv 0$, and therefore $R_{\alpha\beta\mu\nu} \equiv 0$, so the manifold is flat.
+
+The signature is just the sum of the diagonal elements, which in this case is $1 + 1 = 2$.
+
+\item Since this manifold is flat and has signature $+2$, it must be a Minkowski spacetime. Find a coordinate transformation to $(t,x,y,z)$.
+
+\begin{align*}
+  \Lambda g &= \eta
+  \\
+  \Lambda g g^{-1} &= \eta g^{-1}
+  \\
+  \Lambda &= \eta g^{-1} = \eta g
+  \text{ (since $g$ is symmetric)}
+  \\
+  (\Lambda_{\alpha\beta}) &=
+  \mqty(\dmat[0]{-1,1,1,1})
+  \mqty( 0 & 1 & 0 & 0 \\
+         1 & 0 & 0 & 0 \\
+         0 & 0 & 1 & 0 \\
+         0 & 0 & 0 & 1 ) =
+  \mqty( 0 & -1 & 0 & 0 \\
+         1 &  0 & 0 & 0 \\
+         0 &  0 & 1 & 0 \\
+         0 &  0 & 0 & 1 )
+\end{align*}
+
+\end{enumerate}
+
+
+\textbf{33}
+A three-sphere (or glome) is the 4D analog of a sphere, with cartesian coordinates $(x,y,z,w)$, described by the equation $x^2+y^2+z^2+w^2=r^2$, where $r$ is its radius.
+
+\begin{enumerate}[(a)]
+\item Define coordinates $(r,\theta,\phi,\chi)$, given by
+%
+\begin{align*}
+  x &= r \sin\chi \sin\theta \cos\phi, &
+  y &= r \sin\chi \sin\theta \sin\phi,
+  \\
+  z &= r \sin\chi \cos\theta, &
+  w &= r \cos\chi,
+\end{align*}
+%
+and show that $(\theta,\phi,\chi)$ form the coordinates of the surface of the sphere.
+
+Per usual, we begin by finding the elements of the Jacobian
+%
+\begin{displaymath}
+  \Lambda : (x,y,z,w) \to (r,\theta,\phi,\chi).
+\end{displaymath}
+%
+\begin{align*}
+  \pdv*{x}{r} &=
+  \sin\chi \sin\theta \cos\phi, &
+  \pdv*{y}{r} &=
+  \sin\chi \sin\theta \sin\phi, &
+  \pdv*{z}{r} &=
+  \sin\chi \cos\theta, &
+  \pdv*{w}{r} &=
+  \cos\chi,
+  \\
+  \pdv*{x}{\theta} &=
+  r \sin\chi \cos\theta \cos\phi, &
+  \pdv*{y}{\theta} &=
+  r \sin\chi \cos\theta \sin\phi, &
+  \pdv*{z}{\theta} &=
+  -r \sin\chi \sin\theta, &
+  \pdv*{w}{\theta} &=
+  0,
+  \\
+  \pdv*{x}{\phi} &=
+  -r \sin\chi \sin\theta \sin\phi, &
+  \pdv*{y}{\phi} &=
+  r \sin\chi \sin\theta \cos\phi, &
+  \pdv*{z}{\phi} &=
+  0, &
+  \pdv*{w}{\phi} &=
+  0,
+  \\
+  \pdv*{x}{\chi} &=
+  r \cos\chi \sin\theta \cos\phi, &
+  \pdv*{y}{\chi} &=
+  r \cos\chi \sin\theta \sin\phi, &
+  \pdv*{z}{\chi} &=
+  r \cos\chi \cos\theta, &
+  \pdv*{w}{\chi} &=
+  -r \sin\chi.
+\end{align*}
+%
+the basis vectors are then
+%
+\begin{align*}
+  \vec{e}_\xi &=
+  \pdv{x^\alpha}{\xi} \vec{e}_\alpha &
+  \\
+  \vec{e}_r &=
+  \sin\chi \sin\theta \cos\phi \vec{e}_x &
+%
+  \vec{e}_\theta &=
+  r \sin\chi \cos\theta \cos\phi \vec{e}_x &
+%
+  \vec{e}_\phi &=
+  -r \sin\chi \sin\theta \sin\phi \vec{e}_x &
+  \vec{e}_\chi &=
+  r \cos\chi \sin\theta \cos\phi \vec{e}_x
+  \\ &+ %%%%
+  \sin\chi \sin\theta \sin\phi \vec{e}_y &&+
+%
+  r \sin\chi \cos\theta \sin\phi \vec{e}_y &&+
+%
+  r \sin\chi \sin\theta \cos\phi \vec{e}_y &&+
+%
+  r \cos\chi \sin\theta \sin\phi \vec{e}_y
+  \\ &+ %%%%
+  \sin\chi \cos\theta \vec{e}_z &&-
+%
+  r \sin\chi \sin\theta \vec{e}_z &&
+%
+  &&+
+%
+  r \cos\chi \cos\theta
+  \\ &+
+  \cos\chi \vec{e}_w &&
+%
+  &&
+%
+  &&-
+%
+  r \sin\chi \vec{e}_w
+\end{align*}
+%
+Notice that if we fix $\chi = \pi/2$, this reduces to the basis vectors for 2D spherical polars.
+
+The components of the metric can be found using
+$g_{\alpha\beta} = \vec{e}_\alpha \cdot \vec{e}_\beta$.
+%
+\begin{align*}
+  g_{rr} &=
+  \sin^2\chi \sin^2\theta \cos^2\phi \eta_{xx} +
+  \sin^2\chi \sin^2\theta \sin^2\phi \eta_{yy} +
+  \sin^2\chi \cos^2\theta \eta_{zz} +
+  \cos^2\chi \eta_{ww}
+  \\* &=
+  \sin^2\chi (\sin^2\theta + \cos^2\theta) + \cos^2\chi =
+  \sin^2\chi + \cos^2\chi =
+  1
+  \\
+  g_{\theta\theta} &=
+  r^2 \qty(
+    \sin^2\chi \cos^2\chi \cos^2\phi \eta_{xx} +
+    \sin^2\chi \cos^2\theta \sin^2\phi \eta_{yy} +
+    \sin^2\chi \sin^2\theta \eta_{zz}
+  )
+  \\* &=
+  r^2 \sin^2\chi (\cos^2\theta + \sin^2\theta) =
+  r^2 \sin^2\chi
+  \\
+  g_{\phi\phi} &=
+  r^2 \qty(
+    \sin^2\chi \sin^2\theta \sin^2\phi \eta_{xx} +
+    \sin^2\chi \sin^2\theta \cos^2\phi \eta_{yy}
+  )
+  \\* &=
+  r^2 \sin^2\chi \sin^2\theta
+  \\
+  g_{\chi\chi} &=
+  r^2 \qty(
+    \cos^2\chi \sin^2\theta \cos^2\phi \eta_{xx} +
+    \cos^2\chi \sin^2\theta \sin^2\phi \eta_{yy} +
+    \cos^2\chi \cos^2\theta \eta_{zz} +
+    \sin^2\chi \eta_{ww}
+  )
+  \\* &=
+  r^2 \qty(
+    \cos^2\chi \sin^2\theta +
+    \cos^2\chi \cos^2\theta +
+    \sin^2\chi
+  ) =
+  r^2 \qty( \cos^2\chi + \sin^2\chi ) =
+  r^2
+\end{align*}
+
+To show that the off-diagonal terms are zero, I got lazy and used the Maxima computer algebra system. Its naming convention and ordering for these coordinates is different, but it still makes it clear that the metric is diagonal.
+
+\begin{verbatim}
+(%i1) load(ctensor)$            /* load the component tensor package */
+(%i2) ct_coordsys(spherical4d)$ /* use the 3-sphere metric */
+(%i3) lg;                       /* display the metric */
+              [ 1  0         0                    0             ]
+              [                                                 ]
+              [     2                                           ]
+              [ 0  r         0                    0             ]
+(%o3)         [                                                 ]
+              [         2    2                                  ]
+              [ 0  0   r  sin (theta)             0             ]
+              [                                                 ]
+              [                           2       2    2        ]
+              [ 0  0         0         sin (eta) r  sin (theta) ]
+\end{verbatim}
+
+So in our notation, the metric tensor is
+%
+\begin{displaymath}
+  (g_{ij}) =
+  \mqty(\dmat[0]{1, r^2\sin^2\chi, r^2\sin^2\chi\sin^2\theta, r^2}).
+\end{displaymath}
+
+
+\item Show that the metric on the \emph{surface} of the three-sphere only has non-zero components $g_{\theta\theta}$, $g_{\phi\phi}$, and $g_{\chi\chi}$.
+
+On the surface of a three-sphere, $r$ is unchanging, so $\Delta r$ is always zero. Thus, we may reduce the dimensionality of the metric to 3: $(\theta,\phi,\chi)$.
+%
+\begin{displaymath}
+  (g_{ij}) =
+  \mqty(\dmat[0]{r^2\sin^2\chi, r^2\sin^2\chi\sin^2\theta, r^2}).
+\end{displaymath}
+
+\end{enumerate}
+
+
+\textbf{34}
+Prove the following identities for a general metric tensor in a general coordinate system. Equations 6.39 and 6.40 will be helpful.
+
+\begin{enumerate}[(a)]
+\item $\tensor{\Gamma}{^\mu_{\mu\nu}} = \frac{1}{2} (\ln\abs{g})_{,\nu}$
+%
+\begin{displaymath}
+  \tensor{\Gamma}{^\mu_{\mu\nu}} =
+  \frac{(\sqrt{-g})_{,\nu}}{\sqrt{-g}} =
+  \frac{1}{2 \sqrt{-g}} \frac{(-g)_{,\nu}}{\sqrt{-g}} =
+  \frac{(-g)_{,\nu}}{2 (-g)} =
+  \frac{\abs{g}_{,\nu}}{2 \abs{g}} =
+  \frac{1}{2} (\ln\abs{g})_{,\nu}
+\end{displaymath}
+%
+\item $g^{\mu\nu} \tensor{\Gamma}{^\alpha_{\mu\nu}} =
+       (-g^{\alpha\beta} \sqrt{-g})_{,\beta} / \sqrt{-g}$
+%
+\begin{align*}
+  g^{\mu\nu} \tensor{\Gamma}{^\alpha_{\mu\nu}} &=
+ -(g^{\alpha\beta} \sqrt{-g})_{,\beta} / \sqrt{-g}
+  \\ &=
+ -(g^{\alpha\beta} (\sqrt{-g})_{,\beta} +
+   \tensor{g}{^{\alpha\beta}_{,\beta}} \sqrt{-g}) / \sqrt{-g}
+  \\ &=
+  -(g^{\alpha\beta} (\sqrt{-g})_{,\beta} / \sqrt{-g} +
+    \tensor{g}{^{\alpha\beta}_{,\beta}})
+  \\ &=
+  -(g^{\alpha\beta} \tensor{\Gamma}{^\lambda_{\lambda\beta}} +
+    \tensor{g}{^{\alpha\beta}_{,\beta}})
+  \\
+  \frac{1}{2} g^{\mu\nu} g^{\beta\alpha}
+  (g_{\beta\mu,\nu} + g_{\beta\nu,\mu} - g_{\mu\nu,\beta}) &=
+  -(g^{\alpha\beta} g^{\lambda\sigma} g_{\lambda\sigma,\beta} / 2 +
+    \tensor{g}{^{\alpha\beta}_{,\beta}})
+  \\
+  \frac{1}{2} g^{\mu\nu} g^{\beta\alpha}
+  (g_{\beta\mu,\nu} + g_{\beta\nu,\mu}) -
+  g^{\mu\nu} g^{\beta\alpha} g_{\mu\nu,\beta} / 2 &=
+  -(g^{\alpha\beta} g^{\lambda\sigma} g_{\lambda\sigma,\beta} / 2 +
+    \tensor{g}{^{\alpha\beta}_{,\beta}})
+  \\
+  \frac{1}{2} g^{\mu\nu} g^{\beta\alpha}
+  (g_{\beta\mu,\nu} + g_{\beta\nu,\mu}) &=
+ -\tensor{g}{^{\alpha\beta}_{,\beta}}
+  \\
+ -\frac{1}{2} g^{\mu\nu}
+  (\tensor{g}{^{\beta\alpha}_{,\nu}} g_{\beta\mu} +
+   \tensor{g}{^{\beta\alpha}_{,\mu}} g_{\beta\nu}) &=
+ -\tensor{g}{^{\alpha\beta}_{,\beta}}
+  \\
+ -\frac{1}{2}
+  (\tensor{\delta}{_\beta^\nu} \tensor{g}{^{\beta\alpha}_{,\nu}} +
+   \tensor{\delta}{_\beta^\mu} \tensor{g}{^{\beta\alpha}_{,\mu}}) &=
+ -\tensor{g}{^{\alpha\beta}_{,\beta}}
+  \\
+ -\frac{1}{2}
+  (2 \tensor{g}{^{\beta\alpha}_{,\beta}}) &=
+ -\tensor{g}{^{\alpha\beta}_{,\beta}}
+\end{align*}
+%
+\item
+  $\tensor{F}{^{[\mu\nu]}_{;\nu}} =
+   (\sqrt{-g} F^{[\mu\nu]})_{,\nu} / \sqrt{-g}$
+%
+\begin{displaymath}
+  \tensor{F}{^{[\mu\nu]}_{;\nu}} =
+  \tensor{F}{^{[\mu\nu]}_{,\nu}} +
+  F^{[\mu\nu]} \tensor{\Gamma}{^\alpha_{\nu\alpha}} =
+  (\tensor{F}{^{[\mu\nu]}_{,\nu}} \sqrt{-g} +
+   F^{\mu\nu} (\sqrt{-g})_{,\nu}) / \sqrt{-g} =
+  (\sqrt{-g} F^{\mu\nu})_{,\nu}
+\end{displaymath}
+%
+\item $g^{\alpha\sigma} g_{\sigma\beta,\gamma} =
+      -\tensor{g}{^{\alpha\sigma}_{,\gamma}} g_{\sigma\beta}$
+%
+We start with $g^{\alpha\sigma} g_{\sigma\beta} = \tensor{\delta}{^\alpha_\beta}$. Then we differentiate both sides to get
+%
+\begin{align*}
+  \tensor{g}{^{\alpha\sigma}_{,\gamma}} g_{\sigma\beta} &+
+  g^{\alpha\sigma} g_{\sigma\beta,\gamma} =
+  0
+  \\
+  g^{\alpha\sigma} g_{\sigma\beta,\gamma} &=
+ -\tensor{g}{^{\alpha\sigma}_{,\gamma}} g_{\sigma\beta}
+\end{align*}
+
+\item $\tensor{g}{^{\mu\nu}_{,\alpha}} =
+      -\tensor{\Gamma}{^\mu_{\beta\alpha}} g^{\beta\nu} -
+       \tensor{\Gamma}{^\nu_{\beta\alpha}} g^{\mu\beta}$
+
+\begin{align*}
+  \tensor{g}{^{\mu\nu}_{;\alpha}} = \tensor{g}{^{\mu\nu}_{,\alpha}} &+
+  \tensor{\Gamma}{^\mu_{\beta\alpha}} g^{\beta\nu} +
+  \tensor{\Gamma}{^\nu_{\beta\alpha}} g^{\mu\beta} =
+  0
+  \\
+  \tensor{g}{^{\mu\nu}_{,\alpha}} &=
+ -\tensor{\Gamma}{^\mu_{\beta\alpha}} g^{\beta\nu} -
+  \tensor{\Gamma}{^\nu_{\beta\alpha}} g^{\mu\beta}
+\end{align*}
+
+\end{enumerate}
+
+
+
+\textbf{35}
+Compute the metric tensor, Christoffel symbols, and Riemann tensor for a spacetime with line element:
+%
+\begin{displaymath}
+  \dd{s^2} =
+ -e^{2\Phi} \dd{t^2} +
+  e^{2\Lambda} \dd{r^2} +
+  r^2 (\dd{\theta^2} + \sin^2\theta \dd{\phi^2}).
+\end{displaymath}
+
+Based on the line element, the metric must be
+%
+\begin{align*}
+  (g_{\alpha\beta}) &=
+  \mqty(\dmat[0]{-e^{2\Phi}, e^{2\Lambda}, r^2, r^2 \sin^2\theta}) &
+  (g^{\alpha\beta}) &=
+  \mqty(\dmat[0]{-e^{-2\Phi}, e^{-2\Lambda}, 1/r^2, 1/r^2 \sin^2\theta})
+\end{align*}
+
+For the rest of this problem, I took advantage of the \texttt{Maxima} computer algebra system. According to it, the non-zero, unique Christoffel symbols are
+%
+\begin{align*}
+  \tensor{\Gamma}{^r_{tt}} &=
+  \exp(2\Phi - 2\Lambda) \dv{\Phi}{r}
+  &
+  \tensor{\Gamma}{^t_{rt}} &=
+  \dv{\Phi}{r}
+  \\
+  \tensor{\Gamma}{^r_{rr}} &=
+  \dv{\Lambda}{r}
+  &
+  \tensor{\Gamma}{^\theta_{r \theta}} =
+  \tensor{\Gamma}{^\phi_{r \phi}} &=
+  \frac{1}{r}
+  \\
+  \tensor{\Gamma}{^r_{\theta\theta}} &=
+  -\exp(-2 \Lambda) r
+  &
+  \tensor{\Gamma}{^\phi_{\theta\phi}} &=
+  \cot\theta
+  \\
+  \tensor{\Gamma}{^r_{\phi\phi}} &=
+  -\exp(-2 \Lambda) r \sin^2\theta
+  &
+  \tensor{\Gamma}{^\theta_{\phi\phi}} &=
+  -\sin\theta \cos\theta
+\end{align*}
+%
+The independent non-zero components of the Riemann tensor are
+%
+\begin{align*}
+  R_{t \theta t \theta} &=
+  \exp(2(\Phi-\Lambda)) \qty[
+    \dv{\Phi}{r} \qty(\dv{\Lambda}{r} - \dv{\Phi}{r}) - \dv[2]{\Phi}{r}
+  ]
+  &
+  R_{t \theta t \theta} = R_{t \phi t \phi} &=
+  -\frac{1}{r} \exp(2(\Phi - \Lambda)) \dv{\Phi}{r}
+  \\
+  R_{r r t t} &=
+  \dv{\Lambda}{r} \dv{\Phi}{r} -
+  \dv[2]{\Phi}{r} -
+  \qty(\dv{\Phi}{r})^2
+  &
+  R_{r \theta r \theta} = R_{r \phi r \phi} &=
+  -\frac{1}{r} \dv{\Lambda}{r}
+  \\
+  R_{\theta \phi \theta \phi} &=
+  \exp(-2\Lambda) - 1
+  &
+  R_{\phi \phi \theta \theta} &=
+  \exp(-2\Lambda) \qty(\exp(2 \Lambda) - 1) \sin^2\theta
+  \\
+  R_{\theta \theta t t} &=
+  -r \exp(-2 \Lambda) \dv{\Phi}{r}
+  &
+  R_{\theta \theta r r} &=
+  r \exp(-2 \Lambda) \dv{L}{r}
+\end{align*}
+
+\textbf{36}
+
+
+\textbf{(39)}
+
+
+
+
+
+\end{document}

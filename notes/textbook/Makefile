@@ -2,7 +2,7 @@
 
 all: pdf/gr-notes.pdf \
      pdf/gr-ch1-notes.pdf pdf/gr-ch2-notes.pdf pdf/gr-ch3-notes.pdf \
-     pdf/gr-ch5-notes.pdf
+     pdf/gr-ch5-notes.pdf pdf/gr-ch6-notes.pdf
 
 # this target needs to be fixed to work in all
 # it only works when explicitly called for some reason,
