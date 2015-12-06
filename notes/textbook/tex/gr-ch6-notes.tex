@@ -671,23 +671,33 @@ The value of contracting the last index is the easiest to find, and can be found
  -R_{\beta\nu}.
 \end{displaymath}
 %
-The first lower index is a little more involved, but can be done with the aide of the metric:
+Given this identity, finding the value of the remaining contraction is easy. Equation 6.70 states that
+%
+\begin{displaymath}
+  R_{\alpha\beta\mu\nu} + R_{\alpha\nu\beta\mu} + R_{\alpha\mu\nu\beta} = 0.
+\end{displaymath}
+%
+If we raise the $\alpha$'s with the metric, we get
 %
 \begin{align*}
-  g_{\alpha\lambda} \tensor{R}{^\alpha_{\alpha\mu\nu}} &=
-  \tensor{R}{_{\lambda\alpha\mu\nu}} =
- -\tensor{R}{_{\alpha\lambda\mu\nu}}
-  \\ \implies
-  g^{\lambda\alpha} g_{\alpha\lambda} \tensor{R}{^\alpha_{\beta\mu\nu}} &=
- -g^{\lambda\alpha} \tensor{R}{_{\alpha\lambda\mu\nu}}
-  \\ \implies
-  \tensor{g}{^\lambda_\lambda} \tensor{R}{^\alpha_{\beta\mu\nu}} &=
- -\tensor{R}{^\lambda_{\lambda\mu\nu}}
-  \\ \implies
-  \tensor{R}{^\alpha_{\beta\mu\nu}} &=
- -\tensor{R}{^\alpha_{\alpha\mu\nu}} =
+  g^{\alpha\beta}
+  (R_{\alpha\beta\mu\nu} + R_{\alpha\nu\beta\mu} + R_{\alpha\mu\nu\beta}) &=
+  0
+  \\
+  \tensor{R}{^\beta_{\beta\mu\nu}} +
+  \tensor{R}{^\beta_{\nu\beta\mu}} +
+  \tensor{R}{^\beta_{\mu\nu\beta}} &=
+  0
+  \\
+  \tensor{R}{^\beta_{\beta\mu\nu}} +
+  \tensor{R}{^\beta_{\nu\beta\mu}} -
+  \tensor{R}{^\beta_{\mu\beta\nu}} &=
+  0
+  \\
+  \tensor{R}{^\beta_{\beta\mu\nu}} &=
   0
 \end{align*}
+
 
 \item Show that the Ricci tensor is symmetric.
 
@@ -1369,7 +1379,69 @@ The independent non-zero components of the Riemann tensor are
 \end{align*}
 
 \textbf{36}
+Consider a 4D manifold with coordinates $(t,x,y,z)$ and line element
+%
+\begin{displaymath}
+  \dd{s}^2 =
+ -(1 + 2\phi) \dd{t}^2 +
+  (1 - 2\phi) (\dd{x}^2 + \dd{y}^2 + \dd{z}^2),
+\end{displaymath}
+%
+with $\abs{\phi(t,x,y,z)} \ll 1$. At an arbitrary point $\mathcal{P}$ with coordinates $(t_0,x_0,y_0,z_0)$, find a coordinate transformation to LIF. How does this frame accelerate with respect to the original coordinates? Do all of this to first order in $\phi$.
 
+By inspection of the line element, we can see that the metric has components
+%
+\begin{displaymath}
+  (g_{\alpha\beta}) \underset{(t,x,y,z)}{\to}
+  \mqty(\dmat[0]{-(1+2\phi),(1-2\phi),(1-2\phi),(1-2\phi)}).
+\end{displaymath}
+%
+We want a transformation to a Minkowski spacetime, i.e.
+%
+\begin{displaymath}
+  \tensor{\Lambda}{^{\alpha'}_\alpha}
+  \tensor{\Lambda}{^{\beta'}_\beta}
+  g_{\alpha'\beta'} =
+  \eta_{\alpha\beta}.
+\end{displaymath}
+%
+Now, there may be multiple transformations which satisfy this, so we need only find one. Since both $\boldsymbol{g}$ and $\boldsymbol{\eta}$ are diagonal, I assume that $\boldsymbol{\Lambda}$ is diagonal as well, and find its components.
+%
+\begin{align*}
+  \eta_{00} &=
+  \tensor{\Lambda}{^{0'}_0}
+  \tensor{\Lambda}{^{0'}_0}
+  g_{0'0'} &
+%%%%
+  \eta_{ii} &=
+  \tensor{\Lambda}{^{i'}_i}
+  \tensor{\Lambda}{^{i'}_i}
+  g_{i'i'}
+  \\
+  -1 &=
+  (\tensor{\Lambda}{^{0'}_0})^2 (-(1 + 2\phi)) &
+%%%%
+  1 &=
+  (\tensor{\Lambda}{^{i'}_i})^2
+  (1 - 2\phi)
+  \\
+  \tensor{\Lambda}{^{0'}_0} &=
+  (1 + 2\phi)^{-1/2} &
+%%%%
+  \tensor{\Lambda}{^{i'}_i} &=
+  (1 - 2\phi)^{-1/2}
+\end{align*}
+%
+Since we know that $\phi$ is small, we can use the approximation
+$(1 + x)^{-1/2} = (1 - x/2) + \order{x^2}$, to find
+%
+\begin{align*}
+  \tensor{\Lambda}{^{0'}_0} &\approx
+  (1 - \phi) &
+%%%%
+  \tensor{\Lambda}{^{i'}_i} &\approx
+  (1 + \phi)
+\end{align*}
 
 \textbf{(39)}
 

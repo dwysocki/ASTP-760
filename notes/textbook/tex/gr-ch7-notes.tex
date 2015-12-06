@@ -1,0 +1,754 @@
+\documentclass[gr-notes.tex]{subfiles}
+
+\begin{document}
+
+\setcounter{chapter}{6}
+
+\chapter{Physics in a curved spacetime}
+
+\setcounter{section}{5}
+
+\section{Exercises}
+
+
+\textbf{1}
+If Equation 7.3 were the correct generalization of 7.1 in a curved spacetime, what are the implications? What would happen to the number of particles in a comoving volume of the fluid over time? May we experimentally distinguish between Equations 7.2 and 7.3?
+
+The number of particles would change proportionally to the square of the Ricci scalar, which corresponds to the curvature of the manifold. Whether particles are created ($+$) or destroyed ($-$) would depend on the sign of $q$ in the equation.
+
+We could set up some experiment which tests for a change in the number of particles in a moving fluid, in various gravitational fields, to verify whether the RHS of the equation is non-zero.
+
+
+
+
+\textbf{2}
+Compute $g^{\alpha\beta}$ for the line element given by Equation 7.8, to first order in $\phi$.
+
+Based on the line element, we can infer that the metric is
+%
+\begin{align*}
+  (g_{\alpha\beta}) &\underset{(t,x,y,z)}{\to}
+  \mqty(\dmat[0]{-(1+2\phi),(1-2\phi),(1-2\phi),(1-2\phi)})
+  \\
+  (g^{\alpha\beta}) &\underset{(t,x,y,z)}{\to}
+  \mqty(\dmat[0]{-(1+2\phi)^{-1},(1-2\phi)^{-1},(1-2\phi)^{-1},(1-2\phi)^{-1}})
+  \approx
+  \mqty(\dmat[0]{-(1-2\phi),(1+2\phi),(1+2\phi),(1+2\phi)})
+\end{align*}
+
+
+
+\textbf{3}
+Calculate the Christoffel sybmols for the metric given by Equation 7.8, to first order in $\phi$, assuming $\phi = \phi(t,x,y,z)$.
+
+I do the following with the assistance of the free computer algebra system \texttt{Maxima}. I used the exact form of the metric tensor, and then approximated the resulting Christoffel symbols to first order in $\phi$.
+
+\begin{align*}
+  \tensor{\Gamma}{^t_{t\alpha}} &=
+  \pdv{\phi}{x^\alpha} \frac{1}{1 + 2\phi} \approx
+  \pdv{\phi}{x^\alpha} (1 - 2\phi)
+  &
+  \tensor{\Gamma}{^\alpha_{t\alpha}} &=
+ -\pdv{\phi}{t} \frac{1}{1 - 2\phi} \approx
+ -\pdv{\phi}{t} (1 + 2\phi)
+  \\
+  \tensor{\Gamma}{^i_{tt}} &=
+  \pdv{\phi}{x^i} \frac{1}{1 - 2\phi} \approx
+  \pdv{\phi}{x^i} (1 + 2\phi)
+  &
+  \tensor{\Gamma}{^t_{ii}} &=
+ -\pdv{\phi}{t} \frac{1}{1 + 2\phi} \approx
+  \pdv{\phi}{t} (1 - 2\phi)
+  \\
+  \tensor{\Gamma}{^i_{jj}} =
+ -\tensor{\Gamma}{^j_{ij}} =
+ -\tensor{\Gamma}{^i_{ii}} &=
+  \pdv{\phi}{x^i} \frac{1}{1 - 2\phi} \approx
+  \pdv{\phi}{x^i} (1 + 2\phi)
+\end{align*}
+
+
+\textbf{5}
+
+(a) In the case of a perfect fluid, verify that the spatial components of Equation 7.6 reduce to
+%
+\begin{displaymath}
+  \dot{\boldsymbol{v}} +
+  (\boldsymbol{v} \cdot \grad) \boldsymbol{v} +
+  \grad p / \rho +
+  \grad \phi =
+  0
+\end{displaymath}
+%
+in the Newtonian limit and in the weak-field regime (the metric given by Equation 7.8).
+
+\begin{align*}
+  T^{\mu\nu} &=
+  (\rho + p) U^\mu U^\nu + p g^{\mu\nu}
+  \\ &\approx
+  \rho U^\mu U^\nu + p g^{\mu\nu}
+  \\ &\approx
+  m U^\mu (n U^\nu) + p g^{\mu\nu}
+  \\
+  T^{i\nu} &\approx
+  m U^i (n U^\nu) + p g^{i\nu}
+  \\
+  \tensor{T}{^{i\nu}_{;\nu}} &\approx
+  m [ U^i (n U^\nu) ]_{;\nu} + [ p g^{i\nu} ]_{;\nu} =
+  m n U^\nu \tensor{U}{^i_{;\nu}} + g^{i\nu} p_{;\nu} = 0
+  \\ \implies
+  0 &=
+  U^\nu \tensor{U}{^i_{;\nu}} + g^{i\nu} p_{;\nu} / \rho
+  \\ &=
+  U^\nu (\tensor{U}{^i_{,\nu}} + U^\lambda \tensor{\Gamma}{^i_{\lambda\nu}}) +
+  g^{i\nu} p_{,\nu} / \rho
+  \\ &=
+  U^0 \tensor{U}{^i_{,0}} +
+  U^j \tensor{U}{^i_{,j}} +
+  U^\nu U^\lambda \tensor{\Gamma}{^i_{\lambda\nu}} +
+  g^{i\nu} p_{,\nu} / \rho
+  \\ &=
+  \gamma \dv{\tau} (\gamma v^i) +
+  \gamma v^j (\gamma v^i)_{,j} +
+  U^\nu U^\lambda \tensor{\Gamma}{^i_{\lambda\nu}} +
+  g^{ii} p_{,i} / \rho
+  \\ &\approx
+  \dv{v^i}{\tau} +
+  v^j v^i_{,j} +
+  (U^0)^2 \tensor{\Gamma}{^i_{00}} +
+  (1 - 2\phi) p_{,i} / \rho
+  \\ &\approx
+  \dv{v^i}{\tau} +
+  v^j v^i_{,j} +
+  \phi_{,i} +
+  p_{,i} / \rho
+\end{align*}
+%
+rewriting this in vector form, we get the original equation.
+
+
+(b) Now look at the time-component instead of the spatial component.
+
+\begin{align*}
+  T^{0\nu} &=
+  (\rho + p) U^0 U^\nu + p g^{0\nu} \approx
+  m U^0 (n U^\nu) + p g^{0\nu}
+  \\
+  \tensor{T}{^{0\nu}_{;\nu}} &=
+  m [U^0 (n U^\nu)]_{;\nu} + [p g^{0\nu}]_{;\nu} =
+  m n U^\nu \tensor{U}{^0_{;\nu}} + g^{00} p_{,\nu} =
+  0
+  \\ \implies
+  0 &=
+  U^\nu \tensor{U}{^0_{;\nu}} + g^{00} \dot{p} / \rho
+  \\ &=
+  U^\nu (\tensor{U}{^0_{,\nu}} + U^\lambda \tensor{\Gamma}{^0_{\lambda\nu}}) +
+  g^{00} \dot{p} / \rho
+  \\ &=
+  U^0 \tensor{U}{^0_{,0}} +
+  U^i \tensor{U}{^0_{,i}} +
+  U^\nu U^\lambda \tensor{\Gamma}{^0_{\lambda\nu}} +
+  g^{00} \dot{p} / \rho
+  \\ &\approx
+  \frac{1}{2} \dv{v^2}{\tau} +
+  \frac{1}{2} v^i \dv{v^2}{x^i} +
+  U^\nu U^0 \tensor{\Gamma}{^0_{0\nu}} -
+  (1 + 2\phi) \dot{p} / \rho
+  \\ &\approx
+  \frac{1}{2} \dv{v^2}{\tau} +
+  \frac{1}{2} v^i \dv{v^2}{x^i} +
+  U^\nu U^0 \tensor{\Gamma}{^0_{0\nu}} -
+  \dot{p} / \rho
+  \\ &\approx
+  \frac{1}{2} \dv{v^2}{\tau} +
+  \frac{1}{2} v^i \dv{v^2}{x^i} +
+  U^\nu U^0 \phi_{,\nu} -
+  \dot{p} / \rho
+  \\ &\approx
+  \frac{1}{2} \dv{v^2}{\tau} +
+  \frac{1}{2} v^i \dv{v^2}{x^i} +
+  \dot{\phi} + v^i \phi_{,i} -
+  \dot{p} / \rho
+\end{align*}
+
+(c) A metric is static if there exist coordinates such that $\vec{e}_0$ is timelike, $g_{i0} = 0$, and $g_{\alpha\beta,0} = 0$. Show from Equation 7.6 that a static fluid (i.e. $U^i = 0$, $p_{,0} = 0$, etc) obeys the relativistic equation of hydrostatic equilibrium (Equation 7.40):
+%
+\begin{displaymath}
+  p_{,i} + (\rho + p) \qty[ \frac{1}{2} \ln(-g_{00}) ]_{,i} = 0.
+\end{displaymath}
+
+We start by writing out Equation 7.6 as
+%
+\begin{align*}
+  \tensor{T}{^{\mu\nu}_{;\nu}} &=
+  [(\rho + p) U^\mu U^\nu]_{;\nu} + [p g^{\mu\nu}]_{;\nu} =
+  0
+  \\ &=
+  [(\rho + p) U^\mu] \tensor{U}{^\nu_{;\nu}} +
+  [(\rho + p) U^\nu] \tensor{U}{^\mu_{;\nu}} +
+  U^\nu U^\mu (\rho + p)_{,\nu} +
+  g^{\mu\nu} p_{,\nu} =
+  0
+  \\ &=
+  \tensor{T}{^{00}_{;0}} +
+  \tensor{T}{^{ij}_{;j}} +
+  \tensor{T}{^{0i}_{;i}} +
+  \tensor{T}{^{i0}_{;0}} =
+  0
+  \\
+  \tensor{T}{^{00}_{;0}} &=
+  [(\rho + p) U^0] \tensor{U}{^0_{;0}} +
+  [(\rho + p) U^0] \tensor{U}{^0_{;0}} +
+  U^0 U^0 (\rho + p)_{,0} +
+  g^{00} p_{,0}
+  \\ &=
+  2 (\rho + p) U^0 \tensor{U}{^0_{;0}}
+  \\ &=
+  2 (\rho + p) U^0
+  [\tensor{U}{^0_{,0}} + U^\lambda \tensor{\Gamma}{^0_{0\lambda}}]
+  \\ &=
+  2 (\rho + p)
+  [U^0]^2 \tensor{\Gamma}{^0_{00}} =
+  0
+  \\
+  \tensor{T}{^{ij}_{;j}} &=
+  [(\rho + p) U^i] \tensor{U}{^j_{;j}} +
+  [(\rho + p) U^j] \tensor{U}{^i_{;j}} +
+  U^j U^i (\rho + p)_{,j} +
+  g^{ij} p_{,j}
+  \\ &=
+  g^{ij} p_{,j}
+  \\
+  \tensor{T}{^{0i}_{;i}} &=
+  [(\rho + p) U^0] \tensor{U}{^i_{;i}} +
+  [(\rho + p) U^i] \tensor{U}{^0_{;i}} +
+  U^i U^0 (\rho + p)_{,i} +
+  g^{0i} p_{,i}
+  \\ &=
+  [(\rho + p) U^0] \tensor{U}{^i_{;i}} =
+  (\rho + p) U^0
+  [\tensor{U}{^i_{,i}} + U^\lambda \tensor{\Gamma}{^i_{i\lambda}}]
+  \\ &=
+  (\rho + p) [U^0]^2 \tensor{\Gamma}{^i_{i0}}
+  \\ &=
+  \frac{1}{2} [U^0]^2 (\rho + p)
+  g^{i\alpha} (g_{\alpha i,0} + g_{\alpha 0,i} - g_{0i,\alpha}) =
+  0
+  \\
+  \tensor{T}{^{i0}_{;0}} &=
+  [(\rho + p) U^i] \tensor{U}{^0_{;0}} +
+  [(\rho + p) U^0] \tensor{U}{^i_{;0}} +
+  U^0 U^i (\rho + p)_{,0} +
+  g^{i0} p_{,0}
+  \\ &=
+  [(\rho + p) U^0] \tensor{U}{^i_{;0}} =
+  (\rho + p) U^0
+  [\tensor{U}{^i_{,0}} + U^0 \tensor{\Gamma}{^i_{00}}]
+  \\ &=
+  \frac{1}{2} (\rho + p) [U^0]^2
+  g^{i\alpha} (g_{\alpha0,0} + g_{\alpha0,0} - g_{00,\alpha}) =
+ -\frac{1}{2} (\rho + p) [U^0]^2 g^{ij} g_{00,j}
+  \\ &=
+  \frac{1}{2} (\rho + p) g^{ij} g_{00,j} / g_{00} =
+  \frac{1}{2} (\rho + p) g^{ij} \ln(-g_{00})_{,j}
+  \\
+  \tensor{T}{^{\mu\nu}_{;\nu}} &=
+  g^{ij} p_{,j} + \frac{1}{2} (\rho + p) g^{ij} \ln(-g_{00})_{,j} = 0
+  \\ &=
+  p_{,j} + (\rho + p) \qty[ \frac{1}{2} \ln(-g_{00})]_{,j} = 0
+\end{align*}
+
+
+(d) This suggests that there is a relationship between $g_{00}$ and $\exp(2\phi)$ in the case of a static fluid in a Newtonian potential. Show that Equation 7.8 and Exercise 4 are consistent with this.
+
+In the Newtonian limit, the previous equation is unchanged when replacing $ng_{00}$ with $-\exp(2\phi)$, as $\ln(\exp(2\phi))_{,i} = 2 \phi_{,i}$, and
+%
+\begin{align*}
+  \ln(-g_{00})_{,i} &=
+  \ln(1 + 2\phi)_{,i} =
+  \frac{(1 + 2\phi)_{,i}}{1 + 2\phi}
+  \\ &=
+  2 \phi_{,i} (1 + 2\phi)^{-1} \approx
+  2 \phi_{,i} (1 - 2\phi) \approx
+  2 \phi_{,i}.
+\end{align*}
+%
+I'm not really sure how to relate this to Exercise 4, as it relates $\phi_{,\alpha}$ to four-momentum, while this relates it to pressure and density.
+
+
+\textbf{7}
+Consider the (i) Minkowski, (ii) Schwarzschild, (iii) Kerr, and (iv) Robertson--Walker metrics.
+
+(a) Find the conserved components $p_\alpha$ of a the four-momentum of a particle in free-fall.
+
+For this I will use Equation 7.29:
+%
+\begin{displaymath}
+  m \dv{p_\beta}{\tau} = \frac{1}{2} g_{\nu\alpha,\beta} p^\nu p^\alpha.
+\end{displaymath}
+%
+What this tells us is that if $g_{\alpha\beta}$ is independent of $x^\mu$, then $p_\mu$ is constant along the trajectory.
+
+For (i), the metric is independent of all coordinates $(t,x,y,z)$, and so all $p_\alpha$ are conserved.
+
+For (ii), the metric depends on coordinates $r$ and $\theta$, but not $t$ and $\phi$, so only $p_t$ and $p_\phi$ are conserved.
+
+For (iii) we have the same dependencies as (ii).
+
+For (iv) there is an additional time dependence, and so only $p_\phi$ is conserved.
+
+
+(b) Use the metric for a flat spacetime in spherical polar coordinates to argue that the Schwarzschild and Robertson--Walker metrics are spherically symmetric.
+
+Our metric in (i) can be expressed in spherical polars as
+%
+\begin{displaymath}
+  \dd{s}^2 =
+ -\dd{t}^2 + \dd{r}^2 + r^2 (\dd{\theta}^2 + \sin^2\theta \dd{\phi}^2).
+\end{displaymath}
+%
+The Schwarzschild metric can be obtained from this by multiplying $\dd{t}^2$ by $(1 - 2 M / r)$, and dividing $\dd{r}^2$ by it. This newly introduced term only introduces a new radial dependence (the $r^{-1}$ term), not an angular one, so it retains spherical symmetry.
+
+The Robertson--Walker metric can be obtained by dividing $\dd{r}^2$ by $(1 - kr^2)$, and then multiplying everything \emph{except} $\dd{t}^2$ by $R^2(t)$. Again, the $(1 - kr^2)$ term only introduces a radial dependence in its $r^2$ term, and for a given time $t$, $R^2(t)$ is a constant, so spherical symmetry is retained.
+
+
+(c) For (i') and (ii)--(iv), a geodesic which at one point has $\theta = \pi/2$ and $p^\theta = 0$ (i.e. tangent to the equatorial plane) conserves these quantities. For (i'), (ii), and (iii),use $\vec{p} \cdot \vec{p} = -m^2$ to find $p^r$ as a function of $m$, other conserved quantities, and known functions of position.
+
+(i')
+%
+\begin{align*}
+  \vec{p} \cdot \vec{p} &=
+  g_{\alpha\beta} p^\alpha p^\beta =
+  g_{\alpha\alpha} (p^\alpha)^2 =
+  g_{tt} (p^t)^2 +
+  g_{rr} (p^r)^2 +
+  g_{\theta\theta} (\cancelto{0}{p^\theta})^2 +
+  g_{\phi\phi} (p^\phi)^2
+  \\ &=
+  -(p^t)^2 + (p^r)^2 + r^2 \cancelto{1}{\sin^2(\theta)} (p^\phi)^2 =
+  -m^2
+  \\ \implies
+  (p^r)^2 &=
+  (p^t)^2 - r^2 (p^\phi)^2 - m^2 =
+  g^{tt} (p_t)^2 - r^2 g^{\phi\phi} (p_\phi)^2 - m^2 =
+  -(p^t)^2 - (p^\phi)^2 - m^2
+  \\ \implies
+  p^r &=
+  \pm\sqrt{-[(p^t)^2 + (p^\phi)^2 + m^2]}
+\end{align*}
+%
+(ii)
+%
+\begin{align*}
+  \vec{p} \cdot \vec{p} &=
+  g_{tt} (p^t)^2 +
+  g_{rr} (p^r)^2 +
+  g_{\phi\phi} (p^\phi)^2
+  \\ &=
+ -(1 - 2M/r) (p^t)^2 +
+  (1 - 2M/r)^{-1} (p^r)^2 +
+  r^2 \cancelto{1}{\sin^2\theta} (p^\phi)^2 = -m^2
+  \\ \implies
+  (p^r)^2 &=
+  (1 - 2M/r) [ (1 - 2M/r) (p^t)^2 - r^2 (p^\phi)^2 - m^2 ]
+  \\ &=
+ -(1 - 2M/r) [ (1 - 2M/r) (p_t)^2 + (p_\phi)^2 + m^2 ]
+\end{align*}
+%
+(iii)
+%
+This metric gets a bit messy, so I will keep things more abstract. First, I will simplify the metric, utilizing the fact that $\theta = \pi/2$.
+%
+\begin{gather*}
+  \dd{s}^2 =
+ -\frac{\Delta - a^2}{r^2} \dd{t}^2 -
+  2 \frac{2 M a}{r} \dd{t} \dd\phi +
+  \frac{(r^2 + a^2)^2 - a^2 \Delta}{r^2} \dd\phi^2 +
+  \frac{r^2}{\Delta} \dd{r}^2 +
+  r^2 \dd\theta^2
+  \\
+  g_{tt} = -\frac{\Delta - a^2}{r^2};
+  \quad
+  g_{rr} = \frac{r^2}{\Delta};
+  \quad
+  g_{\theta\theta} = r^2;
+  \quad
+  g_{\phi\phi} = \frac{(r^2 + a^2)^2 - a^2 \Delta}{r^2};
+  \quad
+  g_{t\phi} = -\frac{2 M a}{r},
+  \\
+  \lambda \equiv
+  a^6 - 2 (D - r^2) a^4 + (r^4 - 4 M^2 r^2 - 2 D r^2 + D^2) a^2 - D r^4
+  \\
+  g^{tt} = r^2 (a^4 - (D - 2 r^2) a^2 + r^4) / \lambda;
+  \quad
+  g^{rr} = \frac{D}{r^2};
+  \quad
+  g^{\theta\theta} = \frac{1}{r^2};
+  \quad
+  g^{\phi\phi} = r^2 (a^2 - D) / \lambda;
+  \quad
+  g^{t\phi} = 2 a M r^3 / \lambda,
+  \\
+  \vec{p} \cdot \vec{p} =
+  g_{tt} (p^t)^2 +
+  g_{rr} (p^r)^2 +
+  g_{\phi\phi} (p^\phi)^2 +
+  2 g_{t\phi} (p^t p^\phi) =
+ -m^2
+  \\
+  p^r =
+  \pm\sqrt{
+   -g^{rr}
+    [g_{tt} (p^t)^2 +
+     g_{\phi\phi} (p^\phi)^2 +
+     2 g_{t\phi} (p^t p^\phi) +
+     m^2]
+  }
+  \\
+  p^t =
+  g^{t\alpha} p_\alpha =
+  g^{\phi\phi} p_t + g^{t\phi} p_\phi
+  \\
+  p^\phi =
+  g^{\phi\alpha} p_\alpha =
+  g^{\phi\phi} p_\phi + g^{t\phi} p_t
+\end{gather*}
+
+(d)
+
+When $k = 0$, the line element and metric become
+%
+\begin{gather*}
+  \dd{s}^2 =
+ -\dd{t}^2 +
+  R^2(t) [ \dd{r}^2 + r^2 (\dd\theta^2 + \sin^2\theta \dd\phi^2) ]
+  \\
+  g_{tt} = -1;
+  \quad
+  g_{rr} = R^2(t);
+  \quad
+  g_{\theta\theta} = R^2(t) r^2;
+  \quad
+  g_{\phi\phi} = R^2(t) r^2 \sin^2\theta.
+\end{gather*}
+%
+Equation 7.29 with $\beta = r$ then becomes
+%
+\begin{displaymath}
+  m \dv{p_r}{\tau} =
+  \frac{1}{2} g_{\nu\alpha,r} p^\nu p^\alpha =
+  \frac{1}{2} [ g_{tt,r} (p^t)^2 + g_{rr,r} (p^r)^2 ].
+\end{displaymath}
+%
+Since $g_{tt,r} = g_{rr,r} = 0$, the RHS becomes zero, and so
+%
+\begin{displaymath}
+  m \dv{p_r}{\tau} =
+  0 \implies
+  \text{$p_r$ is conserved}.
+\end{displaymath}
+
+
+
+\textbf{8}
+For a coordinate system where $g_{\alpha\beta,\mu} = 0$:
+
+(a) Show that $\tensor{T}{^\nu_{\mu;\nu}} = 0$ becomes
+%
+\begin{displaymath}
+  \frac{1}{\sqrt{-g}} (\sqrt{-g} \tensor{T}{^\nu_\mu})_\nu = 0.
+\end{displaymath}
+
+For this, I will make mathematicians cry, and go from the \emph{solution} backwards to the starting point. So I expand the final expression, first using the Leibniz rule:
+%
+\begin{displaymath}
+  \tensor{T}{^\nu_{\mu,\nu}} +
+  \frac{(\sqrt{-g})_\nu}{\sqrt{-g}} \tensor{T}{^\nu_\mu} =
+  0,
+\end{displaymath}
+%
+and then using Equation 6.40:
+%
+\begin{displaymath}
+  \tensor{T}{^\nu_{\mu,\nu}} +
+  \tensor{\Gamma}{^\alpha_{\alpha\nu}} =
+  0.
+\end{displaymath}
+%
+Just pretend I did that backwards. Next I expand $\tensor{T}{^\nu_{\mu;\nu}}$, to show that the above expression makes it zero.
+%
+\begin{align*}
+  \tensor{T}{^\nu_{\mu;\nu}} &=
+  \tensor{T}{^\nu_{\mu,\nu}} +
+  \tensor{T}{^\alpha_\mu} \tensor{\Gamma}{^\nu_{\alpha\nu}} -
+  \tensor{T}{^\nu_\alpha} \tensor{\Gamma}{^\alpha_{\mu\nu}}
+  \\ &=
+  \tensor{T}{^\nu_{\mu,\nu}} +
+  \tensor{T}{^\nu_\mu} \tensor{\Gamma}{^\alpha_{\nu\alpha}} -
+  \tensor{T}{^\nu_\alpha} \tensor{\Gamma}{^\alpha_{\mu\nu}}.
+\end{align*}
+%
+Note that the positive terms are just the expression from before, which we showed was zero, so we're left with
+%
+\begin{displaymath}
+  \tensor{T}{^\nu_{\mu;\nu}} =
+  \tensor{T}{^\nu_\alpha} \tensor{\Gamma}{^\alpha_{\mu\nu}}.
+\end{displaymath}
+%
+Now we expand this
+%
+\begin{align*}
+  \tensor{T}{^\nu_{\mu;\nu}} &=
+  -\frac{1}{2} \tensor{T}{^\nu_\alpha} g^{\alpha\beta}
+  (g_{\beta\mu,\nu} + \cancel{g_{\beta\nu,\mu}} - g_{\mu\nu,\beta})
+  \\ &=
+  -\frac{1}{2} \tensor{T}{^{\nu\beta}}
+  (g_{\beta\mu,\nu} - g_{\mu\nu,\beta}) =
+  -\frac{1}{2} \tensor{T}{^{(\nu\beta)}}
+  A_{[\nu\beta]\mu} =
+  0.
+\end{align*}
+
+(b) Suppose $T^{\alpha\beta}$ is zero except in a bounded region of the space-like hypersurface $x^0 =$ constant. Show that Equation 7.41 implies that
+%
+\begin{displaymath}
+  \int_{x^0 = \mathrm{const}} \tensor{T}{^\nu_\mu} \sqrt{-g} n_\nu \dd[3]{x}
+\end{displaymath}
+%
+does not depend on $x^0$, so long as $n_\nu$ is the unit normal to the hypersurface.
+
+Using Equation 7.41 and the differential in Equation 6.18, we take the integral
+%
+\begin{displaymath}
+  \int {
+    \frac{1}{\sqrt{-g}} (\sqrt{-g} \tensor{T}{^\nu_\mu})_\nu \sqrt{-g}
+  } \dd[4]{x} =
+  \int {
+    (\sqrt{-g} \tensor{T}{^\nu_\mu})_{,\nu} \dd[4]{x}
+  } \dd[4]{x}.
+\end{displaymath}
+%
+Now we use Equation 6.44:
+%
+\begin{align*}
+  \int {
+    (\sqrt{-g} \tensor{T}{^\nu_\mu})_{,\nu} \dd[4]{x}
+  } \dd[4]{x} &=
+  \oint {
+    \sqrt{-g} n_\nu \tensor{T}{^\nu_\mu}
+  } \dd[3]{S}
+  \\ &=
+  \int_{x^0 = \mathrm{const}} \sqrt{-g} n_\nu \tensor{T}{^\nu_\mu} \dd[3]{x}
+\end{align*}
+
+(c) Now consider flat Minkowski space with a global inertial frame in spherical polar coordinates. Show that, from part (b), we have
+%
+\begin{displaymath}
+  J =
+  \int_{t=\mathrm{const}} {
+    \tensor{T}{^0_\phi} r^2 \sin\theta
+  } \dd{r} \dd\theta \dd\phi,
+\end{displaymath}
+%
+which is independent of $t$. This is the system's total angular momentum.
+
+Since we are in flat Minkowski space, the unit-normal one form has components $\tilde{n} \to (1, 0, 0, 0)$, so only the $\tensor{T}{^0_\mu}$ term is retained. We also have $x^0 \to t$, so we can write the expression from (b) as
+%
+\begin{displaymath}
+  \int_{t = \mathrm{const}} \sqrt{-g} \tensor{T}{^0_\mu} \dd[3]{x}.
+\end{displaymath}
+%
+We also know that $\sqrt{-g} \dd[3]{x}$ in spherical polars is $r^2 \sin\theta \dd{r} \dd\theta \dd\phi$, so we can write this as
+%
+\begin{displaymath}
+  \int_{t = \mathrm{const}} {
+    \tensor{T}{^0_\mu} r^2 \sin\theta
+  } \dd{r} \dd\theta \dd\phi.
+\end{displaymath}
+%
+Taking the $\phi$ component of $\tensor{T}{^0_\mu}$, we get something which we call $J$:
+%
+\begin{displaymath}
+  J =
+  \int_{t = \mathrm{const}} {
+    \tensor{T}{^0_\phi} r^2 \sin\theta
+  } \dd{r} \dd\theta \dd\phi.
+\end{displaymath}
+
+(d) Now express the previous integral in terms of the components of $T^{\alpha\beta}$ on the Cartesian basis, ultimately arriving at
+%
+\begin{displaymath}
+  J =
+  \int {
+    (x T^{y0} - y T^{x0})
+  } \dd{x} \dd{y} \dd{z}
+\end{displaymath}
+
+\begin{align*}
+  J &=
+  \int_{t = \mathrm{const}} {
+    \tensor{T}{^0_\phi} r^2 \sin\theta
+  } \dd{r} \dd\theta \dd\phi
+  \\ &=
+  \int_{t = \mathrm{const}} {
+    \tensor{\Lambda}{^\alpha_\phi} \tensor{T}{^0_\alpha} r^2 \sin\theta
+  } \dd[3]{x}
+  \\ &=
+  \int_{t = \mathrm{const}} (
+    \tensor{\Lambda}{^x_\phi} \tensor{T}{^0_x} +
+    \tensor{\Lambda}{^y_\phi} \tensor{T}{^0_y} +
+    \tensor{\Lambda}{^z_\phi} \tensor{T}{^0_z}
+  ) \dd[3]{x}
+  \\ &=
+  \int_{t = \mathrm{const}} (
+    (-r \sin\theta \sin\phi) \tensor{T}{^0_x} +
+    ( r \sin\theta \cos\phi) \tensor{T}{^0_y} +
+    (0) \tensor{T}{^0_z}
+  ) \dd[3]{x}
+  \\ &=
+  \int_{t = \mathrm{const}} (
+    x \tensor{T}{^0_y} -
+    y \tensor{T}{^0_x}
+  ) \dd[3]{x}
+  \\ &=
+  \int_{t = \mathrm{const}} (
+    \eta_{yy} x \tensor{T}{^{0y}} -
+    \eta_{xx} y \tensor{T}{^{0x}}
+  ) \dd[3]{x}
+  \\ &=
+  \int_{t = \mathrm{const}} (
+    x \tensor{T}{^{0y}} -
+    y \tensor{T}{^{0x}}
+  ) \dd[3]{x}
+\end{align*}
+
+
+\textbf{10}
+
+(a) Show that if the vector field $\xi^\alpha$ satisfies Killing's equation,
+%
+\begin{displaymath}
+  \grad_\alpha \xi_\beta + \grad_\beta \xi_\alpha = 0,
+\end{displaymath}
+%
+then $p^\alpha \xi_\alpha$ is constant along a geodesic.
+
+If $p^\alpha \xi_\alpha$ is constant along a geodesic, then $p^\alpha \xi_{\alpha;\beta} = 0$, so we simply have to show that this follows from Killing's equation.
+
+Killing's equation can be rewritten as
+%
+\begin{displaymath}
+  \xi_{\beta;\alpha} + \xi_{\alpha;\beta} = 0 \implies
+  \xi_{\beta;\alpha} = -\xi_{\alpha;\beta}.
+\end{displaymath}
+%
+Now we combine this with the geodesic equation,
+%
+\begin{displaymath}
+  p^\alpha \xi_{\beta;\alpha} = -p^\alpha \xi_{\alpha;\beta} = 0.
+\end{displaymath}
+%
+And there we have it!
+
+(b) Find ten Killing fields for Minkowski spacetime.
+
+Since the basis vectors in Minkowski spacetime are all constant, $\grad_\beta \vec{e}_\alpha = 0$, and so we get four from $\vec{e}_t$, $\vec{e}_x$, $\vec{e}_y$, $\vec{e}_z$. According to part (c), we get a Killing field from any \emph{constant} linear combination of these four, and so from that we may create an infinity of Killing fields. Schutz's solutions manual also lists expressions such as $x \vec{e}_t - t \vec{e}_x$ as Killing fields, which are linear combinations, but the coefficients are non-constant. I give an attempted derivation below, although at the very last step it turns out not to work, and I pretend it does anyway. I claim that the general form of Schutz's expressions is: $x^\alpha \vec{e}_\beta - x^\beta \vec{e}_\alpha$.
+
+\begin{align*}
+  \grad_\alpha (x^\alpha \vec{e}_\beta) -
+  \grad_\alpha (x^\beta \vec{e}_\alpha) +
+  \grad_\beta (x^\alpha \vec{e}_\beta) -
+  \grad_\beta (x^\beta \vec{e}_\alpha)
+  &=
+  \tensor{x}{^\alpha_{;\alpha}} \vec{e}_\beta -
+  \tensor{x}{^\beta_{;\alpha}} \vec{e}_\alpha +
+  \tensor{x}{^\alpha_{;\beta}} \vec{e}_\beta -
+  \tensor{x}{^\beta_{;\beta}} \vec{e}_\alpha
+  \\ &=
+  \vec{e}_\beta -
+  \vec{e}_\alpha -
+  \tensor{x}{^\beta_{,\alpha}} \vec{e}_\alpha +
+  \tensor{x}{^\alpha_{,\beta}} \vec{e}_\beta
+  \\ &=
+  \vec{e}_\beta -
+  \vec{e}_\alpha -
+  \tensor{\Lambda}{^\beta_\alpha} \vec{e}_\alpha +
+  \tensor{\Lambda}{^\alpha_\beta} \vec{e}_\beta
+  \\ &
+  \text{(magnets at work here)}
+  \\ &=
+  \vec{e}_\beta -
+  \vec{e}_\alpha -
+  \vec{e}_\beta +
+  \vec{e}_\alpha =
+  0
+\end{align*}
+
+
+(c) Prove that any \emph{constant} linear combination of two Killing fields $\vec\xi$ and $\vec\eta$ is itself a Killing field.
+
+\begin{align*}
+  &
+  \grad_\mu \xi_\nu + \grad_\nu \xi_\mu = 0
+  \\
+  &
+  \grad_\mu \eta_\nu + \grad_\nu \eta_\mu = 0
+  \\ &
+  \grad_\mu (\alpha \xi_\nu + \beta \eta_\nu) +
+  \grad_\nu (\alpha \xi_\mu + \beta \eta_\mu)
+  \\ =&
+  \alpha \grad_\mu \xi_\nu + \beta \grad_\mu \eta_\nu +
+  \alpha \grad_\nu \xi_\mu + \beta \grad_\nu \eta_\mu
+  \\ =&
+  \alpha (\grad_\mu \xi_\nu + \grad_\nu \xi_\mu) +
+  \beta (\grad_\mu \eta_\nu + \grad_\nu \eta_\mu) =
+  0
+\end{align*}
+
+
+(d)
+Show that the Lorentz transforms of the fields in (b) are also Killing fields.
+
+Applying a Lorentz transform $\tensor{\Lambda}{^\mu_\nu}$ we get the expression $\tensor{\Lambda}{^\mu_\nu} \qty(x^\alpha \vec{e}_\beta - x^\beta \vec{e}_\alpha)$.
+%
+\begin{align*}
+  &
+  \grad_\alpha
+  [
+    \tensor{\Lambda}{^\mu_\nu}
+    (x^\alpha \vec{e}_\beta - x^\beta \vec{e}_\alpha)
+  ] +
+  \grad_\beta
+  [
+    \tensor{\Lambda}{^\mu_\nu}
+    (x^\beta \vec{e}_\alpha - x^\alpha \vec{e}_\beta)
+  ]
+  \\ =&
+  \tensor{\Lambda}{^\mu_{\nu;\alpha}}
+  [
+    (x^\alpha \vec{e}_\beta - x^\beta \vec{e}_\alpha) +
+    (x^\beta \vec{e}_\alpha - x^\alpha \vec{e}_\beta)
+  ]
+  \\ =&
+  \tensor{\Lambda}{^\mu_{\nu;\alpha}}
+  [
+    x^\alpha \vec{e}_\beta - x^\alpha \vec{e}_\beta +
+    x^\beta \vec{e}_\alpha - x^\beta \vec{e}_\alpha
+  ] = 0
+\end{align*}
+
+
+(e) Use the results in Exercise 7(a) to find Killing vectors for the non-Minkowski metrics listed in (ii)--(iv).
+
+(ii) Since the conserved quantities are $p_t$ and $p_\phi$, then the Killing fields are any constant linear combinations or Lorentz transforms of $\vec{e}_t$, $\vec{e}_\phi$, and $\phi \vec{e}_t - t \vec{e}_\phi$.
+
+(iii) Same as (ii).
+
+(iv) Only $p_\phi$ is conserved, so any constant multiple of $\vec{e}_\phi$ is a Killing field.
+
+
+
+
+
+\end{document}

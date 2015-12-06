@@ -1,0 +1,56 @@
+main() := (
+
+load(ctensor),
+
+/*
+ * declare functional dependencies
+ */
+depends(phi, [t, x, y, z]),
+
+/*
+ * define the coordinate system
+ */
+ct_coords: [t, x, y, z],
+
+/*
+ * construct the lower and upper metric tensors
+ *
+ *   start with an empty tensor and
+ *   fill in the diagonal components individually
+ *
+ *   use a 1st order approximation of the upper
+ *   metric tensor
+ */
+lg: zeromatrix(4,4),
+ug: zeromatrix(4,4),
+
+lg[1,1]: -(1 + 2*phi),
+lg[2,2]:  (1 - 2*phi),
+lg[3,3]:  (1 - 2*phi),
+lg[4,4]:  (1 - 2*phi),
+
+ug[1,1]: -(1 - 2*phi),
+ug[2,2]:  (1 + 2*phi),
+ug[3,3]:  (1 + 2*phi),
+ug[4,4]:  (1 + 2*phi),
+
+
+/**********
+ * Output *
+ **********/
+
+/*
+ * display the lower and upper indexed metrics
+ */
+print(lg),
+print(ug),
+
+/*
+ * display the Christofel symbols (1st kind)
+ */
+christof(mcs)
+
+)$
+
+
+main()$

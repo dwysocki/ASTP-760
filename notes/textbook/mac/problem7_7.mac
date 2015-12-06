@@ -1,0 +1,25 @@
+main() := (
+
+linel : 150,
+
+depends(Delta, r),
+
+lg : zeromatrix(4,4),
+
+lg[1,1] : -(Delta - a^2) / r^2,
+lg[2,2] : r^2 / Delta,
+lg[3,3] : r^2,
+lg[4,4] : ((r^2 + a^2)^2 - a^2 * Delta) / r^2,
+lg[1,4] : -2*M*a / r,
+lg[4,1] : lg[1,4],
+
+ug : invert(lg),
+
+
+
+print(lg),
+print(ug)
+
+)$
+
+main()$

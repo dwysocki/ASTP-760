@@ -1,0 +1,100 @@
+\documentclass[gr-notes.tex]{subfiles}
+
+\begin{document}
+
+\setcounter{chapter}{7}
+
+\chapter{The Einstein field equations}
+
+\setcounter{section}{5}
+
+\section{Exercises}
+
+\textbf{3}
+
+(a) Calculate in geometrized units:
+
+(i) the Newtonian potential of the Sun at its surface
+%
+\begin{displaymath}
+  \phi =
+ -G M_\Sun / R_\Sun \approx
+ -\SI{1.476e3}{m} / \SI{6.960e8}{m} \approx
+  \num{-2.12e-6}
+\end{displaymath}
+
+(ii) the Newtonian potential of the Sun at the radius of Earth's orbit
+%
+\begin{displaymath}
+  \phi =
+ -G M_\Sun / \SI{1}{AU} \approx
+ -\SI{1.476e3}{m} / \SI{1.496e11}{m} \approx
+  \num{-9.866e-9}
+\end{displaymath}
+
+(iii) the Newtonian potential of the Earth at its surface
+%
+\begin{displaymath}
+  \phi =
+ -G M_\Earth / R_\Earth \approx
+ -\SI{4.434e-3}{m} / \SI{6.371e6}{m} \approx
+  \num{-9.660e-10}
+\end{displaymath}
+
+(iv) the Earth's orbital velocity
+
+Here I use the result from part (c), and find that
+%
+\begin{displaymath}
+  v =
+  \sqrt{-\phi} \approx
+  \num{9.933e-5}
+\end{displaymath}
+
+
+
+(b) If the potential due to the Sun at Earth's orbital radius is greater than the Earth's potential at its surface (as is shown above), then why do we feel the Earth's gravity more than the Sun's?
+
+We don't feel the potential directly, we feel the gravitational acceleration it produces. Acceleration is obtained from the potential via $\vb{a} = -\grad\phi$, and in the case of a circular orbit in a Newtonian potential:
+%
+\begin{displaymath}
+  a =
+ -\grad\phi =
+ -\pdv{r} (-G M / r) =
+ -G m / r^2 =
+  \phi / r.
+\end{displaymath}
+%
+So in the two cases mentioned, we need to divide by the radius once more, to obtain the acceleration.
+%
+\begin{align*}
+  a_\Sun &=
+  \phi_\Sun / \SI{1}{AU} \approx
+  \SI{-6.595e-20}{\per\meter}
+  \\
+  a_\Earth &=
+  \phi_\Earth / R_\Earth \approx
+  \SI{-1.092e-16}{\per\meter}
+\end{align*}
+%
+As you can see, the acceleration due to the Earth is greater by a factor of $10^4$.
+
+(c) Show that a circular orbit in a Newtonian potential has an orbital velocity $v^2 = -\phi$.
+
+We saw above that $a = \phi / r$, and we also know that centripetal acceleration is given by $a = -v^2 / r$. Equating the two we get $v^2 = -\phi$.
+
+
+
+
+\textbf{8}
+
+\textbf{9}
+
+\textbf{11}
+
+\textbf{13}
+
+\textbf{17}
+
+
+\end{document}
