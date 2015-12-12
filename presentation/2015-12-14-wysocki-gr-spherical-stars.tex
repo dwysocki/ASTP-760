@@ -1,7 +1,12 @@
 \documentclass{beamer}
 
+% for adding conditionals
+\usepackage{etoolbox}
+
+% for adding note support
 \usepackage{pgfpages}
-\setbeameroption{show notes on second screen}
+% only compile notes if `\def\notes{}` in preamble
+\ifdef{\notes}{\setbeameroption{show notes on second screen}}{}
 
 \usetheme{CambridgeUS}
 \usecolortheme{dolphin}
