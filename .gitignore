@@ -4,7 +4,15 @@ _site/
 
 # LaTeX
 *.aux
+*.bbl
+*.bcf
+*.blg
 *.log
+*.nav
+*.out
+*.pdfpc
+*.run.xml
+*.snm
 *.toc
 *-converted-to.pdf
 
