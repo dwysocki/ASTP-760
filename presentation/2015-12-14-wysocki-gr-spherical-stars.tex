@@ -233,7 +233,7 @@ $g_{00}$, $g_{0r}$, and $g_{rr}$ functions of $t$ and $r$
 \note{
 
   \begin{itemize}
-  \item Birkhoff's theorem says that the Schwarzschild metric applies to point 2
+  \item George David Birkhoff
   \end{itemize}
 
 }
@@ -574,22 +574,212 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 %%%%
 
-\begin{frame}{Equation of motion (continued)}
+\begin{frame}{Mass function}
 
-\textbf{TODO}
+\begin{block}<+->{Einstein field equations}
+\begin{displaymath}
+  G_{00} = 8 \pi T_{00}
+  \implies
+  \frac{1}{r^2} e^{2\Phi} \dv{r} [r (1 - e^{-2\Lambda})] =
+  8 \pi \rho e^{2\Phi}
+\end{displaymath}
+\end{block}
 
-Show 10.31
+\begin{block}<+->{$m(r)$}
+\begin{displaymath}
+  m(r) \equiv \frac{1}{2} r (1 - e^{-2\Lambda})
+  \quad \textrm{or} \quad
+  g_{rr} = e^{2\Lambda} \equiv \qty(1 - \frac{2 m(r)}{r})^{-1}
+\end{displaymath}
+\end{block}
+
+\begin{block}<+->{Relation to energy density}
+\begin{displaymath}
+  \dv{m(r)}{r} = 4 \pi r^2 \rho
+\end{displaymath}
+\end{block}
+
+\blankfootnote{\textcite[pp. 260--262]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
+  \item inspect $(0,0)$ component of Einstein equations
+  \item in Newtonian limit, $m(r)$ is mass within radius $r$
+
+  \begin{displaymath}
+    m(r) = 4 \pi \int_0^r (r')^2 \rho(r') \dd{r'}
+  \end{displaymath}
+
+  \item doesn't work in GR, because total energy is not localizable
+  \end{itemize}
+
+}
 
 \end{frame}
+
+%%%%
+
+\begin{frame}{What is $\Phi$ called?!?!?!?!!?}
+
+\begin{block}<+->{Einstein field equations}
+\begin{displaymath}
+  G_{rr} = 8 \pi T_{rr}
+  \implies
+ -\frac{1}{r^2} e^{2\Lambda} (1 - e^{-2\Lambda}) + \frac{2}{r} \Phi' =
+  8\pi p e^{2\Lambda}
+\end{displaymath}
+\end{block}
+
+\begin{block}<+->{$\Phi(r)$}
+\begin{displaymath}
+  \dv{\Phi(r)}{r} = \frac{m(r) + 4 \pi r^3 p}{r [r - 2 m(r)]}
+\end{displaymath}
+\end{block}
+
+\blankfootnote{\textcite[pp. 260--262]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
+  \item inspect $(r,r)$ component of Einstein equations
+  \end{itemize}
+
+}
+
+\end{frame}
+
+
 
 %%%%%%%%
 
 \section{Exterior Geometry}
 
 
-\begin{frame}{Schwarzschild metric}
+\begin{frame}{Schwarzschild metric I}
 
-\textbf{TODO}
+\begin{block}<+->{Condition}
+\begin{displaymath}
+  \rho = p = 0
+\end{displaymath}
+\end{block}
+
+\begin{block}<+->{Consequences}
+\begin{columns}[c]
+
+%% left column
+\begin{column}{0.6\textwidth}
+\begin{align*}
+  \dv{m(r)}{r} &=
+  4 \pi r^2 \rho = 0
+  \\
+  \dv{\Phi(r)}{r} &=
+  \frac{m(r) + 4 \pi r^3 p}{r [r - 2 m(r)]} = \frac{M}{r (r - 2 M)}
+\end{align*}
+\end{column}
+
+%% right column
+\begin{column}<+->{0.4\textwidth}
+\begin{align*}
+  m(r) &\equiv M
+  \\
+  \Phi(r) &=
+  \frac{1}{2} \log(1 - \frac{2 M}{r})
+\end{align*}
+\end{column}
+
+\end{columns}
+\end{block}
+
+\blankfootnote{\textcite[pp. 262--263]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
+  \item the external conditions just state we are in a vaccuum
+  \item breaks down when matter surrounds star
+  \item $M$ is a constant
+  \end{itemize}
+
+}
+
+\end{frame}
+
+%%%%
+
+\begin{frame}{Schwarzschild metric II}
+
+\begin{block}<+->{First two metric components}
+\begin{align*}
+  g_{tt} &= -e^{2\Phi} = -\qty(1 - \frac{2M}{r})
+  &
+  g_{rr} &= e^{2\Lambda} = \qty(1 - \frac{2M}{r})^{-1}
+\end{align*}
+\end{block}
+
+\begin{block}<+->{Schwarzschild metric}
+\begin{displaymath}
+  \dd{s}^2 =
+ -\qty(1 - \frac{2M}{r}) \dd{t}^2 +
+  \qty(1 - \frac{2M}{r})^{-1} \dd{r}^2 +
+  r^2 \dd{\Omega}^2
+\end{displaymath}
+\end{block}
+
+\blankfootnote{\textcite[pp. 258, 262--263]{Schutz}}
+
+\end{frame}
+
+%%%%
+
+\begin{frame}{Far-field metric}
+
+\begin{block}<+->{Condition}
+\begin{displaymath}
+  r \gg M
+\end{displaymath}
+\end{block}
+
+\begin{block}<+->{Far-field Schwarzschild metric}
+\begin{displaymath}
+  \dd{s}^2 \approx
+ -\qty(1 - \frac{2M}{r}) \dd{t}^2 +
+  \qty(1 + \frac{2M}{r}) \dd{r}^2 +
+  r^2 \dd{\Omega}^2
+\end{displaymath}
+\end{block}
+
+\begin{block}<+->{Far-field Schwarzschild metric (Cartesian)}
+\begin{displaymath}
+  \dd{s}^2 \approx
+ -\qty(1 - \frac{2M}{R}) \dd{t}^2 +
+  \qty(1 + \frac{2M}{R}) (\dd{x}^2 + \dd{y}^2 + \dd{z}^2)
+\end{displaymath}
+\end{block}
+
+\onslide<.->{
+\begin{displaymath}
+  R^2 \equiv x^2 + y^2 + z^2
+\end{displaymath}
+}
+
+\blankfootnote{\textcite[pp. 263]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
+  \item far-field metric of a star
+    \begin{itemize}
+    \item mass $M$
+    \item distance $R$
+    \end{itemize}
+  \end{itemize}
+
+}
 
 \end{frame}
 
@@ -624,9 +814,108 @@ Then that geometry is necessarily a piece of the Schwarzschild geometry.
 
 \blankfootnote{\textcite{1923rmp..book.....B}}
 
+
+\note{
+
+  \begin{itemize}
+  \item George David Birkhoff
+  \end{itemize}
+
+}
+
 \end{frame}
 
 
+
+%%%%%%%%
+
+\section{Interior structure}
+
+
+\begin{frame}{Tolman--Oppenheimer--Volkov (T--O--V) equation}
+
+\begin{block}<+->{Condition}
+\begin{displaymath}
+  \rho \neq 0; \quad p \neq 0
+\end{displaymath}
+\end{block}
+
+\begin{block}<+->{Recall}
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{displaymath}
+  (\rho + p) \dv{\Phi}{r} = -\dv{p}{r}
+\end{displaymath}
+\end{column}
+
+\begin{column}<+->{0.5\textwidth}
+\begin{displaymath}
+  \dv{\Phi}{r} = \frac{m(r) + 4 \pi r^3 p}{r [r - 2 m(r)]}
+\end{displaymath}
+\end{column}
+\end{columns}
+
+\end{block}
+
+\begin{block}<+->{T--O--V equation}
+\begin{displaymath}
+  \dv{p}{r} =
+ -\frac{(\rho + p) [m(r) + 4 \pi r^3 p]}{r [r - 2m(r)]}
+\end{displaymath}
+\end{block}
+
+\blankfootnote{\textcite[pp. 261--264]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
+  \item T--O--V equation coupled with $\dv*{m}{r}$ and $p(\rho)$
+    \begin{itemize}
+    \item 3 equations
+    \item 3 unknowns ($m$, $\rho$, $p$)
+    \item $\Phi(r)$ only intermediate variable
+    \end{itemize}
+  \end{itemize}
+
+}
+
+\end{frame}
+
+%%%%
+
+\begin{frame}{Newtonian hydrostatic equilibrium}
+
+\begin{block}<+->{Newtonian limit}
+\begin{displaymath}
+  p \ll \rho;
+  \quad
+  4 \pi r^3 p \ll m;
+  \quad
+  m \ll r
+\end{displaymath}
+\end{block}
+
+\begin{block}<+->{Equation of hydrostatic equilibrium}
+\begin{displaymath}
+  \dv{p}{r} = -\frac{\rho m(r)}{r^2}
+\end{displaymath}
+\end{block}
+
+\blankfootnote{\textcite[pp. 265--266]{Schutz} and
+               \textcite[p. 3]{1994sipp.book.....H}}
+
+
+\note{
+
+  \begin{itemize}
+  \item Newtonian limit reduces the T--O--V equation to HSE
+  \end{itemize}
+
+}
+
+\end{frame}
 
 
 \section{References}
