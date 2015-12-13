@@ -98,15 +98,47 @@
   December 14th, 2015
 }
 
+
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
+\begin{frame}{Introduction}
+
+\begin{itemize}
+\setlength\itemsep{24pt}
+\item model stars using spherical symmetry
+\item Schwarzschild metric
+\item T--O--V equation
+\item applications
+\end{itemize}
+
+
+\note{
+
+  \begin{itemize}
+  \item I will model stars using GR assuming spherical symmetry
+  \item I will derive the Schwarzschild metric and T--O--V equation
+  \item finally I will relate these equations to modeling specific types of stars
+  \end{itemize}
+
+}
+
+\end{frame}
+
+%%%%%%%%
+
 
 
 \section{Spherically symmetric coordinates}
 
+\note{
+
+  \begin{itemize}
+  \item First we need to derive our coordinate system
+  \end{itemize}
+
+}
 
 \begin{frame}{Two-sphere in flat spacetime}
 
@@ -127,8 +159,17 @@
   \end{displaymath}
 \end{block}
 
-
 \blankfootnote{\textcite[p. 256]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
+  \item we start with the simplest spherically symmetric coordinates
+  \item 2-sphere in Minkowski space
+  \end{itemize}
+
+}
 
 \end{frame}
 
@@ -149,8 +190,17 @@
   \end{displaymath}
 \end{block}
 
-
 \blankfootnote{\textcite[pp. 256--257]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
+  \item generalize to 2-sphere in arbitrary curved spherically symmetric spacetime
+  \item inclusion of curvature makes $r^2$ some function of $r'$ and $t$
+  \end{itemize}
+
+}
 
 \end{frame}
 
@@ -173,11 +223,11 @@
 
   \begin{column}{0.6\textwidth}
     \begin{itemize}
+    \item<+-> \emph{not} proper distance from center
     \item<+-> ``curvature'' or ``area'' coordinate
       \begin{itemize}
       \item radius of curvature and area
       \end{itemize}
-    \item<+-> \emph{not} proper distance from center
     \item<+-> $r =$ const, $t =$ const
       \begin{itemize}
       \item $A = 4 \pi r^2$
@@ -188,6 +238,22 @@
 \end{columns}
 
 \blankfootnote{\textcite[p. 257]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
+  \item $r$ is not necessary the ``distance from the center''
+  \item it is merely a coordinate
+  \item for instance, we may have a spacetime where the center is missing
+    \begin{itemize}
+    \item example: wormhole spacetime
+    \end{itemize}
+  \item surface of constant $(r, t)$ is a two-sphere of area $A$ and
+    circumference $C$
+  \end{itemize}
+
+}
 
 \end{frame}
 
@@ -211,20 +277,41 @@ $g_{00}$, $g_{0r}$, and $g_{rr}$ functions of $t$ and $r$
 
 \blankfootnote{\textcite[p. 258]{Schutz}}
 
+
+\note{
+
+  \begin{itemize}
+  \item now consider not only surface of 2-sphere, but whole spacetime
+  \item now we have some unknown $g_{00}$, $g_{rr}$, and cross term $g_{0r}$
+  \item cross terms $g_{0i}$ for $i \in \{\theta, \phi\}$ are zero from symmetry
+  \item need more constraints to say anything particular about them
+  \end{itemize}
+
+}
+
 \end{frame}
 
 %%%%%%%%
 
+
+
 \section{Static spacetimes}
 
+\note{
+
+  \begin{itemize}
+  \item now I will impose the static constraint
+  \end{itemize}
+
+}
 
 \begin{frame}{Motivation}
 
 \begin{itemize}
 \setlength\itemsep{24pt}
 \item<+-> leads to simple derivation of Schwarzschild metric
-\item<+-> generalizes to spherically symmetric, asymptotically flat Einstein vacuum field equations
-\item<+-> Birkhoff's theorem
+\item<+-> unique solution to spherically symmetric, asymptotically
+  flat Einstein vacuum field equations (Birkhoff's theorem)
 \end{itemize}
 
 \blankfootnote{\textcite[p. 263]{Schutz} and \textcite[p. 843]{MTW}}
@@ -233,6 +320,13 @@ $g_{00}$, $g_{0r}$, and $g_{rr}$ functions of $t$ and $r$
 \note{
 
   \begin{itemize}
+  \item we choose the contstraint of a static spacetime because
+    \begin{itemize}
+    \item it allows us to easily derive the Schwarzschild metric
+    \item according to Birkhoff's theorem, this metric is the unique
+      solution to the Einstein vacuum field equations for spherically
+      symmetric, asymptotically flat spacetimes
+    \end{itemize}
   \item George David Birkhoff
   \end{itemize}
 
@@ -265,10 +359,13 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \note{
 
   \begin{itemize}
-  \item a spacetime which only satisfies the first condition is \emph{stationary}
+  \item now I define ``static''
+  \item first condition is that the metric is independent of time
     \begin{itemize}
-    \item e.g. rotating star
+    \item by itself, this condition is called ``stationary''
     \end{itemize}
+  \item second condition is that metric unaffected by time reversal
+  \item e.g. rotating stars are stationary but not static
   \end{itemize}
 
 }
@@ -299,15 +396,12 @@ A spacetime is static if we can find a time coordinate $t$ for which
   \begin{column}{0.4\textwidth}
     \begin{block}<+->{Transformation}
       \begin{align*}
-          \tensor{\Lambda}{^0_{\bar0}} &=
-          \tensor{x}{^0_{,\bar0}} = -\tensor{x}{^0_{,0}} = -1
-          \\
-          \tensor{\Lambda}{^i_{\bar{j}}} &=
-          \tensor{x}{^i_{,\bar{j}}} = \tensor{x}{^i_{,j}} = \tensor{\delta}{^i_j}
-          \\
-          \tensor{\Lambda}{^0_{\bar{i}}} &=
-          \tensor{x}{^0_{,\bar{i}}} = \tensor{x}{^0_{,i}} = 0
-        \end{align*}
+        \tensor{\Lambda}{^0_{\bar0}} &=
+        \tensor{x}{^0_{,\bar0}} = -\tensor{x}{^0_{,0}} = -1
+        \\
+        \tensor{\Lambda}{^i_{\bar{i}}} &=
+        \tensor{x}{^i_{,\bar{i}}} = \tensor{x}{^i_{,i}} = 1
+      \end{align*}
     \end{block}
   \end{column}
 
@@ -318,13 +412,13 @@ A spacetime is static if we can find a time coordinate $t$ for which
         (\tensor{\Lambda}{^0_{\bar0}})^2 g_{00} =
         g_{00}
         \\
-        g_{\bar0 \bar{r}} &=
-        \tensor{\Lambda}{^0_{\bar0}} \tensor{\Lambda}{^r_{\bar{r}}} g_{0r} =
-        -g_{0r}
-        \\
         g_{\bar{r} \bar{r}} &=
         (\tensor{\Lambda}{^r_{\bar{r}}})^2 g_{rr} =
         g_{rr}
+        \\
+        g_{\bar0 \bar{r}} &=
+        \tensor{\Lambda}{^0_{\bar0}} \tensor{\Lambda}{^r_{\bar{r}}} g_{0r} =
+        -g_{0r}
       \end{align*}
     \end{block}
   \end{column}
@@ -336,7 +430,22 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \note{
 
   \begin{itemize}
-  \item $g_{\bar0 \bar{r}} = -g_{0r} = 0$
+  \item now I use the static constraint to simplify the metric
+  \item transformation
+    \begin{itemize}
+    \item $(0,0)$ term is $\dv*{t}{(-t)}$
+    \item spatial terms are $1$ if transformed to themselves
+    \item cross-terms are all zero, as coordinates independent of each other
+    \end{itemize}
+  \item transformed metric
+    \begin{itemize}
+    \item $(0,0)$ term is unchanged, as $-1$ is squared
+    \item $(r,r)$ term is unchanged, as transformation is $1$
+    \item $(0,r)$ term is negated, but must still be equal, so it's zero
+      \begin{itemize}
+      \item no cross terms
+      \end{itemize}
+    \end{itemize}
   \end{itemize}
 
 }
@@ -384,8 +493,17 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \note{
 
   \begin{itemize}
-  \item constraint $g_{00} < 0 < g_{rr}$ holds for stars but not black holes
+  \item now we simplify the metric, since the cross term is zero
+  \item we assume $g_{00}$ to be negative, and $g_{rr}$ to be positive
+    \begin{itemize}
+    \item signature is $(-,+,+,+)$
+    \item holds inside stars but not black holes
+    \end{itemize}
   \item limits at infinity tell us that spacetime is \emph{asymptotically flat}
+    \begin{itemize}
+    \item $\Phi = \Lambda = 0 \implies e^{2\Phi} = e^{2\Lambda} = 1$
+      and $\vb{g} = \vb{\eta}$
+    \end{itemize}
   \end{itemize}
 
 }
@@ -403,19 +521,19 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \end{block}
 
 \begin{block}<+->{Einstein tensor components}
-\begin{gather*}
-  G_{tt} =
-  \frac{1}{r^2} e^{2\Phi} \dv{r} [r (1 - e^{-2\Lambda})],
+\begin{align*}
+  G_{00} &=
+  \frac{1}{r^2} e^{2\Phi} \dv{r} [r (1 - e^{-2\Lambda})]
   \\
-  G_{rr} =
+  G_{rr} &=
   -\frac{1}{r^2} e^{2\Lambda} (1 - e^{-2\Lambda}) + \frac{2}{r} \Phi'
   \\
-  G_{\theta\theta} =
-  r^2 e^{-2\Lambda} [\Phi'' + (\Phi')^2 + \Phi' / r - \Phi' \Lambda' - \Lambda' / r],
+  G_{\theta\theta} &=
+  r^2 e^{-2\Lambda} [\Phi'' + (\Phi')^2 + \Phi' / r - \Phi' \Lambda' - \Lambda' / r]
   \\
-  G_{\phi\phi} =
+  G_{\phi\phi} &=
   \sin^2\theta G_{\theta\theta}
-\end{gather*}
+\end{align*}
 \end{block}
 
 \blankfootnote{\textcite[pp. 165, 260]{Schutz}}
@@ -424,6 +542,10 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \note{
 
   \begin{itemize}
+  \item now we can use the metric to derive the Riemann tensor
+  \item from that the Einstein tensor
+  \item the derivation is involved, so we will just take them as is
+  \item we're going to use some of these components later on
   \item $x' \equiv \dv*{x}{r}$
   \end{itemize}
 
@@ -433,8 +555,18 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 %%%%%%%%
 
+
+
 \section{Static perfect fluid}
 
+\note{
+
+  \begin{itemize}
+  \item stars are fluids -- for simplicity we assume perfect
+  \item thus we will impose additional constraints accordingly
+  \end{itemize}
+
+}
 
 \begin{frame}{Four-velocity}
 
@@ -450,7 +582,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \begin{block}<+->{Solving for $U^0$}
 \begin{displaymath}
-  g_{00} (U^0)^2 = -1 \implies
+  g_{00} U^0 U^0 = -1 \implies
   U^0 = (-g_{00})^{-1/2} = e^{-\Phi}
 \end{displaymath}
 \end{block}
@@ -467,7 +599,9 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \note{
 
   \begin{itemize}
-  \item ``conservation law'' is the conservation of four-momentum
+  \item static fluid, so in MCRF three-velocity components all zero
+  \item we find the only non-zero term, $U^0$, by relating to the dot product
+  \item lower it with the metric, to use in next part
   \end{itemize}
 
   \begin{align*}
@@ -487,7 +621,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \begin{frame}{Stress--energy tensor}
 
-\begin{block}<+->{$T_{\alpha\beta}$ for perfect fluid}
+\begin{block}<+->{Stress-energy tensor for perfect fluid}
 \begin{displaymath}
   T_{\alpha\beta} = (\rho + p) U_\alpha U_\beta + p g_{\alpha\beta}
 \end{displaymath}
@@ -495,17 +629,30 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \begin{block}<+->{Components of $T_{\alpha\beta}$}
 \begin{align*}
+\onslide<.->{
+  T_{i\alpha} &= p g_{i\alpha}
+}
+  \\
+\onslide<+->{
+  T_{\alpha\beta} & \text{ is diagonal}
+}
+  \\
+\onslide<+->{
   T_{00} &= (\rho + p) e^{2\Phi} + p (-e^{2\Phi}) = \rho e^{2\Phi}
+}
   \\
-  T_{\alpha\beta} &= 0 \text{ for $\alpha \neq \beta$;}
-  \quad
-  T_{ii} = p g_{ii}
-  \\
-  T_{rr} &= p e^{2\Lambda};
-  \quad
-  T_{\theta\theta} = p r^2;
-  \quad
-  T_{\phi\phi} = p r^2 \sin^2\theta = T_{\theta\theta} \sin^2\theta
+\onslide<+->{
+  T_{rr} &= p e^{2\Lambda}
+}
+\onslide<+->{, \quad
+  T_{\theta\theta} = p r^2
+}
+\onslide<+->{, \quad
+  T_{\phi\phi} = p r^2 \sin^2\theta
+  \onslide<+->{
+    = T_{\theta\theta} \sin^2\theta
+  }
+}
 \end{align*}
 \end{block}
 
@@ -515,12 +662,12 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \note{
 
   \begin{itemize}
-  \item $T_{\alpha\beta} = 0$ because
-    \begin{itemize}
-    \item the cross terms make $g_{\alpha\beta} = 0$
-    \item $T_{0i}$ makes one of the $U$'s $U_i = 0$
-    \end{itemize}
-  \item likewise, $T_{ii} = p g_{ii}$ because $U_i U_i = 0$
+  \item $T_{i\alpha} = p g_{i\alpha}$ because spatial components of $U$ are zero
+  \item $T_{\alpha\beta}$ is diagonal because of previous condition
+    and $g_{\alpha\beta}$ is diagonal
+  \item $T_{00}$ requires a little algebra
+  \item $T_{ii}$ just need to multiply metric by $p$
+  \item $T_{\phi\phi}$ can be written in terms of $T_{\theta\theta}$
   \end{itemize}
 
 }
@@ -544,13 +691,24 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \blankfootnote{\textcite[p. 261]{Schutz}}
 
+
+\note{
+
+  \begin{itemize}
+  \item in a static fluid we have local thermodynamic equilibrium
+  \item pressure a function of density and specific entropy
+  \item specific entropy assumed negligibly small
+  \end{itemize}
+
+}
+
 \end{frame}
 
 %%%
 
 \begin{frame}{Equations of motion}
 
-\begin{block}<+->{Conservation laws}
+\begin{block}<+->{Conservation of 4-momentum}
 \begin{displaymath}
   \tensor{T}{^{\alpha\beta}_{;\beta}} = 0
 \end{displaymath}
@@ -570,30 +728,44 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \blankfootnote{\textcite[pp. 175, 261]{Schutz}}
 
+
+\note{
+
+  \begin{itemize}
+  \item first equation follows from conservation of 4-momentum
+  \item due to symmetry, the only non-trivial solution is for $\alpha = r$
+  \item equation of motion for perfect fluid
+  \end{itemize}
+
+}
+
 \end{frame}
 
 %%%%
 
 \begin{frame}{Mass function}
 
-\begin{block}<+->{Einstein field equations}
+\begin{block}<1->{Einstein field equations}
 \begin{displaymath}
-  G_{00} = 8 \pi T_{00}
+  {\color<2>{red} G_{00}} = 8 \pi {\color<2>{blue} T_{00}}
+\onslide<2->{
   \implies
-  \frac{1}{r^2} e^{2\Phi} \dv{r} [r (1 - e^{-2\Lambda})] =
-  8 \pi \rho e^{2\Phi}
+  {\color<2>{red} \frac{1}{r^2} e^{2\Phi}
+                  \dv{r} [{\color<3>{red} r (1 - e^{-2\Lambda})}]} =
+  8 \pi {\color<2>{blue} \rho e^{2\Phi}}
+}
 \end{displaymath}
 \end{block}
 
-\begin{block}<+->{$m(r)$}
+\begin{block}<3->{$m(r)$}
 \begin{displaymath}
-  m(r) \equiv \frac{1}{2} r (1 - e^{-2\Lambda})
+  m(r) \equiv {\color<3>{red} \frac{1}{2} r (1 - e^{-2\Lambda})}
   \quad \textrm{or} \quad
   g_{rr} = e^{2\Lambda} \equiv \qty(1 - \frac{2 m(r)}{r})^{-1}
 \end{displaymath}
 \end{block}
 
-\begin{block}<+->{Relation to energy density}
+\begin{block}<4->{Relation to energy density}
 \begin{displaymath}
   \dv{m(r)}{r} = 4 \pi r^2 \rho
 \end{displaymath}
@@ -606,6 +778,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
   \begin{itemize}
   \item inspect $(0,0)$ component of Einstein equations
+  \item define the mass function, $m(r)$
   \item in Newtonian limit, $m(r)$ is mass within radius $r$
 
   \begin{displaymath}
@@ -621,18 +794,22 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 %%%%
 
-\begin{frame}{What is $\Phi$ called?!?!?!?!!?}
+\begin{frame}{$\Phi(r)$}
 
-\begin{block}<+->{Einstein field equations}
+\begin{block}<1->{Einstein field equations}
 \begin{displaymath}
-  G_{rr} = 8 \pi T_{rr}
+  {\color<2>{red} G_{rr}} = 8 \pi {\color<2>{blue} T_{rr}}
+\onslide<2->{
   \implies
- -\frac{1}{r^2} e^{2\Lambda} (1 - e^{-2\Lambda}) + \frac{2}{r} \Phi' =
-  8\pi p e^{2\Lambda}
+  {\color<2>{red}
+     -\frac{1}{r^2} e^{2\Lambda} (1 - e^{-2\Lambda}) + \frac{2}{r} \Phi'
+  } =
+  8 \pi {\color<2>{blue} p e^{2\Lambda}}
+}
 \end{displaymath}
 \end{block}
 
-\begin{block}<+->{$\Phi(r)$}
+\begin{block}<3->{$\Phi(r)$}
 \begin{displaymath}
   \dv{\Phi(r)}{r} = \frac{m(r) + 4 \pi r^3 p}{r [r - 2 m(r)]}
 \end{displaymath}
@@ -645,6 +822,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
   \begin{itemize}
   \item inspect $(r,r)$ component of Einstein equations
+  \item gives us an expression for $\Phi(r)$
   \end{itemize}
 
 }
@@ -657,6 +835,15 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \section{Exterior Geometry}
 
+\note{
+
+  \begin{itemize}
+  \item until now, we've not considered whether we were inside or outside star
+  \item properties inside different than outside (obviously)
+  \item we're going to inspect both cases, starting with outside
+  \end{itemize}
+
+}
 
 \begin{frame}{Schwarzschild metric I}
 
@@ -667,30 +854,26 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \end{block}
 
 \begin{block}<+->{Consequences}
-\begin{columns}[c]
-
-%% left column
-\begin{column}{0.6\textwidth}
 \begin{align*}
+\onslide<.->{
   \dv{m(r)}{r} &=
   4 \pi r^2 \rho = 0
+}
+  &
+\onslide<+->{
+  m(r) &\equiv M
+}
   \\
+\onslide<+->{
   \dv{\Phi(r)}{r} &=
   \frac{m(r) + 4 \pi r^3 p}{r [r - 2 m(r)]} = \frac{M}{r (r - 2 M)}
-\end{align*}
-\end{column}
-
-%% right column
-\begin{column}<+->{0.4\textwidth}
-\begin{align*}
-  m(r) &\equiv M
-  \\
+}
+  &
+\onslide<+->{
   \Phi(r) &=
   \frac{1}{2} \log(1 - \frac{2 M}{r})
+}
 \end{align*}
-\end{column}
-
-\end{columns}
 \end{block}
 
 \blankfootnote{\textcite[pp. 262--263]{Schutz}}
@@ -700,8 +883,11 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
   \begin{itemize}
   \item the external conditions just state we are in a vaccuum
-  \item breaks down when matter surrounds star
-  \item $M$ is a constant
+    \begin{itemize}
+    \item breaks down when matter surrounds star
+    \end{itemize}
+  \item $m(r)$ is constant, we call it $M$
+  \item $\dv*{\Phi}{r}$ simplifies, and we can now integrate it to find $\Phi(r)$
   \end{itemize}
 
 }
@@ -714,9 +900,13 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \begin{block}<+->{First two metric components}
 \begin{align*}
-  g_{tt} &= -e^{2\Phi} = -\qty(1 - \frac{2M}{r})
-  &
+\onslide<.->{
   g_{rr} &= e^{2\Lambda} = \qty(1 - \frac{2M}{r})^{-1}
+}
+  &
+\onslide<+->{
+  g_{00} &= -e^{2\Phi} = -\qty(1 - \frac{2M}{r})
+}
 \end{align*}
 \end{block}
 
@@ -731,28 +921,39 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \blankfootnote{\textcite[pp. 258, 262--263]{Schutz}}
 
+
+\note{
+
+  \begin{itemize}
+  \item recall $g_{rr}$ from earlier
+  \item substituting our expression from $\Phi(r)$ into $-e^{2\Phi}$ gives $g_{00}$
+  \item we have found the Schwarzschild metric!
+  \end{itemize}
+
+}
+
 \end{frame}
 
 %%%%
 
 \begin{frame}{Far-field metric}
 
-\begin{block}<+->{Condition}
+\begin{block}<1->{Condition}
 \begin{displaymath}
   r \gg M
 \end{displaymath}
 \end{block}
 
-\begin{block}<+->{Far-field Schwarzschild metric}
+\begin{block}<2->{\onslide<3->{Far-field} Schwarzschild metric}
 \begin{displaymath}
-  \dd{s}^2 \approx
+  \dd{s}^2 \only<2>{=} \only<3->{\approx}
  -\qty(1 - \frac{2M}{r}) \dd{t}^2 +
-  \qty(1 + \frac{2M}{r}) \dd{r}^2 +
+  \qty(1 \only<2>{-} \only<3->{+} \frac{2M}{r})^{\only<2>{-1}{}} \dd{r}^2 +
   r^2 \dd{\Omega}^2
 \end{displaymath}
 \end{block}
 
-\begin{block}<+->{Far-field Schwarzschild metric (Cartesian)}
+\begin{block}<4->{Far-field Schwarzschild metric (Cartesian)}
 \begin{displaymath}
   \dd{s}^2 \approx
  -\qty(1 - \frac{2M}{R}) \dd{t}^2 +
@@ -760,7 +961,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \end{displaymath}
 \end{block}
 
-\onslide<.->{
+\onslide<4->{
 \begin{displaymath}
   R^2 \equiv x^2 + y^2 + z^2
 \end{displaymath}
@@ -772,7 +973,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \note{
 
   \begin{itemize}
-  \item far-field metric of a star
+  \item far-field metric of a star (far away)
     \begin{itemize}
     \item mass $M$
     \item distance $R$
@@ -789,18 +990,18 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \onslide<+-> {
 
-Let the geometry of a given region of spacetime:
+If the geometry of a given region of spacetime is:
 
 }
 
 \begin{enumerate}
-\item<+-> be spherically symmetric
-\item<+-> be a solution to the Einstein field equations in vacuum.
+\item<+-> spherically symmetric
+\item<+-> a solution to the Einstein field equations in vacuum
 \end{enumerate}
 
 \onslide<+->{
 
-Then that geometry is necessarily a piece of the Schwarzschild geometry.
+then that geometry is necessarily a subset of the Schwarzschild geometry.
 
 }
 
@@ -818,6 +1019,8 @@ Then that geometry is necessarily a piece of the Schwarzschild geometry.
 \note{
 
   \begin{itemize}
+  \item the Schwarzschild metric generalizes to all spherically
+    symmetric spacetimes in a vacuum
   \item George David Birkhoff
   \end{itemize}
 
@@ -836,7 +1039,7 @@ Then that geometry is necessarily a piece of the Schwarzschild geometry.
 
 \begin{block}<+->{Condition}
 \begin{displaymath}
-  \rho \neq 0; \quad p \neq 0
+  \rho \neq 0 \quad p \neq 0
 \end{displaymath}
 \end{block}
 
@@ -871,6 +1074,45 @@ Then that geometry is necessarily a piece of the Schwarzschild geometry.
 \note{
 
   \begin{itemize}
+  \item inside a star, we cannot assume density and pressure are zero
+  \item revisit two earlier equations
+  \item substitute one into the other
+  \item arrive at the T--O--V equation
+  \end{itemize}
+
+}
+
+\end{frame}
+
+%%%%
+
+\begin{frame}{System of equations}
+
+\begin{block}{T--O--V equation}
+\begin{displaymath}
+  \dv{p}{r} =
+ -\frac{(\rho + p) [m(r) + 4 \pi r^3 p]}{r [r - 2m(r)]}
+\end{displaymath}
+\end{block}
+
+\begin{block}{Mass function}
+\begin{displaymath}
+  \dv{m(r)}{r} = 4 \pi r^2 \rho
+\end{displaymath}
+\end{block}
+
+\begin{block}{Equation of state}
+\begin{displaymath}
+  p = p(\rho)
+\end{displaymath}
+\end{block}
+
+\blankfootnote{\textcite[pp. 261--262, 264]{Schutz}}
+
+
+\note{
+
+  \begin{itemize}
   \item T--O--V equation coupled with $\dv*{m}{r}$ and $p(\rho)$
     \begin{itemize}
     \item 3 equations
@@ -882,6 +1124,7 @@ Then that geometry is necessarily a piece of the Schwarzschild geometry.
 }
 
 \end{frame}
+
 
 %%%%
 
