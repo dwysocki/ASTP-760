@@ -946,9 +946,9 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \begin{block}<2->{\onslide<3->{Far-field} Schwarzschild metric}
 \begin{displaymath}
-  \dd{s}^2 \only<2>{=} \only<3->{\approx}
+  \dd{s}^2 \only<-2>{{=}} \only<3->{{\approx}}
  -\qty(1 - \frac{2M}{r}) \dd{t}^2 +
-  \qty(1 \only<2>{-} \only<3->{+} \frac{2M}{r})^{\only<2>{-1}{}} \dd{r}^2 +
+  \qty(1 \only<-2>{-} \only<3->{+} \frac{2M}{r})^{\only<-2>{-1}\only<3->{\phantom{-1}}} \dd{r}^2 +
   r^2 \dd{\Omega}^2
 \end{displaymath}
 \end{block}
@@ -1028,12 +1028,23 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 
 \end{frame}
 
-
-
 %%%%%%%%
+
+
 
 \section{Interior structure}
 
+\note{
+
+  \begin{itemize}
+  \item now we look at the remaining, and most interesting regime
+    \begin{itemize}
+    \item inside the star
+    \end{itemize}
+  \item our assumptions from outside the star no longer hold
+  \end{itemize}
+
+}
 
 \begin{frame}{Tolman--Oppenheimer--Volkov (T--O--V) equation}
 
@@ -1086,7 +1097,7 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 
 %%%%
 
-\begin{frame}{System of equations}
+\begin{frame}{System of coupled differential equations}
 
 \begin{block}{T--O--V equation}
 \begin{displaymath}
@@ -1119,6 +1130,7 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
     \item 3 unknowns ($m$, $\rho$, $p$)
     \item $\Phi(r)$ only intermediate variable
     \end{itemize}
+  \item can integrate to find $m(r)$, $\rho(r)$, and $p(r)$
   \end{itemize}
 
 }
@@ -1142,7 +1154,10 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 
 \begin{block}<+->{Equation of hydrostatic equilibrium}
 \begin{displaymath}
-  \dv{p}{r} = -\frac{\rho m(r)}{r^2}
+  \dv{p}{r} =
+ -\frac{(\rho + {\color{red} p}) [m(r) + {\color{red} 4 \pi r^3 p}]}
+       {r [r - {\color{red} 2m(r)}]} =
+ -\frac{\rho m(r)}{r^2}
 \end{displaymath}
 \end{block}
 
@@ -1153,7 +1168,9 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 \note{
 
   \begin{itemize}
-  \item Newtonian limit reduces the T--O--V equation to HSE
+  \item in the Newtonian limit we get these constraints
+  \item which allow us to cancel terms in the T--O--V equation
+  \item and arrive at the familiar equation of HSE
   \end{itemize}
 
 }
