@@ -110,7 +110,7 @@
 \item model stars using spherical symmetry
 \item Schwarzschild metric
 \item T--O--V equation
-\item applications
+\item real stars
 \end{itemize}
 
 
@@ -119,7 +119,7 @@
   \begin{itemize}
   \item I will model stars using GR assuming spherical symmetry
   \item I will derive the Schwarzschild metric and T--O--V equation
-  \item finally I will relate these equations to modeling specific types of stars
+  \item finally I will look into specific types of stars
   \end{itemize}
 
 }
@@ -166,7 +166,13 @@
 
   \begin{itemize}
   \item we start with the simplest spherically symmetric coordinates
-  \item 2-sphere in Minkowski space
+    \begin{itemize}
+    \item flat spacetime
+    \end{itemize}
+  \item 2-sphere in Minkowski spacetime
+    \begin{itemize}
+    \item introduce $\dd{\Omega}^2$ for compactness
+    \end{itemize}
   \end{itemize}
 
 }
@@ -223,6 +229,7 @@
 
   \begin{column}{0.6\textwidth}
     \begin{itemize}
+    \setlength\itemsep{24pt}
     \item<+-> \emph{not} proper distance from center
     \item<+-> ``curvature'' or ``area'' coordinate
       \begin{itemize}
@@ -244,10 +251,10 @@
 
   \begin{itemize}
   \item $r$ is not necessary the ``distance from the center''
-  \item it is merely a coordinate
+  \item it is merely a coordinate -- ``curvature'' or ``area'' coordinate
   \item for instance, we may have a spacetime where the center is missing
     \begin{itemize}
-    \item example: wormhole spacetime
+    \item example: Schwarzschild wormhole spacetime
     \end{itemize}
   \item surface of constant $(r, t)$ is a two-sphere of area $A$ and
     circumference $C$
@@ -269,11 +276,10 @@
     g_{rr} \dd{r}^2 +
     r^2 \dd\Omega^2
   \end{displaymath}
+  \begin{center}
+    $g_{00}$, $g_{0r}$, and $g_{rr}$: functions of $t$ and $r$
+  \end{center}
 \end{block}
-
-\begin{center}
-$g_{00}$, $g_{0r}$, and $g_{rr}$ functions of $t$ and $r$
-\end{center}
 
 \blankfootnote{\textcite[p. 258]{Schutz}}
 
@@ -283,6 +289,7 @@ $g_{00}$, $g_{0r}$, and $g_{rr}$ functions of $t$ and $r$
   \begin{itemize}
   \item now consider not only surface of 2-sphere, but whole spacetime
   \item now we have some unknown $g_{00}$, $g_{rr}$, and cross term $g_{0r}$
+  \item cross term $g_{0r}$
   \item cross terms $g_{0i}$ for $i \in \{\theta, \phi\}$ are zero from symmetry
   \item need more constraints to say anything particular about them
   \end{itemize}
@@ -320,7 +327,7 @@ $g_{00}$, $g_{0r}$, and $g_{rr}$ functions of $t$ and $r$
 \note{
 
   \begin{itemize}
-  \item we choose the contstraint of a static spacetime because
+  \item we choose the constraint of a static spacetime because
     \begin{itemize}
     \item it allows us to easily derive the Schwarzschild metric
     \item according to Birkhoff's theorem, this metric is the unique
@@ -340,6 +347,7 @@ $g_{00}$, $g_{0r}$, and $g_{rr}$ functions of $t$ and $r$
 A spacetime is static if we can find a time coordinate $t$ for which
 
 \begin{enumerate}[(i)]
+\setlength\itemsep{24pt}
 \item<+-> the metric independent of $t$
 
   \begin{displaymath}
@@ -397,10 +405,10 @@ A spacetime is static if we can find a time coordinate $t$ for which
     \begin{block}<+->{Transformation}
       \begin{align*}
         \tensor{\Lambda}{^0_{\bar0}} &=
-        \tensor{x}{^0_{,\bar0}} = -\tensor{x}{^0_{,0}} = -1
+        \tensor{x}{^0_{,\bar0}} = \pdv{t}{(-t)} = -1
         \\
         \tensor{\Lambda}{^i_{\bar{i}}} &=
-        \tensor{x}{^i_{,\bar{i}}} = \tensor{x}{^i_{,i}} = 1
+        \tensor{x}{^i_{,\bar{i}}} = \pdv{x^i}{x^i} = 1
       \end{align*}
     \end{block}
   \end{column}
@@ -478,13 +486,15 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \begin{block}<+->{Static spherically symmetric metric}
 \begin{displaymath}
   \dd{s}^2 =
-  -e^{2\Phi} \dd{t}^2 +
-  e^{2\Lambda} \dd{r}^2 +
+  -{\color<+->{red} e^{2\Phi}} \dd{t}^2 +
+  {\color<.->{red} e^{2\Lambda}} \dd{r}^2 +
   r^2 \dd\Omega^2
 \end{displaymath}
+\onslide<.->{
 \begin{displaymath}
   \lim_{r\to\infty} \Phi(r) = \lim_{r\to\infty} \Lambda(r) = 0
 \end{displaymath}
+}
 \end{block}
 
 \blankfootnote{\textcite[pp. 258--259]{Schutz}}
@@ -546,7 +556,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
   \item from that the Einstein tensor
   \item the derivation is involved, so we will just take them as is
   \item we're going to use some of these components later on
-  \item $x' \equiv \dv*{x}{r}$
+  \item note that \emph{prime} denotes $\dv*{r}$
   \end{itemize}
 
 }
@@ -621,39 +631,68 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \begin{frame}{Stress--energy tensor}
 
-\begin{block}<+->{Stress-energy tensor for perfect fluid}
+\begin{block}<1->{Stress-energy tensor for perfect fluid}
 \begin{displaymath}
   T_{\alpha\beta} = (\rho + p) U_\alpha U_\beta + p g_{\alpha\beta}
 \end{displaymath}
 \end{block}
 
-\begin{block}<+->{Components of $T_{\alpha\beta}$}
+\begin{block}<2->{Components of $T_{\alpha\beta}$}
+\begin{columns}[c]
+
+\begin{column}{0.6\textwidth}
 \begin{align*}
-\onslide<.->{
+\onslide<2->{
   T_{i\alpha} &= p g_{i\alpha}
+  \onslide<3->{
+    \implies
+    T_{i0} = 0
+  }
 }
   \\
-\onslide<+->{
+\onslide<4->{
   T_{\alpha\beta} & \text{ is diagonal}
 }
   \\
-\onslide<+->{
+\onslide<5->{
   T_{00} &= (\rho + p) e^{2\Phi} + p (-e^{2\Phi}) = \rho e^{2\Phi}
 }
   \\
-\onslide<+->{
+\onslide<6->{
   T_{rr} &= p e^{2\Lambda}
 }
-\onslide<+->{, \quad
+\onslide<7->{, \quad
   T_{\theta\theta} = p r^2
 }
-\onslide<+->{, \quad
-  T_{\phi\phi} = p r^2 \sin^2\theta
-  \onslide<+->{
+  \\
+\onslide<8->{
+  T_{\phi\phi} &= p r^2 \sin^2\theta
+  \onslide<9->{
     = T_{\theta\theta} \sin^2\theta
   }
 }
 \end{align*}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{displaymath}
+  \mqty[
+    {\color<5->{blue} T_{0 0}} & {\color<3->{red}  T_{0 r}} &
+    {\color<3->{red}  T_{0 \theta}} & {\color<3->{red}  T_{0 \phi}}
+    \\
+    {\color<3->{red}  T_{r 0}} & {\color<6->{blue} T_{r r}} &
+    {\color<4->{red}  T_{r \theta}} & {\color<4->{red}  T_{r \phi}}
+    \\
+    {\color<3->{red}  T_{\theta 0}} & {\color<4->{red}  T_{\theta r}} &
+    {\color<7->{blue} T_{\theta \theta}} & {\color<4->{red}  T_{\theta \phi}}
+    \\
+    {\color<3->{red}  T_{\phi 0}} & {\color<4->{red}  T_{\phi r}} &
+    {\color<4->{red}  T_{\phi \theta}} & {\color<8->{blue} T_{\phi \phi}}
+  ]
+\end{displaymath}
+\end{column}
+
+\end{columns}
 \end{block}
 
 \blankfootnote{\textcite[p. 260]{Schutz}}
@@ -685,6 +724,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \end{block}
 
 \begin{itemize}
+\setlength\itemsep{24pt}
 \item pressure related to energy density and specific entropy
 \item we often deal with negligibly small entropies
 \end{itemize}
@@ -720,7 +760,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 \begin{block}<+->{Equation of motion}
 \begin{displaymath}
-  (\rho + p) \dv{\Phi}{r} = -\dv{\rho}{r}
+  (\rho + p) \dv{\Phi}{r} = -\dv{p}{r}
 \end{displaymath}
 \end{block}
 
@@ -732,7 +772,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
   \begin{itemize}
   \item first equation follows from conservation of 4-momentum
   \item due to symmetry, the only non-trivial solution is for $\alpha = r$
-  \item equation of motion for perfect fluid
+  \item equation of motion for static perfect fluid
   \item (derivation in bonus slides)
   \end{itemize}
 
@@ -881,7 +921,7 @@ A spacetime is static if we can find a time coordinate $t$ for which
 \note{
 
   \begin{itemize}
-  \item the external conditions just state we are in a vaccuum
+  \item the external conditions just state we are in a vacuum
     \begin{itemize}
     \item breaks down when matter surrounds star
     \end{itemize}
@@ -973,9 +1013,11 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
   \begin{itemize}
   \item far-field metric of a star (far away)
+  \item consider $m(r)$ to be total mass $M$
+  \item can use Taylor expansion, and to first order rewrite as such
+  \item we can define a new coordinate $R$, the distance from the star
     \begin{itemize}
-    \item mass $M$
-    \item distance $R$
+    \item Cartesian coordinates
     \end{itemize}
   \end{itemize}
 
@@ -985,47 +1027,47 @@ A spacetime is static if we can find a time coordinate $t$ for which
 
 %%%%
 
-\begin{frame}{Birkhoff's Theorem}
+% \begin{frame}{Birkhoff's Theorem}
 
-\onslide<+-> {
+% \onslide<+-> {
 
-If the geometry of a given region of spacetime is:
+% If the geometry of a given region of spacetime is:
 
-}
+% }
 
-\begin{enumerate}
-\item<+-> spherically symmetric
-\item<+-> a solution to the Einstein field equations in vacuum
-\end{enumerate}
+% \begin{enumerate}
+% \item<+-> spherically symmetric
+% \item<+-> a solution to the Einstein field equations in vacuum
+% \end{enumerate}
 
-\onslide<+->{
+% \onslide<+->{
 
-then that geometry is necessarily a subset of the Schwarzschild geometry.
+% then that geometry is necessarily a subset of the Schwarzschild geometry.
 
-}
+% }
 
-\vspace{0.5in}
+% \vspace{0.5in}
 
-\onslide<+->{
+% \onslide<+->{
 
-(Proof given in \textcite[pp. 843--844]{MTW})
+% (Proof given in \textcite[pp. 843--844]{MTW})
 
-}
+% }
 
-\blankfootnote{\textcite{1923rmp..book.....B}}
+% \blankfootnote{\textcite{1923rmp..book.....B}}
 
 
-\note{
+% \note{
 
-  \begin{itemize}
-  \item the Schwarzschild metric generalizes to all spherically
-    symmetric spacetimes in a vacuum
-  \item George David Birkhoff
-  \end{itemize}
+%   \begin{itemize}
+%   \item the Schwarzschild metric generalizes to all spherically
+%     symmetric spacetimes in a vacuum
+%   \item George David Birkhoff
+%   \end{itemize}
 
-}
+% }
 
-\end{frame}
+% \end{frame}
 
 %%%%%%%%
 
@@ -1088,6 +1130,16 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
   \item revisit two earlier equations
   \item substitute one into the other
   \item arrive at the T--O--V equation
+  \item gives us an ODE relating
+    \begin{itemize}
+    \item pressure $p$
+    \item density $\rho$
+    \item mass function $m(r)$
+    \item radius $r$
+      \begin{itemize}
+      \item eventually hope to solve all quantities in terms of $r$
+      \end{itemize}
+    \end{itemize}
   \end{itemize}
 
 }
@@ -1154,9 +1206,12 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 \begin{block}<+->{Equation of hydrostatic equilibrium}
 \begin{displaymath}
   \dv{p}{r} =
- -\frac{(\rho + {\color{red} p}) [m(r) + {\color{red} 4 \pi r^3 p}]}
-       {r [r - {\color{red} 2m(r)}]} =
+ -\frac{(\rho + {\color<+->{red} p}) [m(r) + {\color<.->{red} 4 \pi r^3 p}]}
+       {r [r - {\color<.->{red} 2m(r)}]}
+\onslide<.->{
+  =
  -\frac{\rho m(r)}{r^2}
+}
 \end{displaymath}
 \end{block}
 
@@ -1182,7 +1237,7 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 
 \begin{block}<+->{Constraint}
 \begin{displaymath}
-  \rho \equiv \rho_0
+  \rho(r) \equiv \rho_0
 \end{displaymath}
 \end{block}
 
@@ -1211,8 +1266,7 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
     \item neutron star density is \emph{almost} uniform
     \item also leads us to a result which holds for all stellar densities
     \end{itemize}
-  \item obtaining the mass function from the differential equation
-    shown earlier is easy
+  \item easy to obtain mass function from earlier differential equation
     \begin{itemize}
     \item equal to the density times the volume of the sphere enclosed
       by radius $r$ inside
@@ -1257,7 +1311,7 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
   \begin{itemize}
   \item recall the T--O--V equation, which describes the interior of the star
   \item we can substitute $m(r)$ for $r \leq R$, to simplify it as shown
-  \item this gives us a seperable differential equation
+  \item this gives us a separable differential equation
   \item we integrate the differential equation from the center
     ($r = 0$, $p = p_c$) to some radius ($r = r$, $p = p$)
   \item to simplify the expression again, we've re-written it in terms of $m(r)$
@@ -1276,7 +1330,7 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 \begin{displaymath}
   R^2 =
   \frac{3}{8 \pi \rho_0}
-  \qty[ 1 - \qty( \frac{\rho + p_c}{\rho + 3 p_c} )^2 ]
+  \qty[ 1 - \qty( \frac{\rho_0 + p_c}{\rho_0 + 3 p_c} )^2 ]
 \end{displaymath}
 \end{block}
 
@@ -1332,6 +1386,7 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 \begin{frame}{Buchdahl's theorem}
 
 \begin{itemize}[<+->]
+\setlength\itemsep{24pt}
 \item even for non-constant density, $M / R < 4 / 9$
 \item intuitive explanation:
   \begin{itemize}
@@ -1381,6 +1436,7 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 \begin{frame}{White dwarfs}
 
 \begin{itemize}
+\setlength\itemsep{24pt}
 \item end-of-life for low mass stars
 \item held up by electron degeneracy pressure
 \item Newtonian structure accurate to $1\%$
@@ -1429,9 +1485,12 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
 \begin{frame}{Neutron stars}
 
 \begin{itemize}
+\setlength\itemsep{24pt}
 \item mass condensed further than white dwarf
 \item created in supernovae, or collapse of white dwarf
-\item protons and electrons combine to form neutrons and emitted neutrinos
+  \begin{displaymath}
+    p^+ + e^- \to n^0 + \nu
+  \end{displaymath}
 \item held up by neutron degeneracy pressure
 \item matter incredibly complex and possess many unknown properties
 \end{itemize}
@@ -1450,6 +1509,11 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
     \item allows energy release when combined with a proton
     \item energy carried away by neutrino, and neutron left behind
     \end{itemize}
+  \item held up by neutron degeneracy pressure -- Pauli again
+  \item matter incredibly complex
+    \begin{itemize}
+    \item suitable equation of state is a topic under active research
+    \end{itemize}
   \end{itemize}
 
 }
@@ -1467,10 +1531,14 @@ then that geometry is necessarily a subset of the Schwarzschild geometry.
   e^{2\psi} (\dd{\phi} - \omega \dd{t})^2 +
   e^{2\mu} (\dd{r}^2 + r^2 \dd{\theta}^2),
 \end{displaymath}
-where $\nu$, $\psi$, $\omega$, and $\mu$ are functions of $r$ and $\theta$
+\begin{center}
+$\nu$, $\psi$, $\omega$, and $\mu$: functions of $r$ and $\theta$
+\end{center}
 \end{block}
 
 \begin{itemize}
+\setlength\itemsep{24pt}
+\item stationary
 \item can still assume perfect fluid to high accuracy
 \end{itemize}
 
@@ -1486,6 +1554,8 @@ where $\nu$, $\psi$, $\omega$, and $\mu$ are functions of $r$ and $\theta$
     \item addition of cross terms between $t$ and $\phi$
     \item metric dependence on $\theta$ in addition to $r$
     \end{itemize}
+  \item metric is still stationary
+  \item perfect fluid assumption works to high accuracy
   \end{itemize}
 
 }
@@ -1497,12 +1567,18 @@ where $\nu$, $\psi$, $\omega$, and $\mu$ are functions of $r$ and $\theta$
 \begin{frame}{Pulsars}
 
 \begin{itemize}
+\setlength\itemsep{24pt}
 \item rapidly rotating neutron stars
 \item magnetic field produces electromagnetic radiation
 \item pulses of radio waves observed with the right orientation
+\item introduction of strong magnetic field requires
+  \begin{itemize}
+  \item consideration of coupled Einstein--Maxwell field equations
+  \item $T_{\alpha\beta}$ includes EM energy density -- non-isotropic
+  \end{itemize}
 \end{itemize}
 
-\blankfootnote{\textcite[p. 628]{MTW}}
+\blankfootnote{\textcite[p. 628]{MTW} and \textcite[p. 28]{LR}}
 
 
 \note{
@@ -1512,6 +1588,18 @@ where $\nu$, $\psi$, $\omega$, and $\mu$ are functions of $r$ and $\theta$
   \item they have a strong magnetic field which causes emission of light
   \item magnetic poles may be offset from axis of rotation
   \item if observed from right angle, see pulses of radio light, like lighthouse
+  \item by including a strong magnetic field, we need to
+    \begin{itemize}
+    \item consider the coupled Einstein--Maxwell field equations, assuming
+      \begin{itemize}
+      \item equilibrium
+      \item stationary
+      \item axisymmetric
+      \item internal electric current
+      \end{itemize}
+    \item need to include electromagnetic energy density to stress-energy tensor
+    \item this makes $T_{\alpha\beta}$ non-isotropic
+    \end{itemize}
   \end{itemize}
 
 }
@@ -1534,10 +1622,12 @@ where $\nu$, $\psi$, $\omega$, and $\mu$ are functions of $r$ and $\theta$
 
 \begin{frame}[allowframebreaks]
 
-\nocite{*}
 \printbibliography[heading=subbibliography]
 
 \end{frame}
+
+%%%%%%%%
+
 
 
 \section{Bonus slides}
@@ -1564,11 +1654,8 @@ where $\nu$, $\psi$, $\omega$, and $\mu$ are functions of $r$ and $\theta$
   (\rho + p) \dv{\Phi}{r}
 \end{align*}
 
-
-
 \blankfootnote{\textcite[pp. 101, 261]{Schutz}}
 
 \end{frame}
-
 
 \end{document}
